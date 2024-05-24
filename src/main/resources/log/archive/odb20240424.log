@@ -1,0 +1,1532 @@
+------------------------------------------------------------------------------------------------------------------------
+
+[2024-04-24 00:01:24 #1 store] 
+Database 'C:\Users\34688\Desktop\UNI\2.II\2.kuatri\SI\iterazioak\it2\miparteZ\Rides24\src\main\resources\rides.temp' is opened by 13160@LAPTOP-ITGLNV29
+
+[2024-04-24 00:01:24 #2 type.registry] 
+New type domain.User
+
+[2024-04-24 00:01:24 #3 type.registry] 
+New type domain.Driver
+
+[2024-04-24 00:01:24 #4 type] 
+Type domain.User is not enhanced.
+
+[2024-04-24 00:01:24 #5 type] 
+Type domain.Driver is not enhanced.
+
+[2024-04-24 00:01:24 #6 type.registry] 
+New type domain.Ride
+
+[2024-04-24 00:01:24 #7 type.registry] 
+New type domain.Car
+
+[2024-04-24 00:01:24 #8 type] 
+Type domain.Ride is not enhanced.
+
+[2024-04-24 00:01:24 #9 type.registry] 
+New type domain.Booking
+
+[2024-04-24 00:01:24 #10 type] 
+Type domain.Car is not enhanced.
+
+[2024-04-24 00:01:24 #11 type] 
+Type domain.Booking is not enhanced.
+
+[2024-04-24 00:01:24 #12 type.registry] 
+New type domain.Traveler
+
+[2024-04-24 00:01:24 #13 type] 
+Type domain.Traveler is not enhanced.
+
+[2024-04-24 00:01:24 #14 type.registry] 
+New type domain.Admin
+
+[2024-04-24 00:01:24 #15 type] 
+Type domain.Admin is not enhanced.
+
+[2024-04-24 00:01:24 #16 type.registry] 
+New type java.util.Vector<java.lang.Object>
+
+[2024-04-24 00:01:24 #17 type.registry] 
+New type java.util.Vector<domain.Car>
+
+[2024-04-24 00:01:24 #18 type.registry] 
+New type java.util.Vector<domain.Ride>
+
+[2024-04-24 00:01:24 #19 type.registry] 
+New type java.util.Vector<domain.Booking>
+
+[2024-04-24 00:01:33 #20 type.registry] 
+New type java.util.ArrayList<java.lang.Object>
+
+[2024-04-24 00:01:33 #21 type.registry] 
+New type java.util.ArrayList<domain.Booking>
+
+[2024-04-24 00:01:33 #22 type.registry] 
+New type com.objectdb.o.LMT
+
+[2024-04-24 00:01:33 #23 type.registry] 
+New type com.objectdb.o.VAL
+
+[2024-04-24 00:01:33 #24 type.registry] 
+New type com.objectdb.o.RFV
+
+[2024-04-24 00:01:36 #25 type.registry] 
+New type domain.Movements
+
+[2024-04-24 00:01:36 #26 type] 
+Type domain.Movements is not enhanced.
+
+------------------------------------------------------------------------------------------------------------------------
+
+[2024-04-24 00:04:50 #1 store] 
+Database 'C:\Users\34688\Desktop\UNI\2.II\2.kuatri\SI\iterazioak\it2\miparteZ\Rides24\src\main\resources\rides.temp' is opened by 16656@LAPTOP-ITGLNV29
+
+[2024-04-24 00:04:51 #2 type.registry] 
+New type domain.User
+
+[2024-04-24 00:04:51 #3 type.registry] 
+New type domain.Driver
+
+[2024-04-24 00:04:51 #4 type] 
+Type domain.User is not enhanced.
+
+[2024-04-24 00:04:51 #5 type] 
+Type domain.Driver is not enhanced.
+
+[2024-04-24 00:04:51 #6 type.registry] 
+New type domain.Ride
+
+[2024-04-24 00:04:51 #7 type.registry] 
+New type domain.Car
+
+[2024-04-24 00:04:51 #8 type] 
+Type domain.Ride is not enhanced.
+
+[2024-04-24 00:04:51 #9 type.registry] 
+New type domain.Booking
+
+[2024-04-24 00:04:51 #10 type] 
+Type domain.Car is not enhanced.
+
+[2024-04-24 00:04:51 #11 type] 
+Type domain.Booking is not enhanced.
+
+[2024-04-24 00:04:51 #12 type.registry] 
+New type domain.Traveler
+
+[2024-04-24 00:04:51 #13 type] 
+Type domain.Traveler is not enhanced.
+
+[2024-04-24 00:04:51 #14 type.registry] 
+New type domain.Admin
+
+[2024-04-24 00:04:51 #15 type] 
+Type domain.Admin is not enhanced.
+
+[2024-04-24 00:04:51 #16 type.registry] 
+New type java.util.Vector<java.lang.Object>
+
+[2024-04-24 00:04:51 #17 type.registry] 
+New type java.util.Vector<domain.Car>
+
+[2024-04-24 00:04:51 #18 type.registry] 
+New type java.util.Vector<domain.Ride>
+
+[2024-04-24 00:04:51 #19 type.registry] 
+New type java.util.Vector<domain.Booking>
+
+[2024-04-24 00:04:57 #20 type.registry] 
+New type java.util.ArrayList<java.lang.Object>
+
+[2024-04-24 00:04:57 #21 type.registry] 
+New type java.util.ArrayList<domain.Booking>
+
+[2024-04-24 00:04:57 #22 type.registry] 
+New type com.objectdb.o.LMT
+
+[2024-04-24 00:04:57 #23 type.registry] 
+New type com.objectdb.o.VAL
+
+[2024-04-24 00:04:57 #24 type.registry] 
+New type com.objectdb.o.RFV
+
+------------------------------------------------------------------------------------------------------------------------
+
+[2024-04-24 00:05:11 #1 store] 
+Database 'C:\Users\34688\Desktop\UNI\2.II\2.kuatri\SI\iterazioak\it2\miparteZ\Rides24\src\main\resources\rides.temp' is opened by 9068@LAPTOP-ITGLNV29
+
+[2024-04-24 00:05:11 #2 type.registry] 
+New type domain.User
+
+[2024-04-24 00:05:11 #3 type.registry] 
+New type domain.Driver
+
+[2024-04-24 00:05:11 #4 type] 
+Type domain.User is not enhanced.
+
+[2024-04-24 00:05:11 #5 type] 
+Type domain.Driver is not enhanced.
+
+[2024-04-24 00:05:11 #6 type.registry] 
+New type domain.Ride
+
+[2024-04-24 00:05:11 #7 type.registry] 
+New type domain.Car
+
+[2024-04-24 00:05:11 #8 type] 
+Type domain.Ride is not enhanced.
+
+[2024-04-24 00:05:11 #9 type.registry] 
+New type domain.Booking
+
+[2024-04-24 00:05:11 #10 type] 
+Type domain.Car is not enhanced.
+
+[2024-04-24 00:05:11 #11 type] 
+Type domain.Booking is not enhanced.
+
+[2024-04-24 00:05:11 #12 type.registry] 
+New type domain.Traveler
+
+[2024-04-24 00:05:11 #13 type] 
+Type domain.Traveler is not enhanced.
+
+[2024-04-24 00:05:11 #14 type.registry] 
+New type domain.Admin
+
+[2024-04-24 00:05:11 #15 type] 
+Type domain.Admin is not enhanced.
+
+[2024-04-24 00:05:11 #16 type.registry] 
+New type java.util.Vector<java.lang.Object>
+
+[2024-04-24 00:05:11 #17 type.registry] 
+New type java.util.Vector<domain.Car>
+
+[2024-04-24 00:05:11 #18 type.registry] 
+New type java.util.Vector<domain.Ride>
+
+[2024-04-24 00:05:11 #19 type.registry] 
+New type java.util.Vector<domain.Booking>
+
+------------------------------------------------------------------------------------------------------------------------
+
+[2024-04-24 00:07:42 #1 store] 
+Database 'C:\Users\34688\Desktop\UNI\2.II\2.kuatri\SI\iterazioak\it2\miparteZ\Rides24\src\main\resources\rides.temp' is opened by 19828@LAPTOP-ITGLNV29
+
+[2024-04-24 00:07:42 #2 type.registry] 
+New type domain.User
+
+[2024-04-24 00:07:42 #3 type.registry] 
+New type domain.Driver
+
+[2024-04-24 00:07:42 #4 type] 
+Type domain.User is not enhanced.
+
+[2024-04-24 00:07:42 #5 type] 
+Type domain.Driver is not enhanced.
+
+[2024-04-24 00:07:42 #6 type.registry] 
+New type domain.Ride
+
+[2024-04-24 00:07:42 #7 type.registry] 
+New type domain.Car
+
+[2024-04-24 00:07:42 #8 type] 
+Type domain.Ride is not enhanced.
+
+[2024-04-24 00:07:42 #9 type.registry] 
+New type domain.Booking
+
+[2024-04-24 00:07:42 #10 type] 
+Type domain.Car is not enhanced.
+
+[2024-04-24 00:07:42 #11 type] 
+Type domain.Booking is not enhanced.
+
+[2024-04-24 00:07:42 #12 type.registry] 
+New type domain.Traveler
+
+[2024-04-24 00:07:42 #13 type] 
+Type domain.Traveler is not enhanced.
+
+[2024-04-24 00:07:42 #14 type.registry] 
+New type domain.Admin
+
+[2024-04-24 00:07:42 #15 type] 
+Type domain.Admin is not enhanced.
+
+[2024-04-24 00:07:42 #16 type.registry] 
+New type java.util.Vector<java.lang.Object>
+
+[2024-04-24 00:07:42 #17 type.registry] 
+New type java.util.Vector<domain.Car>
+
+[2024-04-24 00:07:42 #18 type.registry] 
+New type java.util.Vector<domain.Ride>
+
+[2024-04-24 00:07:42 #19 type.registry] 
+New type java.util.Vector<domain.Booking>
+
+------------------------------------------------------------------------------------------------------------------------
+
+[2024-04-24 00:08:17 #1 store] 
+Database 'C:\Users\34688\Desktop\UNI\2.II\2.kuatri\SI\iterazioak\it2\miparteZ\Rides24\src\main\resources\rides.temp' is opened by 33960@LAPTOP-ITGLNV29
+
+[2024-04-24 00:08:17 #2 type.registry] 
+New type domain.User
+
+[2024-04-24 00:08:17 #3 type.registry] 
+New type domain.Driver
+
+[2024-04-24 00:08:17 #4 type] 
+Type domain.User is not enhanced.
+
+[2024-04-24 00:08:17 #5 type] 
+Type domain.Driver is not enhanced.
+
+[2024-04-24 00:08:17 #6 type.registry] 
+New type domain.Ride
+
+[2024-04-24 00:08:17 #7 type.registry] 
+New type domain.Car
+
+[2024-04-24 00:08:17 #8 type] 
+Type domain.Ride is not enhanced.
+
+[2024-04-24 00:08:17 #9 type.registry] 
+New type domain.Booking
+
+[2024-04-24 00:08:17 #10 type] 
+Type domain.Car is not enhanced.
+
+[2024-04-24 00:08:17 #11 type] 
+Type domain.Booking is not enhanced.
+
+[2024-04-24 00:08:17 #12 type.registry] 
+New type domain.Traveler
+
+[2024-04-24 00:08:17 #13 type] 
+Type domain.Traveler is not enhanced.
+
+[2024-04-24 00:08:17 #14 type.registry] 
+New type domain.Admin
+
+[2024-04-24 00:08:17 #15 type] 
+Type domain.Admin is not enhanced.
+
+[2024-04-24 00:08:17 #16 type.registry] 
+New type java.util.Vector<java.lang.Object>
+
+[2024-04-24 00:08:17 #17 type.registry] 
+New type java.util.Vector<domain.Car>
+
+[2024-04-24 00:08:17 #18 type.registry] 
+New type java.util.Vector<domain.Ride>
+
+[2024-04-24 00:08:17 #19 type.registry] 
+New type java.util.Vector<domain.Booking>
+
+------------------------------------------------------------------------------------------------------------------------
+
+[2024-04-24 00:10:25 #1 store] 
+Database 'C:\Users\34688\Desktop\UNI\2.II\2.kuatri\SI\iterazioak\it2\miparteZ\Rides24\src\main\resources\rides.temp' is opened by 19220@LAPTOP-ITGLNV29
+
+[2024-04-24 00:10:26 #2 type.registry] 
+New type domain.User
+
+[2024-04-24 00:10:26 #3 type.registry] 
+New type domain.Driver
+
+[2024-04-24 00:10:26 #4 type] 
+Type domain.User is not enhanced.
+
+[2024-04-24 00:10:26 #5 type] 
+Type domain.Driver is not enhanced.
+
+[2024-04-24 00:10:26 #6 type.registry] 
+New type domain.Ride
+
+[2024-04-24 00:10:26 #7 type.registry] 
+New type domain.Car
+
+[2024-04-24 00:10:26 #8 type] 
+Type domain.Ride is not enhanced.
+
+[2024-04-24 00:10:26 #9 type.registry] 
+New type domain.Booking
+
+[2024-04-24 00:10:26 #10 type] 
+Type domain.Car is not enhanced.
+
+[2024-04-24 00:10:26 #11 type] 
+Type domain.Booking is not enhanced.
+
+[2024-04-24 00:10:26 #12 type.registry] 
+New type domain.Traveler
+
+[2024-04-24 00:10:26 #13 type] 
+Type domain.Traveler is not enhanced.
+
+[2024-04-24 00:10:26 #14 type.registry] 
+New type domain.Admin
+
+[2024-04-24 00:10:26 #15 type] 
+Type domain.Admin is not enhanced.
+
+[2024-04-24 00:10:26 #16 type.registry] 
+New type java.util.Vector<java.lang.Object>
+
+[2024-04-24 00:10:26 #17 type.registry] 
+New type java.util.Vector<domain.Car>
+
+[2024-04-24 00:10:26 #18 type.registry] 
+New type java.util.Vector<domain.Ride>
+
+[2024-04-24 00:10:26 #19 type.registry] 
+New type java.util.Vector<domain.Booking>
+
+------------------------------------------------------------------------------------------------------------------------
+
+[2024-04-24 00:11:54 #1 store] 
+Database 'C:\Users\34688\Desktop\UNI\2.II\2.kuatri\SI\iterazioak\it2\miparteZ\Rides24\src\main\resources\rides.temp' is opened by 34324@LAPTOP-ITGLNV29
+
+[2024-04-24 00:11:54 #2 type.registry] 
+New type domain.User
+
+[2024-04-24 00:11:54 #3 type.registry] 
+New type domain.Driver
+
+[2024-04-24 00:11:54 #4 type] 
+Type domain.User is not enhanced.
+
+[2024-04-24 00:11:54 #5 type] 
+Type domain.Driver is not enhanced.
+
+[2024-04-24 00:11:54 #6 type.registry] 
+New type domain.Ride
+
+[2024-04-24 00:11:54 #7 type.registry] 
+New type domain.Car
+
+[2024-04-24 00:11:54 #8 type] 
+Type domain.Ride is not enhanced.
+
+[2024-04-24 00:11:54 #9 type.registry] 
+New type domain.Booking
+
+[2024-04-24 00:11:54 #10 type] 
+Type domain.Car is not enhanced.
+
+[2024-04-24 00:11:54 #11 type] 
+Type domain.Booking is not enhanced.
+
+[2024-04-24 00:11:54 #12 type.registry] 
+New type domain.Traveler
+
+[2024-04-24 00:11:54 #13 type] 
+Type domain.Traveler is not enhanced.
+
+[2024-04-24 00:11:54 #14 type.registry] 
+New type domain.Admin
+
+[2024-04-24 00:11:54 #15 type] 
+Type domain.Admin is not enhanced.
+
+[2024-04-24 00:11:54 #16 type.registry] 
+New type java.util.Vector<java.lang.Object>
+
+[2024-04-24 00:11:54 #17 type.registry] 
+New type java.util.Vector<domain.Car>
+
+[2024-04-24 00:11:54 #18 type.registry] 
+New type java.util.Vector<domain.Ride>
+
+[2024-04-24 00:11:54 #19 type.registry] 
+New type java.util.Vector<domain.Booking>
+
+------------------------------------------------------------------------------------------------------------------------
+
+[2024-04-24 00:14:46 #1 store] 
+Database 'C:\Users\34688\Desktop\UNI\2.II\2.kuatri\SI\iterazioak\it2\miparteZ\Rides24\src\main\resources\rides.temp' is opened by 23188@LAPTOP-ITGLNV29
+
+[2024-04-24 00:14:46 #2 type.registry] 
+New type domain.User
+
+[2024-04-24 00:14:46 #3 type.registry] 
+New type domain.Driver
+
+[2024-04-24 00:14:46 #4 type] 
+Type domain.User is not enhanced.
+
+[2024-04-24 00:14:46 #5 type] 
+Type domain.Driver is not enhanced.
+
+[2024-04-24 00:14:46 #6 type.registry] 
+New type domain.Ride
+
+[2024-04-24 00:14:46 #7 type.registry] 
+New type domain.Car
+
+[2024-04-24 00:14:46 #8 type] 
+Type domain.Ride is not enhanced.
+
+[2024-04-24 00:14:46 #9 type.registry] 
+New type domain.Booking
+
+[2024-04-24 00:14:46 #10 type] 
+Type domain.Car is not enhanced.
+
+[2024-04-24 00:14:46 #11 type] 
+Type domain.Booking is not enhanced.
+
+[2024-04-24 00:14:46 #12 type.registry] 
+New type domain.Traveler
+
+[2024-04-24 00:14:46 #13 type] 
+Type domain.Traveler is not enhanced.
+
+[2024-04-24 00:14:46 #14 type.registry] 
+New type domain.Admin
+
+[2024-04-24 00:14:46 #15 type] 
+Type domain.Admin is not enhanced.
+
+[2024-04-24 00:14:46 #16 type.registry] 
+New type java.util.Vector<java.lang.Object>
+
+[2024-04-24 00:14:46 #17 type.registry] 
+New type java.util.Vector<domain.Car>
+
+[2024-04-24 00:14:46 #18 type.registry] 
+New type java.util.Vector<domain.Ride>
+
+[2024-04-24 00:14:46 #19 type.registry] 
+New type java.util.Vector<domain.Booking>
+
+------------------------------------------------------------------------------------------------------------------------
+
+[2024-04-24 00:15:45 #1 store] 
+Database 'C:\Users\34688\Desktop\UNI\2.II\2.kuatri\SI\iterazioak\it2\miparteZ\Rides24\src\main\resources\rides.temp' is opened by 17356@LAPTOP-ITGLNV29
+
+[2024-04-24 00:15:46 #2 type.registry] 
+New type domain.User
+
+[2024-04-24 00:15:46 #3 type.registry] 
+New type domain.Driver
+
+[2024-04-24 00:15:46 #4 type] 
+Type domain.User is not enhanced.
+
+[2024-04-24 00:15:46 #5 type] 
+Type domain.Driver is not enhanced.
+
+[2024-04-24 00:15:46 #6 type.registry] 
+New type domain.Ride
+
+[2024-04-24 00:15:46 #7 type.registry] 
+New type domain.Car
+
+[2024-04-24 00:15:46 #8 type] 
+Type domain.Ride is not enhanced.
+
+[2024-04-24 00:15:46 #9 type.registry] 
+New type domain.Booking
+
+[2024-04-24 00:15:46 #10 type] 
+Type domain.Car is not enhanced.
+
+[2024-04-24 00:15:46 #11 type] 
+Type domain.Booking is not enhanced.
+
+[2024-04-24 00:15:46 #12 type.registry] 
+New type domain.Traveler
+
+[2024-04-24 00:15:46 #13 type] 
+Type domain.Traveler is not enhanced.
+
+[2024-04-24 00:15:46 #14 type.registry] 
+New type domain.Admin
+
+[2024-04-24 00:15:46 #15 type] 
+Type domain.Admin is not enhanced.
+
+[2024-04-24 00:15:46 #16 type.registry] 
+New type java.util.Vector<java.lang.Object>
+
+[2024-04-24 00:15:46 #17 type.registry] 
+New type java.util.Vector<domain.Car>
+
+[2024-04-24 00:15:46 #18 type.registry] 
+New type java.util.Vector<domain.Ride>
+
+[2024-04-24 00:15:46 #19 type.registry] 
+New type java.util.Vector<domain.Booking>
+
+------------------------------------------------------------------------------------------------------------------------
+
+[2024-04-24 00:16:01 #1 store] 
+Database 'C:\Users\34688\Desktop\UNI\2.II\2.kuatri\SI\iterazioak\it2\miparteZ\Rides24\src\main\resources\rides.temp' is opened by 24420@LAPTOP-ITGLNV29
+
+[2024-04-24 00:16:01 #2 type.registry] 
+New type domain.User
+
+[2024-04-24 00:16:01 #3 type.registry] 
+New type domain.Driver
+
+[2024-04-24 00:16:01 #4 type] 
+Type domain.User is not enhanced.
+
+[2024-04-24 00:16:01 #5 type] 
+Type domain.Driver is not enhanced.
+
+[2024-04-24 00:16:01 #6 type.registry] 
+New type domain.Ride
+
+[2024-04-24 00:16:01 #7 type.registry] 
+New type domain.Car
+
+[2024-04-24 00:16:01 #8 type] 
+Type domain.Ride is not enhanced.
+
+[2024-04-24 00:16:01 #9 type.registry] 
+New type domain.Booking
+
+[2024-04-24 00:16:01 #10 type] 
+Type domain.Car is not enhanced.
+
+[2024-04-24 00:16:01 #11 type] 
+Type domain.Booking is not enhanced.
+
+[2024-04-24 00:16:01 #12 type.registry] 
+New type domain.Traveler
+
+[2024-04-24 00:16:01 #13 type] 
+Type domain.Traveler is not enhanced.
+
+[2024-04-24 00:16:01 #14 type.registry] 
+New type domain.Admin
+
+[2024-04-24 00:16:01 #15 type] 
+Type domain.Admin is not enhanced.
+
+[2024-04-24 00:16:01 #16 type.registry] 
+New type java.util.Vector<java.lang.Object>
+
+[2024-04-24 00:16:01 #17 type.registry] 
+New type java.util.Vector<domain.Car>
+
+[2024-04-24 00:16:01 #18 type.registry] 
+New type java.util.Vector<domain.Ride>
+
+[2024-04-24 00:16:01 #19 type.registry] 
+New type java.util.Vector<domain.Booking>
+
+------------------------------------------------------------------------------------------------------------------------
+
+[2024-04-24 00:17:43 #1 store] 
+Database 'C:\Users\34688\Desktop\UNI\2.II\2.kuatri\SI\iterazioak\it2\miparteZ\Rides24\src\main\resources\rides.temp' is opened by 39364@LAPTOP-ITGLNV29
+
+[2024-04-24 00:17:43 #2 type.registry] 
+New type domain.User
+
+[2024-04-24 00:17:43 #3 type.registry] 
+New type domain.Driver
+
+[2024-04-24 00:17:43 #4 type] 
+Type domain.User is not enhanced.
+
+[2024-04-24 00:17:43 #5 type] 
+Type domain.Driver is not enhanced.
+
+[2024-04-24 00:17:43 #6 type.registry] 
+New type domain.Ride
+
+[2024-04-24 00:17:43 #7 type.registry] 
+New type domain.Car
+
+[2024-04-24 00:17:43 #8 type] 
+Type domain.Ride is not enhanced.
+
+[2024-04-24 00:17:43 #9 type.registry] 
+New type domain.Booking
+
+[2024-04-24 00:17:43 #10 type] 
+Type domain.Car is not enhanced.
+
+[2024-04-24 00:17:43 #11 type] 
+Type domain.Booking is not enhanced.
+
+[2024-04-24 00:17:43 #12 type.registry] 
+New type domain.Traveler
+
+[2024-04-24 00:17:43 #13 type] 
+Type domain.Traveler is not enhanced.
+
+[2024-04-24 00:17:43 #14 type.registry] 
+New type domain.Admin
+
+[2024-04-24 00:17:43 #15 type] 
+Type domain.Admin is not enhanced.
+
+[2024-04-24 00:17:43 #16 type.registry] 
+New type java.util.Vector<java.lang.Object>
+
+[2024-04-24 00:17:43 #17 type.registry] 
+New type java.util.Vector<domain.Car>
+
+[2024-04-24 00:17:43 #18 type.registry] 
+New type java.util.Vector<domain.Ride>
+
+[2024-04-24 00:17:43 #19 type.registry] 
+New type java.util.Vector<domain.Booking>
+
+------------------------------------------------------------------------------------------------------------------------
+
+[2024-04-24 00:18:58 #1 store] 
+Database 'C:\Users\34688\Desktop\UNI\2.II\2.kuatri\SI\iterazioak\it2\miparteZ\Rides24\src\main\resources\rides.temp' is opened by 8496@LAPTOP-ITGLNV29
+
+[2024-04-24 00:18:58 #2 type.registry] 
+New type domain.User
+
+[2024-04-24 00:18:58 #3 type.registry] 
+New type domain.Driver
+
+[2024-04-24 00:18:58 #4 type] 
+Type domain.User is not enhanced.
+
+[2024-04-24 00:18:58 #5 type] 
+Type domain.Driver is not enhanced.
+
+[2024-04-24 00:18:58 #6 type.registry] 
+New type domain.Ride
+
+[2024-04-24 00:18:58 #7 type.registry] 
+New type domain.Car
+
+[2024-04-24 00:18:58 #8 type] 
+Type domain.Ride is not enhanced.
+
+[2024-04-24 00:18:58 #9 type.registry] 
+New type domain.Booking
+
+[2024-04-24 00:18:58 #10 type] 
+Type domain.Car is not enhanced.
+
+[2024-04-24 00:18:58 #11 type] 
+Type domain.Booking is not enhanced.
+
+[2024-04-24 00:18:58 #12 type.registry] 
+New type domain.Traveler
+
+[2024-04-24 00:18:58 #13 type] 
+Type domain.Traveler is not enhanced.
+
+[2024-04-24 00:18:58 #14 type.registry] 
+New type domain.Admin
+
+[2024-04-24 00:18:58 #15 type] 
+Type domain.Admin is not enhanced.
+
+[2024-04-24 00:18:58 #16 type.registry] 
+New type java.util.Vector<java.lang.Object>
+
+[2024-04-24 00:18:58 #17 type.registry] 
+New type java.util.Vector<domain.Car>
+
+[2024-04-24 00:18:58 #18 type.registry] 
+New type java.util.Vector<domain.Ride>
+
+[2024-04-24 00:18:58 #19 type.registry] 
+New type java.util.Vector<domain.Booking>
+
+------------------------------------------------------------------------------------------------------------------------
+
+[2024-04-24 00:22:29 #1 store] 
+Database 'C:\Users\34688\Desktop\UNI\2.II\2.kuatri\SI\iterazioak\it2\miparteZ\Rides24\src\main\resources\rides.temp' is opened by 25412@LAPTOP-ITGLNV29
+
+[2024-04-24 00:22:29 #2 type.registry] 
+New type domain.User
+
+[2024-04-24 00:22:29 #3 type.registry] 
+New type domain.Driver
+
+[2024-04-24 00:22:29 #4 type] 
+Type domain.User is not enhanced.
+
+[2024-04-24 00:22:29 #5 type] 
+Type domain.Driver is not enhanced.
+
+[2024-04-24 00:22:29 #6 type.registry] 
+New type domain.Ride
+
+[2024-04-24 00:22:29 #7 type.registry] 
+New type domain.Car
+
+[2024-04-24 00:22:29 #8 type] 
+Type domain.Ride is not enhanced.
+
+[2024-04-24 00:22:29 #9 type.registry] 
+New type domain.Booking
+
+[2024-04-24 00:22:29 #10 type] 
+Type domain.Car is not enhanced.
+
+[2024-04-24 00:22:29 #11 type] 
+Type domain.Booking is not enhanced.
+
+[2024-04-24 00:22:29 #12 type.registry] 
+New type domain.Traveler
+
+[2024-04-24 00:22:29 #13 type] 
+Type domain.Traveler is not enhanced.
+
+[2024-04-24 00:22:29 #14 type.registry] 
+New type domain.Admin
+
+[2024-04-24 00:22:29 #15 type] 
+Type domain.Admin is not enhanced.
+
+[2024-04-24 00:22:29 #16 type.registry] 
+New type java.util.Vector<java.lang.Object>
+
+[2024-04-24 00:22:29 #17 type.registry] 
+New type java.util.Vector<domain.Car>
+
+[2024-04-24 00:22:29 #18 type.registry] 
+New type java.util.Vector<domain.Ride>
+
+[2024-04-24 00:22:29 #19 type.registry] 
+New type java.util.Vector<domain.Booking>
+
+------------------------------------------------------------------------------------------------------------------------
+
+[2024-04-24 00:23:12 #1 store] 
+Database 'C:\Users\34688\Desktop\UNI\2.II\2.kuatri\SI\iterazioak\it2\miparteZ\Rides24\src\main\resources\rides.temp' is opened by 37908@LAPTOP-ITGLNV29
+
+[2024-04-24 00:23:12 #2 type.registry] 
+New type domain.User
+
+[2024-04-24 00:23:12 #3 type.registry] 
+New type domain.Driver
+
+[2024-04-24 00:23:12 #4 type] 
+Type domain.User is not enhanced.
+
+[2024-04-24 00:23:12 #5 type] 
+Type domain.Driver is not enhanced.
+
+[2024-04-24 00:23:12 #6 type.registry] 
+New type domain.Ride
+
+[2024-04-24 00:23:12 #7 type.registry] 
+New type domain.Car
+
+[2024-04-24 00:23:12 #8 type] 
+Type domain.Ride is not enhanced.
+
+[2024-04-24 00:23:12 #9 type.registry] 
+New type domain.Booking
+
+[2024-04-24 00:23:12 #10 type] 
+Type domain.Car is not enhanced.
+
+[2024-04-24 00:23:12 #11 type] 
+Type domain.Booking is not enhanced.
+
+[2024-04-24 00:23:12 #12 type.registry] 
+New type domain.Traveler
+
+[2024-04-24 00:23:12 #13 type] 
+Type domain.Traveler is not enhanced.
+
+[2024-04-24 00:23:12 #14 type.registry] 
+New type domain.Admin
+
+[2024-04-24 00:23:12 #15 type] 
+Type domain.Admin is not enhanced.
+
+[2024-04-24 00:23:12 #16 type.registry] 
+New type java.util.Vector<java.lang.Object>
+
+[2024-04-24 00:23:12 #17 type.registry] 
+New type java.util.Vector<domain.Car>
+
+[2024-04-24 00:23:12 #18 type.registry] 
+New type java.util.Vector<domain.Ride>
+
+[2024-04-24 00:23:12 #19 type.registry] 
+New type java.util.Vector<domain.Booking>
+
+[2024-04-24 00:23:36 #20 type.registry] 
+New type java.util.ArrayList<java.lang.Object>
+
+[2024-04-24 00:23:36 #21 type.registry] 
+New type java.util.ArrayList<domain.Booking>
+
+[2024-04-24 00:23:36 #22 type.registry] 
+New type com.objectdb.o.LMT
+
+[2024-04-24 00:23:36 #23 type.registry] 
+New type com.objectdb.o.VAL
+
+[2024-04-24 00:23:36 #24 type.registry] 
+New type com.objectdb.o.RFV
+
+[2024-04-24 00:23:38 #25 type.registry] 
+New type domain.Movements
+
+[2024-04-24 00:23:38 #26 type] 
+Type domain.Movements is not enhanced.
+
+------------------------------------------------------------------------------------------------------------------------
+
+[2024-04-24 00:40:45 #1 store] 
+Database 'C:\Users\34688\Desktop\UNI\2.II\2.kuatri\SI\iterazioak\it2\miparteZ\Rides24\src\main\resources\rides.temp' is opened by 10716@LAPTOP-ITGLNV29
+
+[2024-04-24 00:40:45 #2 type.registry] 
+New type domain.User
+
+[2024-04-24 00:40:45 #3 type.registry] 
+New type domain.Driver
+
+[2024-04-24 00:40:45 #4 type] 
+Type domain.User is not enhanced.
+
+[2024-04-24 00:40:45 #5 type] 
+Type domain.Driver is not enhanced.
+
+[2024-04-24 00:40:45 #6 type.registry] 
+New type domain.Ride
+
+[2024-04-24 00:40:45 #7 type.registry] 
+New type domain.Car
+
+[2024-04-24 00:40:45 #8 type] 
+Type domain.Ride is not enhanced.
+
+[2024-04-24 00:40:45 #9 type.registry] 
+New type domain.Booking
+
+[2024-04-24 00:40:45 #10 type] 
+Type domain.Car is not enhanced.
+
+[2024-04-24 00:40:45 #11 type] 
+Type domain.Booking is not enhanced.
+
+[2024-04-24 00:40:45 #12 type.registry] 
+New type domain.Traveler
+
+[2024-04-24 00:40:45 #13 type] 
+Type domain.Traveler is not enhanced.
+
+[2024-04-24 00:40:45 #14 type.registry] 
+New type domain.Admin
+
+[2024-04-24 00:40:45 #15 type] 
+Type domain.Admin is not enhanced.
+
+[2024-04-24 00:40:45 #16 type.registry] 
+New type java.util.Vector<java.lang.Object>
+
+[2024-04-24 00:40:45 #17 type.registry] 
+New type java.util.Vector<domain.Car>
+
+[2024-04-24 00:40:45 #18 type.registry] 
+New type java.util.Vector<domain.Ride>
+
+[2024-04-24 00:40:45 #19 type.registry] 
+New type java.util.Vector<domain.Booking>
+
+------------------------------------------------------------------------------------------------------------------------
+
+[2024-04-24 00:49:33 #1 store] 
+Database 'C:\Users\34688\Desktop\UNI\2.II\2.kuatri\SI\iterazioak\it2\miparteZ\Rides24\src\main\resources\rides.temp' is opened by 12636@LAPTOP-ITGLNV29
+
+[2024-04-24 00:49:33 #2 type.registry] 
+New type domain.User
+
+[2024-04-24 00:49:33 #3 type.registry] 
+New type domain.Driver
+
+[2024-04-24 00:49:33 #4 type] 
+Type domain.User is not enhanced.
+
+[2024-04-24 00:49:33 #5 type] 
+Type domain.Driver is not enhanced.
+
+[2024-04-24 00:49:33 #6 type.registry] 
+New type domain.Ride
+
+[2024-04-24 00:49:33 #7 type.registry] 
+New type domain.Car
+
+[2024-04-24 00:49:33 #8 type] 
+Type domain.Ride is not enhanced.
+
+[2024-04-24 00:49:33 #9 type.registry] 
+New type domain.Booking
+
+[2024-04-24 00:49:33 #10 type] 
+Type domain.Car is not enhanced.
+
+[2024-04-24 00:49:33 #11 type] 
+Type domain.Booking is not enhanced.
+
+[2024-04-24 00:49:33 #12 type.registry] 
+New type domain.Traveler
+
+[2024-04-24 00:49:33 #13 type] 
+Type domain.Traveler is not enhanced.
+
+[2024-04-24 00:49:33 #14 type.registry] 
+New type domain.Admin
+
+[2024-04-24 00:49:33 #15 type] 
+Type domain.Admin is not enhanced.
+
+[2024-04-24 00:49:33 #16 type.registry] 
+New type java.util.Vector<java.lang.Object>
+
+[2024-04-24 00:49:33 #17 type.registry] 
+New type java.util.Vector<domain.Car>
+
+[2024-04-24 00:49:33 #18 type.registry] 
+New type java.util.Vector<domain.Ride>
+
+[2024-04-24 00:49:33 #19 type.registry] 
+New type java.util.Vector<domain.Booking>
+
+------------------------------------------------------------------------------------------------------------------------
+
+[2024-04-24 00:54:38 #1 store] 
+Database 'C:\Users\34688\Desktop\UNI\2.II\2.kuatri\SI\iterazioak\it2\miparteZ\Rides24\src\main\resources\rides.temp' is opened by 15128@LAPTOP-ITGLNV29
+
+[2024-04-24 00:54:38 #2 type.registry] 
+New type domain.User
+
+[2024-04-24 00:54:38 #3 type.registry] 
+New type domain.Driver
+
+[2024-04-24 00:54:38 #4 type] 
+Type domain.User is not enhanced.
+
+[2024-04-24 00:54:38 #5 type] 
+Type domain.Driver is not enhanced.
+
+[2024-04-24 00:54:38 #6 type.registry] 
+New type domain.Ride
+
+[2024-04-24 00:54:38 #7 type.registry] 
+New type domain.Car
+
+[2024-04-24 00:54:38 #8 type] 
+Type domain.Ride is not enhanced.
+
+[2024-04-24 00:54:38 #9 type.registry] 
+New type domain.Booking
+
+[2024-04-24 00:54:38 #10 type] 
+Type domain.Car is not enhanced.
+
+[2024-04-24 00:54:38 #11 type] 
+Type domain.Booking is not enhanced.
+
+[2024-04-24 00:54:38 #12 type.registry] 
+New type domain.Traveler
+
+[2024-04-24 00:54:38 #13 type] 
+Type domain.Traveler is not enhanced.
+
+[2024-04-24 00:54:38 #14 type.registry] 
+New type domain.Admin
+
+[2024-04-24 00:54:38 #15 type] 
+Type domain.Admin is not enhanced.
+
+[2024-04-24 00:54:38 #16 type.registry] 
+New type java.util.Vector<java.lang.Object>
+
+[2024-04-24 00:54:38 #17 type.registry] 
+New type java.util.Vector<domain.Car>
+
+[2024-04-24 00:54:38 #18 type.registry] 
+New type java.util.Vector<domain.Ride>
+
+[2024-04-24 00:54:38 #19 type.registry] 
+New type java.util.Vector<domain.Booking>
+
+------------------------------------------------------------------------------------------------------------------------
+
+[2024-04-24 00:55:56 #1 store] 
+Database 'C:\Users\34688\Desktop\UNI\2.II\2.kuatri\SI\iterazioak\it2\miparteZ\Rides24\src\main\resources\rides.temp' is opened by 37228@LAPTOP-ITGLNV29
+
+[2024-04-24 00:55:57 #2 type.registry] 
+New type domain.User
+
+[2024-04-24 00:55:57 #3 type.registry] 
+New type domain.Driver
+
+[2024-04-24 00:55:57 #4 type] 
+Type domain.User is not enhanced.
+
+[2024-04-24 00:55:57 #5 type] 
+Type domain.Driver is not enhanced.
+
+[2024-04-24 00:55:57 #6 type.registry] 
+New type domain.Ride
+
+[2024-04-24 00:55:57 #7 type.registry] 
+New type domain.Car
+
+[2024-04-24 00:55:57 #8 type] 
+Type domain.Ride is not enhanced.
+
+[2024-04-24 00:55:57 #9 type.registry] 
+New type domain.Booking
+
+[2024-04-24 00:55:57 #10 type] 
+Type domain.Car is not enhanced.
+
+[2024-04-24 00:55:57 #11 type] 
+Type domain.Booking is not enhanced.
+
+[2024-04-24 00:55:57 #12 type.registry] 
+New type domain.Traveler
+
+[2024-04-24 00:55:57 #13 type] 
+Type domain.Traveler is not enhanced.
+
+[2024-04-24 00:55:57 #14 type.registry] 
+New type domain.Admin
+
+[2024-04-24 00:55:57 #15 type] 
+Type domain.Admin is not enhanced.
+
+[2024-04-24 00:55:57 #16 type.registry] 
+New type java.util.Vector<java.lang.Object>
+
+[2024-04-24 00:55:57 #17 type.registry] 
+New type java.util.Vector<domain.Car>
+
+[2024-04-24 00:55:57 #18 type.registry] 
+New type java.util.Vector<domain.Ride>
+
+[2024-04-24 00:55:57 #19 type.registry] 
+New type java.util.Vector<domain.Booking>
+
+------------------------------------------------------------------------------------------------------------------------
+
+[2024-04-24 00:59:37 #1 store] 
+Database 'C:\Users\34688\Desktop\UNI\2.II\2.kuatri\SI\iterazioak\it2\miparteZ\Rides24\src\main\resources\rides.temp' is opened by 28664@LAPTOP-ITGLNV29
+
+[2024-04-24 00:59:37 #2 type.registry] 
+New type domain.User
+
+[2024-04-24 00:59:37 #3 type.registry] 
+New type domain.Driver
+
+[2024-04-24 00:59:37 #4 type] 
+Type domain.User is not enhanced.
+
+[2024-04-24 00:59:37 #5 type] 
+Type domain.Driver is not enhanced.
+
+[2024-04-24 00:59:37 #6 type.registry] 
+New type domain.Ride
+
+[2024-04-24 00:59:37 #7 type.registry] 
+New type domain.Car
+
+[2024-04-24 00:59:37 #8 type] 
+Type domain.Ride is not enhanced.
+
+[2024-04-24 00:59:37 #9 type.registry] 
+New type domain.Booking
+
+[2024-04-24 00:59:37 #10 type] 
+Type domain.Car is not enhanced.
+
+[2024-04-24 00:59:37 #11 type] 
+Type domain.Booking is not enhanced.
+
+[2024-04-24 00:59:37 #12 type.registry] 
+New type domain.Traveler
+
+[2024-04-24 00:59:37 #13 type] 
+Type domain.Traveler is not enhanced.
+
+[2024-04-24 00:59:37 #14 type.registry] 
+New type domain.Admin
+
+[2024-04-24 00:59:37 #15 type] 
+Type domain.Admin is not enhanced.
+
+[2024-04-24 00:59:37 #16 type.registry] 
+New type java.util.Vector<java.lang.Object>
+
+[2024-04-24 00:59:37 #17 type.registry] 
+New type java.util.Vector<domain.Car>
+
+[2024-04-24 00:59:37 #18 type.registry] 
+New type java.util.Vector<domain.Ride>
+
+[2024-04-24 00:59:37 #19 type.registry] 
+New type java.util.Vector<domain.Booking>
+
+------------------------------------------------------------------------------------------------------------------------
+
+[2024-04-24 01:00:11 #1 store] 
+Database 'C:\Users\34688\Desktop\UNI\2.II\2.kuatri\SI\iterazioak\it2\miparteZ\Rides24\src\main\resources\rides.temp' is opened by 33696@LAPTOP-ITGLNV29
+
+[2024-04-24 01:00:12 #2 type.registry] 
+New type domain.User
+
+[2024-04-24 01:00:12 #3 type.registry] 
+New type domain.Driver
+
+[2024-04-24 01:00:12 #4 type] 
+Type domain.User is not enhanced.
+
+[2024-04-24 01:00:12 #5 type] 
+Type domain.Driver is not enhanced.
+
+[2024-04-24 01:00:12 #6 type.registry] 
+New type domain.Ride
+
+[2024-04-24 01:00:12 #7 type.registry] 
+New type domain.Car
+
+[2024-04-24 01:00:12 #8 type] 
+Type domain.Ride is not enhanced.
+
+[2024-04-24 01:00:12 #9 type.registry] 
+New type domain.Booking
+
+[2024-04-24 01:00:12 #10 type] 
+Type domain.Car is not enhanced.
+
+[2024-04-24 01:00:12 #11 type] 
+Type domain.Booking is not enhanced.
+
+[2024-04-24 01:00:12 #12 type.registry] 
+New type domain.Traveler
+
+[2024-04-24 01:00:12 #13 type] 
+Type domain.Traveler is not enhanced.
+
+[2024-04-24 01:00:12 #14 type.registry] 
+New type domain.Admin
+
+[2024-04-24 01:00:12 #15 type] 
+Type domain.Admin is not enhanced.
+
+[2024-04-24 01:00:12 #16 type.registry] 
+New type java.util.Vector<java.lang.Object>
+
+[2024-04-24 01:00:12 #17 type.registry] 
+New type java.util.Vector<domain.Car>
+
+[2024-04-24 01:00:12 #18 type.registry] 
+New type java.util.Vector<domain.Ride>
+
+[2024-04-24 01:00:12 #19 type.registry] 
+New type java.util.Vector<domain.Booking>
+
+------------------------------------------------------------------------------------------------------------------------
+
+[2024-04-24 01:00:32 #1 store] 
+Database 'C:\Users\34688\Desktop\UNI\2.II\2.kuatri\SI\iterazioak\it2\miparteZ\Rides24\src\main\resources\rides.temp' is opened by 25768@LAPTOP-ITGLNV29
+
+[2024-04-24 01:00:32 #2 type.registry] 
+New type domain.User
+
+[2024-04-24 01:00:32 #3 type.registry] 
+New type domain.Driver
+
+[2024-04-24 01:00:32 #4 type] 
+Type domain.User is not enhanced.
+
+[2024-04-24 01:00:32 #5 type] 
+Type domain.Driver is not enhanced.
+
+[2024-04-24 01:00:32 #6 type.registry] 
+New type domain.Ride
+
+[2024-04-24 01:00:32 #7 type.registry] 
+New type domain.Car
+
+[2024-04-24 01:00:32 #8 type] 
+Type domain.Ride is not enhanced.
+
+[2024-04-24 01:00:32 #9 type.registry] 
+New type domain.Booking
+
+[2024-04-24 01:00:32 #10 type] 
+Type domain.Car is not enhanced.
+
+[2024-04-24 01:00:32 #11 type] 
+Type domain.Booking is not enhanced.
+
+[2024-04-24 01:00:32 #12 type.registry] 
+New type domain.Traveler
+
+[2024-04-24 01:00:32 #13 type] 
+Type domain.Traveler is not enhanced.
+
+[2024-04-24 01:00:32 #14 type.registry] 
+New type domain.Admin
+
+[2024-04-24 01:00:32 #15 type] 
+Type domain.Admin is not enhanced.
+
+[2024-04-24 01:00:32 #16 type.registry] 
+New type java.util.Vector<java.lang.Object>
+
+[2024-04-24 01:00:32 #17 type.registry] 
+New type java.util.Vector<domain.Car>
+
+[2024-04-24 01:00:32 #18 type.registry] 
+New type java.util.Vector<domain.Ride>
+
+[2024-04-24 01:00:32 #19 type.registry] 
+New type java.util.Vector<domain.Booking>
+
+------------------------------------------------------------------------------------------------------------------------
+
+[2024-04-24 01:01:21 #1 store] 
+Database 'C:\Users\34688\Desktop\UNI\2.II\2.kuatri\SI\iterazioak\it2\miparteZ\Rides24\src\main\resources\rides.temp' is opened by 34164@LAPTOP-ITGLNV29
+
+[2024-04-24 01:01:21 #2 type.registry] 
+New type domain.User
+
+[2024-04-24 01:01:21 #3 type.registry] 
+New type domain.Driver
+
+[2024-04-24 01:01:21 #4 type] 
+Type domain.User is not enhanced.
+
+[2024-04-24 01:01:21 #5 type] 
+Type domain.Driver is not enhanced.
+
+[2024-04-24 01:01:21 #6 type.registry] 
+New type domain.Ride
+
+[2024-04-24 01:01:21 #7 type.registry] 
+New type domain.Car
+
+[2024-04-24 01:01:21 #8 type] 
+Type domain.Ride is not enhanced.
+
+[2024-04-24 01:01:21 #9 type.registry] 
+New type domain.Booking
+
+[2024-04-24 01:01:21 #10 type] 
+Type domain.Car is not enhanced.
+
+[2024-04-24 01:01:21 #11 type] 
+Type domain.Booking is not enhanced.
+
+[2024-04-24 01:01:21 #12 type.registry] 
+New type domain.Traveler
+
+[2024-04-24 01:01:21 #13 type] 
+Type domain.Traveler is not enhanced.
+
+[2024-04-24 01:01:21 #14 type.registry] 
+New type domain.Admin
+
+[2024-04-24 01:01:21 #15 type] 
+Type domain.Admin is not enhanced.
+
+[2024-04-24 01:01:21 #16 type.registry] 
+New type java.util.Vector<java.lang.Object>
+
+[2024-04-24 01:01:21 #17 type.registry] 
+New type java.util.Vector<domain.Car>
+
+[2024-04-24 01:01:21 #18 type.registry] 
+New type java.util.Vector<domain.Ride>
+
+[2024-04-24 01:01:21 #19 type.registry] 
+New type java.util.Vector<domain.Booking>
+
+------------------------------------------------------------------------------------------------------------------------
+
+[2024-04-24 01:21:07 #1 store] 
+Database 'C:\Users\34688\Desktop\UNI\2.II\2.kuatri\SI\iterazioak\it2\miparteZ\Rides24\src\main\resources\rides.temp' is opened by 8404@LAPTOP-ITGLNV29
+
+[2024-04-24 01:21:07 #2 type.registry] 
+New type domain.User
+
+[2024-04-24 01:21:07 #3 type.registry] 
+New type domain.Driver
+
+[2024-04-24 01:21:07 #4 type] 
+Type domain.User is not enhanced.
+
+[2024-04-24 01:21:07 #5 type] 
+Type domain.Driver is not enhanced.
+
+[2024-04-24 01:21:07 #6 type.registry] 
+New type domain.Ride
+
+[2024-04-24 01:21:07 #7 type.registry] 
+New type domain.Car
+
+[2024-04-24 01:21:07 #8 type] 
+Type domain.Ride is not enhanced.
+
+[2024-04-24 01:21:07 #9 type.registry] 
+New type domain.Booking
+
+[2024-04-24 01:21:07 #10 type] 
+Type domain.Car is not enhanced.
+
+[2024-04-24 01:21:07 #11 type] 
+Type domain.Booking is not enhanced.
+
+[2024-04-24 01:21:07 #12 type.registry] 
+New type domain.Traveler
+
+[2024-04-24 01:21:07 #13 type] 
+Type domain.Traveler is not enhanced.
+
+[2024-04-24 01:21:07 #14 type.registry] 
+New type domain.Admin
+
+[2024-04-24 01:21:07 #15 type] 
+Type domain.Admin is not enhanced.
+
+[2024-04-24 01:21:07 #16 type.registry] 
+New type java.util.Vector<java.lang.Object>
+
+[2024-04-24 01:21:07 #17 type.registry] 
+New type java.util.Vector<domain.Car>
+
+[2024-04-24 01:21:07 #18 type.registry] 
+New type java.util.Vector<domain.Ride>
+
+[2024-04-24 01:21:07 #19 type.registry] 
+New type java.util.Vector<domain.Booking>
+
+------------------------------------------------------------------------------------------------------------------------
+
+[2024-04-24 01:25:23 #1 store] 
+Database 'C:\Users\34688\Desktop\UNI\2.II\2.kuatri\SI\iterazioak\it2\miparteZ\Rides24\src\main\resources\rides.temp' is opened by 5000@LAPTOP-ITGLNV29
+
+[2024-04-24 01:25:23 #2 type.registry] 
+New type domain.User
+
+[2024-04-24 01:25:23 #3 type.registry] 
+New type domain.Driver
+
+[2024-04-24 01:25:23 #4 type] 
+Type domain.User is not enhanced.
+
+[2024-04-24 01:25:23 #5 type] 
+Type domain.Driver is not enhanced.
+
+[2024-04-24 01:25:23 #6 type.registry] 
+New type domain.Ride
+
+[2024-04-24 01:25:23 #7 type.registry] 
+New type domain.Car
+
+[2024-04-24 01:25:23 #8 type] 
+Type domain.Ride is not enhanced.
+
+[2024-04-24 01:25:23 #9 type.registry] 
+New type domain.Booking
+
+[2024-04-24 01:25:23 #10 type] 
+Type domain.Car is not enhanced.
+
+[2024-04-24 01:25:23 #11 type] 
+Type domain.Booking is not enhanced.
+
+[2024-04-24 01:25:23 #12 type.registry] 
+New type domain.Traveler
+
+[2024-04-24 01:25:23 #13 type] 
+Type domain.Traveler is not enhanced.
+
+[2024-04-24 01:25:23 #14 type.registry] 
+New type domain.Admin
+
+[2024-04-24 01:25:23 #15 type] 
+Type domain.Admin is not enhanced.
+
+[2024-04-24 01:25:23 #16 type.registry] 
+New type java.util.Vector<java.lang.Object>
+
+[2024-04-24 01:25:23 #17 type.registry] 
+New type java.util.Vector<domain.Car>
+
+[2024-04-24 01:25:23 #18 type.registry] 
+New type java.util.Vector<domain.Ride>
+
+[2024-04-24 01:25:23 #19 type.registry] 
+New type java.util.Vector<domain.Booking>
+
+------------------------------------------------------------------------------------------------------------------------
+
+[2024-04-24 01:25:54 #1 store] 
+Database 'C:\Users\34688\Desktop\UNI\2.II\2.kuatri\SI\iterazioak\it2\miparteZ\Rides24\src\main\resources\rides.temp' is opened by 8740@LAPTOP-ITGLNV29
+
+[2024-04-24 01:25:54 #2 type.registry] 
+New type domain.User
+
+[2024-04-24 01:25:54 #3 type.registry] 
+New type domain.Driver
+
+[2024-04-24 01:25:54 #4 type] 
+Type domain.User is not enhanced.
+
+[2024-04-24 01:25:54 #5 type] 
+Type domain.Driver is not enhanced.
+
+[2024-04-24 01:25:54 #6 type.registry] 
+New type domain.Ride
+
+[2024-04-24 01:25:54 #7 type.registry] 
+New type domain.Car
+
+[2024-04-24 01:25:54 #8 type] 
+Type domain.Ride is not enhanced.
+
+[2024-04-24 01:25:54 #9 type.registry] 
+New type domain.Booking
+
+[2024-04-24 01:25:54 #10 type] 
+Type domain.Car is not enhanced.
+
+[2024-04-24 01:25:54 #11 type] 
+Type domain.Booking is not enhanced.
+
+[2024-04-24 01:25:54 #12 type.registry] 
+New type domain.Traveler
+
+[2024-04-24 01:25:54 #13 type] 
+Type domain.Traveler is not enhanced.
+
+[2024-04-24 01:25:54 #14 type.registry] 
+New type domain.Admin
+
+[2024-04-24 01:25:54 #15 type] 
+Type domain.Admin is not enhanced.
+
+[2024-04-24 01:25:54 #16 type.registry] 
+New type java.util.Vector<java.lang.Object>
+
+[2024-04-24 01:25:54 #17 type.registry] 
+New type java.util.Vector<domain.Car>
+
+[2024-04-24 01:25:54 #18 type.registry] 
+New type java.util.Vector<domain.Ride>
+
+[2024-04-24 01:25:54 #19 type.registry] 
+New type java.util.Vector<domain.Booking>
+
