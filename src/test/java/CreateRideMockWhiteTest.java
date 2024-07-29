@@ -61,7 +61,7 @@ public class CreateRideMockWhiteTest {
 	Driver driver;
 	
 	@Test
-	//sut.createRide:  The Driver("iker driver", "driver1@gmail.com") HAS one ride "from" "to" in that "date". 
+	//sut.createRide:  The Driver("Urtzi") HAS one ride "from" "to" in that "date". 
 	public void test1() {
 
 
@@ -105,7 +105,7 @@ public class CreateRideMockWhiteTest {
 		} 
 	} 
 	@Test
-	//sut.createRide:  The Driver("Aitor Fernandez", "driver1@gmail.com") HAS NOT one ride "from" "to" in that "date". 
+	//sut.createRide:  The Driver("Aitor Fernandez") HAS NOT one ride "from" "to" in that "date". 
 	public void test2() {
 		//define parameters
 		String driverUserName="Aitor Fernandez";
@@ -214,8 +214,9 @@ public class CreateRideMockWhiteTest {
 	
 	public void test4() {
 		String driverUserName="Aitor Fernandez";
-
 		String driverPassword="123";
+		
+		
 		String rideFrom=null;
 		String rideTo="Zarautz";
 		

@@ -55,9 +55,9 @@ public class TestDataAccess {
 		System.out.println("TestDataAccess closed");
 	}
 
-	public boolean removeDriver(String driverEmail) {
-		System.out.println(">> TestDataAccess: removeRide");
-		Driver d = db.find(Driver.class, driverEmail);
+	public boolean removeDriver(String name) {
+		System.out.println(">> TestDataAccess: removeDriver");
+		Driver d = db.find(Driver.class, name);
 		if (d!=null) {
 			db.getTransaction().begin();
 			db.remove(d);
@@ -66,12 +66,12 @@ public class TestDataAccess {
 		} else 
 		return false;
     }
-	public Driver createDriver(String email, String name) {
+	public Driver createDriver(String name, String pass) {
 		System.out.println(">> TestDataAccess: addDriver");
 		Driver driver=null;
 			db.getTransaction().begin();
 			try {
-			    driver=new Driver(name,email);
+			    driver=new Driver(name,pass);
 				db.persist(driver);
 				db.getTransaction().commit();
 			}
@@ -111,21 +111,22 @@ public class TestDataAccess {
 	    }
 		
 		
-		public boolean existRide(String email, String from, String to, Date date) {
+		public boolean existRide(String name, String from, String to, Date date) {
 			System.out.println(">> TestDataAccess: existRide");
-			Driver d = db.find(Driver.class, email);
+			Driver d = db.find(Driver.class, name);
 			if (d!=null) {
 				return d.doesRideExists(from, to, date);
 			} else 
 			return false;
 		}
-		public Ride removeRide(String email, String from, String to, Date date ) {
+		public Ride removeRide(String name, String from, String to, Date date ) {
 			System.out.println(">> TestDataAccess: removeRide");
-			Driver d = db.find(Driver.class, email);
+			Driver d = db.find(Driver.class, name);
 			if (d!=null) {
 				db.getTransaction().begin();
 				Ride r= d.removeRide(from, to, date);
 				db.getTransaction().commit();
+				System.out.println("created rides" +d.getCreatedRides());
 				return r;
 
 			} else 

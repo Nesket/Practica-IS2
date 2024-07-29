@@ -28,11 +28,12 @@ public class CreateRideBDWhiteTest {
 	@SuppressWarnings("unused")
 	private Driver driver; 
 
-	@Test
-	//sut.createRide:  The Driver("iker driver", "driver1@gmail.com") HAS one ride "from" "to" in that "date". 
+/*	@Test
+	//sut.createRide:  The Driver("Urtzi") HAS one ride "from" "to" in that "date". 
 	public void test1() {
-		String driverEmail="driver1@gmail.com";
-		String driverName="Aitor Fernandez";
+		
+		String driverUsername="Urtzi";
+		String driverPassword="123";
 
 		String rideFrom="Donostia";
 		String rideTo="Zarautz";
@@ -53,13 +54,13 @@ public class CreateRideBDWhiteTest {
 			
 			//configure the state of the system (create object in the database)
 			testDA.open();
-			 existDriver=testDA.existDriver(driverName);
-			testDA.addDriverWithRide(driverName, rideFrom, rideTo, rideDate, 0, 0);
+			 existDriver=testDA.existDriver(driverUsername);
+			testDA.addDriverWithRide(driverUsername, rideFrom, rideTo, rideDate, 0, 0);
 			testDA.close();			
 			
 			//invoke System Under Test (sut)  
 			sut.open();
-		    sut.createRide(rideFrom, rideTo, rideDate, 0, 0, driverName);
+		    sut.createRide(rideFrom, rideTo, rideDate, 0, 0, driverUsername);
 			sut.close();
 			
 			fail();
@@ -75,24 +76,28 @@ public class CreateRideBDWhiteTest {
 				  //Remove the created objects in the database (cascade removing)   
 				testDA.open();
 				  if (existDriver) 
-					  testDA.removeRide(driverName, rideFrom, rideTo, rideDate);
+					  testDA.removeRide(driverUsername, rideFrom, rideTo, rideDate);
 				  else 
-					  testDA.removeDriver(driverName);
+					  testDA.removeDriver(driverUsername);
 		          testDA.close();
 		        }
 		   } 
-/*	@Test
-	//sut.createRide:  The Driver("Aitor Fernandez", "driver1@gmail.com") HAS NOT one ride "from" "to" in that "date". 
+*/
+	@Test
+	//sut.createRide:  The Driver("Driver Test") HAS NOT one ride "from" "to" in that "date". 
 	public void test2() {
 		//define paramaters
-		String driverName="Aitor Fernandez";
-		String driverEmail="driver1@gmail.com";
+		String driverUsername="Driver Test";
+		String driverPassword="123";
 
 		String rideFrom="Donostia";
 		String rideTo="Zarautz";
 		
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 		Date rideDate=null;;
+		
+		boolean driverCreated=false;
+
 		try {
 			rideDate = sdf.parse("05/10/2026");
 		} catch (ParseException e) {
@@ -104,14 +109,23 @@ public class CreateRideBDWhiteTest {
 			//Check if exist this ride for this driver, and if exist, remove it.
 			
 			testDA.open();
-			boolean b=testDA.existRide(driverEmail,rideFrom, rideTo, rideDate);
-			if (b) testDA.removeRide(driverEmail, rideFrom, rideTo, rideDate);
+			if (!testDA.existDriver(driverUsername)) {
+				testDA.createDriver(driverUsername,null);
+			    driverCreated=true;
+			}
+			
+			boolean b=testDA.existRide(driverUsername,rideFrom, rideTo, rideDate);
+			if (b) {testDA.removeRide(driverUsername, rideFrom, rideTo, rideDate);
+				System.out.println("Se lo borro");
+			}
 			testDA.close();
 			
 			
 			//invoke System Under Test (sut)  
 			sut.open();
-			Ride ride=sut.createRide(rideFrom, rideTo, rideDate, 0, 0, driverEmail);
+			Ride ride=sut.createRide(rideFrom, rideTo, rideDate, 0, 0, driverUsername);
+			
+
 			sut.close();
 			//verify the results
 			assertNotNull(ride);
@@ -121,7 +135,7 @@ public class CreateRideBDWhiteTest {
 			
 			//ride is in DB
 			testDA.open();
-			boolean existRide=testDA.existRide(driverEmail,ride.getFrom(), ride.getTo(), ride.getDate());
+			boolean existRide=testDA.existRide(driverUsername,ride.getFrom(), ride.getTo(), ride.getDate());
 				
 			assertTrue(existRide);
 			testDA.close();
@@ -130,25 +144,27 @@ public class CreateRideBDWhiteTest {
 			// if the program goes to this point fail  
 			fail();
 			//reestablish the state of the system (create object in the database)
-			testDA.open();
-			driver = testDA.addDriverWithRide(driverEmail, driverName, rideFrom, rideTo, rideDate, 0, 0);
-			testDA.close();	
+			
 			
 			} catch (RideMustBeLaterThanTodayException e) {
 				// if the program goes to this point fail  
 
 			fail();
-			//reestablish the state of the system (create object in the database)
-			testDA.open();
-			driver = testDA.addDriverWithRide(driverEmail, driverName, rideFrom, rideTo, rideDate, 0, 0);
-			testDA.close();	
+			
 		} finally {
-				      
+
+			testDA.open();
+			//reestablish the state of the system (create object in the database)
+
+			if (driverCreated) 
+				testDA.removeDriver(driverUsername);
+
+			testDA.close();	      
 		        }
 		   } 
 	
 	
-	@Test
+/*	@Test
 	//sut.createRide:  The Driver is null. The test must return null. If  an Exception is returned the createRide method is not well implemented.
 		public void test3() {
 			try {

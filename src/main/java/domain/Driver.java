@@ -20,10 +20,10 @@ public class Driver extends User implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 	@XmlIDREF
-	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
+	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	private List<Car> cars = new Vector<Car>();;
 	@XmlIDREF
-	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
+	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	private List<Ride> createdRides = new Vector<Ride>();
 
 	public Driver(String username, String passwd) {
@@ -89,13 +89,24 @@ public class Driver extends User implements Serializable {
 	}
 
 	public Ride removeRide(String from, String to, Date date) {
+		Ride r=null;
+		int pos=0;
+		int index=0;
+		boolean encontrado=false;
 		for (Ride ride : createdRides) {
 			if (ride.getFrom().equals(from) && ride.getTo().equals(to) && ride.getDate().equals(date)) {
-				createdRides.remove(ride);
-				return ride;
+				encontrado=true;
+				pos=index;
 			}
+			index++;
 		}
-		return null;
+		if (encontrado) {
+				 System.out.println("posicion "+ pos);
+				 r=createdRides.get(pos);
+				 System.out.println("ride recuperado "+r);
+				 createdRides.remove(pos);
+			}
+		return r;
 	}
 
 	public Car bilatumatrikula(String matri) {

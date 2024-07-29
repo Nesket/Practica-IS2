@@ -235,7 +235,6 @@ public class DataAccess {
 			}
 			db.getTransaction().begin();
 			Driver driver = db.find(Driver.class, driverName);
-			System.out.println("driver "+driver);
 			if (driver.doesRideExists(from, to, date)) {
 				db.getTransaction().commit();
 				throw new RideAlreadyExistException(
