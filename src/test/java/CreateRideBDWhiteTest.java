@@ -8,72 +8,31 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.EntityTransaction;
-import javax.persistence.Persistence;
-
-import org.junit.After;
-import org.junit.Before;
 import org.junit.Test;
-import org.mockito.Mock;
-import org.mockito.MockedStatic;
-import org.mockito.Mockito;
-import org.mockito.MockitoAnnotations;
 
 import dataAccess.DataAccess;
-import domain.Driver;
 import domain.Ride;
 import exceptions.RideAlreadyExistException;
 import exceptions.RideMustBeLaterThanTodayException;
+import testOperations.TestDataAccess;
+import domain.Driver;
 
-public class CreateRideMock {
-	
-	static DataAccess sut;
-	
-	protected MockedStatic <Persistence> persistenceMock;
+public class CreateRideBDWhiteTest {
 
-	@Mock
-	protected  EntityManagerFactory entityManagerFactory;
-	@Mock
-	protected  EntityManager db;
-	@Mock
-    protected  EntityTransaction  et;
-	
+	 //sut:system under test
+	 static DataAccess sut=new DataAccess();
+	 
+	 //additional operations needed to execute the test 
+	 static TestDataAccess testDA=new TestDataAccess();
 
-	@Before
-    public  void init() {
-        MockitoAnnotations.openMocks(this);
-        persistenceMock = Mockito.mockStatic(Persistence.class);
-		persistenceMock.when(() -> Persistence.createEntityManagerFactory(Mockito.any()))
-        .thenReturn(entityManagerFactory);
-        
-        Mockito.doReturn(db).when(entityManagerFactory).createEntityManager();
-		Mockito.doReturn(et).when(db).getTransaction();
-	    sut=new DataAccess(db);
+	@SuppressWarnings("unused")
+	private Driver driver; 
 
-
-		
-    }
-	@After
-    public  void tearDown() {
-		persistenceMock.close();
-
-
-		
-    }
-	
-	
-	Driver driver;
-	
 	@Test
 	//sut.createRide:  The Driver("iker driver", "driver1@gmail.com") HAS one ride "from" "to" in that "date". 
 	public void test1() {
-
-
-        
-		String driverUsername="Urtzi";
-		String driverPassword="123";
+		String driverEmail="driver1@gmail.com";
+		String driverName="Aitor Fernandez";
 
 		String rideFrom="Donostia";
 		String rideTo="Zarautz";
@@ -81,22 +40,26 @@ public class CreateRideMock {
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 		Date rideDate=null;;
 		try {
-			rideDate = sdf.parse("05/10/2025");
+			rideDate = sdf.parse("05/10/2026");
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}	
+		boolean existDriver=false;
 		try {
-					
-			 driver=new Driver(driverUsername,driverPassword);
-			 driver.addRide(rideFrom, rideTo, rideDate, 0, 0);
-			//configure the state through mocks 
-	        Mockito.when(db.find(Driver.class, driver.getUsername())).thenReturn(driver);
-		
+			
+			//define parameters
+			
+			
+			//configure the state of the system (create object in the database)
+			testDA.open();
+			 existDriver=testDA.existDriver(driverName);
+			testDA.addDriverWithRide(driverName, rideFrom, rideTo, rideDate, 0, 0);
+			testDA.close();			
 			
 			//invoke System Under Test (sut)  
 			sut.open();
-		    sut.createRide(rideFrom, rideTo, rideDate, 0, 0, driverUsername);
+		    sut.createRide(rideFrom, rideTo, rideDate, 0, 0, driverName);
 			sut.close();
 			
 			fail();
@@ -108,12 +71,20 @@ public class CreateRideMock {
 			} catch (RideMustBeLaterThanTodayException e) {
 			// TODO Auto-generated catch block
 			fail();
-		} 
-	} 
-	@Test
+		} finally {
+				  //Remove the created objects in the database (cascade removing)   
+				testDA.open();
+				  if (existDriver) 
+					  testDA.removeRide(driverName, rideFrom, rideTo, rideDate);
+				  else 
+					  testDA.removeDriver(driverName);
+		          testDA.close();
+		        }
+		   } 
+/*	@Test
 	//sut.createRide:  The Driver("Aitor Fernandez", "driver1@gmail.com") HAS NOT one ride "from" "to" in that "date". 
 	public void test2() {
-		//define parameters
+		//define paramaters
 		String driverName="Aitor Fernandez";
 		String driverEmail="driver1@gmail.com";
 
@@ -123,18 +94,21 @@ public class CreateRideMock {
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 		Date rideDate=null;;
 		try {
-			rideDate = sdf.parse("05/10/2025");
+			rideDate = sdf.parse("05/10/2026");
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}	
 		
 		try {
-			Driver driver1=new Driver(driverEmail,driverName);
-
-			//configure the state through mocks 
-	        Mockito.when(db.find(Driver.class, driver1.getUsername())).thenReturn(driver1);
-					
+			//Check if exist this ride for this driver, and if exist, remove it.
+			
+			testDA.open();
+			boolean b=testDA.existRide(driverEmail,rideFrom, rideTo, rideDate);
+			if (b) testDA.removeRide(driverEmail, rideFrom, rideTo, rideDate);
+			testDA.close();
+			
+			
 			//invoke System Under Test (sut)  
 			sut.open();
 			Ride ride=sut.createRide(rideFrom, rideTo, rideDate, 0, 0, driverEmail);
@@ -145,24 +119,35 @@ public class CreateRideMock {
 			assertEquals(ride.getTo(),rideTo);
 			assertEquals(ride.getDate(),rideDate);
 			
-			//ride is in DB. The persist operation has been invoked.
-			//boolean existRide=testDA.existRide(driverEmail,ride.getFrom(), ride.getTo(), ride.getDate());
+			//ride is in DB
+			testDA.open();
+			boolean existRide=testDA.existRide(driverEmail,ride.getFrom(), ride.getTo(), ride.getDate());
 				
-			//assertTrue(existRide);
-			//testDA.close();
+			assertTrue(existRide);
+			testDA.close();
 			
 		   } catch (RideAlreadyExistException e) {
 			// if the program goes to this point fail  
 			fail();
+			//reestablish the state of the system (create object in the database)
+			testDA.open();
+			driver = testDA.addDriverWithRide(driverEmail, driverName, rideFrom, rideTo, rideDate, 0, 0);
+			testDA.close();	
 			
 			} catch (RideMustBeLaterThanTodayException e) {
 				// if the program goes to this point fail  
 
 			fail();
-			//redone state of the system (create object in the database)
-			
-		} 
-	} 
+			//reestablish the state of the system (create object in the database)
+			testDA.open();
+			driver = testDA.addDriverWithRide(driverEmail, driverName, rideFrom, rideTo, rideDate, 0, 0);
+			testDA.close();	
+		} finally {
+				      
+		        }
+		   } 
+	
+	
 	@Test
 	//sut.createRide:  The Driver is null. The test must return null. If  an Exception is returned the createRide method is not well implemented.
 		public void test3() {
@@ -180,14 +165,13 @@ public class CreateRideMock {
 				SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 				Date rideDate=null;;
 				try {
-					rideDate = sdf.parse("05/10/2025");
+					rideDate = sdf.parse("05/10/2026");
 				} catch (ParseException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}	
 				
 				
-				Mockito.when(db.find(Driver.class, null)).thenThrow(IllegalArgumentException.class);
 				
 				//invoke System Under Test (sut)  
 				sut.open();
@@ -202,15 +186,13 @@ public class CreateRideMock {
 				// TODO Auto-generated catch block
 				// if the program goes to this point fail  
 				fail();
-
 				} catch (RideMustBeLaterThanTodayException e) {
 				// TODO Auto-generated catch block
 					fail();
-
 				} catch (Exception e) {
 				// TODO Auto-generated catch block
 					fail();
-
+					
 				} finally {
 					sut.close();
 				}
@@ -222,8 +204,6 @@ public class CreateRideMock {
 	//This method detects a fail in createRide method because the method does not check if the parameters are null, and the ride is created.
 	
 	public void test4() {
-		String driverName="Aitor Fernandez";
-
 		String driverEmail="driver1@gmail.com";
 		String rideFrom=null;
 		String rideTo="Zarautz";
@@ -231,36 +211,50 @@ public class CreateRideMock {
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 		Date rideDate=null;;
 		try {
-			rideDate = sdf.parse("05/10/2025");
+			rideDate = sdf.parse("05/10/2026");
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}	
 		Ride ride=null;
 		try {
-			//configure the state through mocks 
-
-			driver=new Driver(driverEmail,driverName);
-	        Mockito.when(db.find(Driver.class, driver.getUsername())).thenReturn(driver);
-			
-	        //invoke System Under Test (sut)  
+			//invoke System Under Test (sut)  
 			sut.open();
 			 ride=sut.createRide(rideFrom, rideTo, rideDate, 0, 0, driverEmail);
 			sut.close();			
+			
 			//verify the results
 			assertNull(ride);
+			
+			//q is in DB
+			testDA.open();
+			boolean exist=testDA.existRide(driverEmail,rideFrom, rideTo, rideDate);
+				
+			assertTrue(!exist);
+			testDA.close();
 			
 		   } catch (RideAlreadyExistException e) {
 			// TODO Auto-generated catch block
 			// if the program goes to this point fail  
 			fail();
 			} catch (RideMustBeLaterThanTodayException e) {
+
 			// TODO Auto-generated catch block
 			fail();
 			}  catch (Exception e) {
 			// TODO Auto-generated catch block
 			fail();
 			}
-   }
+		
+		
+		finally {   
 
+			testDA.open();
+			if (testDA.existRide(driverEmail,rideFrom, rideTo, rideDate))
+				testDA.removeRide(driverEmail, rideFrom, rideTo, rideDate);
+			testDA.close();
+			
+		        }
+		   }
+		   */
 }

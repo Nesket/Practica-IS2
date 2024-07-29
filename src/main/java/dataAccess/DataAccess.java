@@ -56,7 +56,7 @@ public class DataAccess {
 		close();
 
 	}
-
+	//This constructor is used to mock the DB
 	public DataAccess(EntityManager db) {
 		this.db = db;
 	}
@@ -234,8 +234,8 @@ public class DataAccess {
 						ResourceBundle.getBundle("Etiquetas").getString("CreateRideGUI.ErrorRideMustBeLaterThanToday"));
 			}
 			db.getTransaction().begin();
-
 			Driver driver = db.find(Driver.class, driverName);
+			System.out.println("driver "+driver);
 			if (driver.doesRideExists(from, to, date)) {
 				db.getTransaction().commit();
 				throw new RideAlreadyExistException(
@@ -245,6 +245,7 @@ public class DataAccess {
 			// next instruction can be obviated
 			db.persist(driver);
 			db.getTransaction().commit();
+			System.out.println("llega hasta aqui");
 
 			return ride;
 		} catch (NullPointerException e) {
