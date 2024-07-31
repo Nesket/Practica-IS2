@@ -187,7 +187,6 @@ public class CreateRideMockWhiteTest {
 				//verify the results
 				assertNull(ride);
 				
-				
 			   } catch (RideAlreadyExistException e) {
 				// TODO Auto-generated catch block
 				// if the program goes to this point fail  

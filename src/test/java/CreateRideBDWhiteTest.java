@@ -28,7 +28,7 @@ public class CreateRideBDWhiteTest {
 	@SuppressWarnings("unused")
 	private Driver driver; 
 
-/*	@Test
+	@Test
 	//sut.createRide:  The Driver("Urtzi") HAS one ride "from" "to" in that "date". 
 	public void test1() {
 		
@@ -82,7 +82,7 @@ public class CreateRideBDWhiteTest {
 		          testDA.close();
 		        }
 		   } 
-*/
+
 	@Test
 	//sut.createRide:  The Driver("Driver Test") HAS NOT one ride "from" "to" in that "date". 
 	public void test2() {
@@ -164,9 +164,10 @@ public class CreateRideBDWhiteTest {
 		   } 
 	
 	
-/*	@Test
+	@Test
 	//sut.createRide:  The Driver is null. The test must return null. If  an Exception is returned the createRide method is not well implemented.
 		public void test3() {
+		Ride ride=null;
 			try {
 				
 				//define parameters
@@ -175,7 +176,7 @@ public class CreateRideBDWhiteTest {
 				String rideFrom="Donostia";
 				String rideTo="Zarautz";
 				
-				String driverEmail=null;
+				String driverUsername=null;
 
 				
 				SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
@@ -191,8 +192,7 @@ public class CreateRideBDWhiteTest {
 				
 				//invoke System Under Test (sut)  
 				sut.open();
-				Ride ride=sut.createRide(rideFrom, rideTo, rideDate, 0, 0, driverEmail);
-				System.out.println("ride "+ride);
+			    ride=sut.createRide(rideFrom, rideTo, rideDate, 0, 0, driverUsername);
 
 				//verify the results
 				assertNull(ride);
@@ -212,15 +212,15 @@ public class CreateRideBDWhiteTest {
 				} finally {
 					sut.close();
 				}
-			
-			   } 
+					   }
 	@Test
 	//sut.createRide:  The ride "from" is null. The test must return null. If  an Exception is returned the createRide method is not well implemented.
 
 	//This method detects a fail in createRide method because the method does not check if the parameters are null, and the ride is created.
-	
+
 	public void test4() {
-		String driverEmail="driver1@gmail.com";
+		boolean driverCreated=false;
+		String driverUsername="Test driver";
 		String rideFrom=null;
 		String rideTo="Zarautz";
 		
@@ -233,18 +233,27 @@ public class CreateRideBDWhiteTest {
 			e.printStackTrace();
 		}	
 		Ride ride=null;
+		
+		testDA.open();
+		if (!testDA.existDriver(driverUsername)) {
+			testDA.createDriver(driverUsername,null);
+		    driverCreated=true;
+		}
+		
+		testDA.close();
 		try {
 			//invoke System Under Test (sut)  
 			sut.open();
-			 ride=sut.createRide(rideFrom, rideTo, rideDate, 0, 0, driverEmail);
+			 ride=sut.createRide(rideFrom, rideTo, rideDate, 0, 0, driverUsername);
 			sut.close();			
 			
 			//verify the results
+			System.out.println(ride);
 			assertNull(ride);
 			
 			//q is in DB
 			testDA.open();
-			boolean exist=testDA.existRide(driverEmail,rideFrom, rideTo, rideDate);
+			boolean exist=testDA.existRide(driverUsername,rideFrom, rideTo, rideDate);
 				
 			assertTrue(!exist);
 			testDA.close();
@@ -266,11 +275,12 @@ public class CreateRideBDWhiteTest {
 		finally {   
 
 			testDA.open();
-			if (testDA.existRide(driverEmail,rideFrom, rideTo, rideDate))
-				testDA.removeRide(driverEmail, rideFrom, rideTo, rideDate);
+			if (driverCreated) 
+				testDA.removeDriver(driverUsername);
+			
 			testDA.close();
 			
 		        }
 		   }
-		   */
+		   
 }

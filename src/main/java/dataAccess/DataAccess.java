@@ -228,6 +228,7 @@ public class DataAccess {
 			throws RideAlreadyExistException, RideMustBeLaterThanTodayException {
 		System.out.println(
 				">> DataAccess: createRide=> from= " + from + " to= " + to + " driver=" + driverName + " date " + date);
+		if (driverName==null) return null;
 		try {
 			if (new Date().compareTo(date) > 0) {
 				throw new RideMustBeLaterThanTodayException(
@@ -244,7 +245,6 @@ public class DataAccess {
 			// next instruction can be obviated
 			db.persist(driver);
 			db.getTransaction().commit();
-			System.out.println("llega hasta aqui");
 
 			return ride;
 		} catch (NullPointerException e) {

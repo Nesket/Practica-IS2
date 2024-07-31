@@ -94,7 +94,9 @@ public class Driver extends User implements Serializable {
 		int index=0;
 		boolean encontrado=false;
 		for (Ride ride : createdRides) {
-			if (ride.getFrom().equals(from) && ride.getTo().equals(to) && ride.getDate().equals(date)) {
+			//if (ride.getFrom().equals(from) && ride.getTo().equals(to) && ride.getDate().equals(date)) {
+			if ((ride.getFrom()==from) && (ride.getTo()==to) && (ride.getDate().equals(date))) {
+
 				encontrado=true;
 				pos=index;
 			}
