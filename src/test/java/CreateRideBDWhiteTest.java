@@ -28,145 +28,10 @@ public class CreateRideBDWhiteTest {
 	@SuppressWarnings("unused")
 	private Driver driver; 
 
-	@Test
-	//sut.createRide:  The Driver("Urtzi") HAS one ride "from" "to" in that "date". 
-	public void test1() {
-		
-		String driverUsername="Urtzi";
-		String driverPassword="123";
-
-		String rideFrom="Donostia";
-		String rideTo="Zarautz";
-		
-		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-		Date rideDate=null;;
-		try {
-			rideDate = sdf.parse("05/10/2026");
-		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}	
-		boolean existDriver=false;
-		try {
-			
-			//define parameters
-			
-			
-			//configure the state of the system (create object in the database)
-			testDA.open();
-			 existDriver=testDA.existDriver(driverUsername);
-			testDA.addDriverWithRide(driverUsername, rideFrom, rideTo, rideDate, 0, 0);
-			testDA.close();			
-			
-			//invoke System Under Test (sut)  
-			sut.open();
-		    sut.createRide(rideFrom, rideTo, rideDate, 0, 0, driverUsername);
-			sut.close();
-			
-			fail();
-			
-		   } catch (RideAlreadyExistException e) {
-			 //verify the results
-				sut.close();
-				assertTrue(true);
-			} catch (RideMustBeLaterThanTodayException e) {
-			// TODO Auto-generated catch block
-			fail();
-		} finally {
-				  //Remove the created objects in the database (cascade removing)   
-				testDA.open();
-				  if (existDriver) 
-					  testDA.removeRide(driverUsername, rideFrom, rideTo, rideDate);
-				  else 
-					  testDA.removeDriver(driverUsername);
-		          testDA.close();
-		        }
-		   } 
-
-	@Test
-	//sut.createRide:  The Driver("Driver Test") HAS NOT one ride "from" "to" in that "date". 
-	public void test2() {
-		//define paramaters
-		String driverUsername="Driver Test";
-		String driverPassword="123";
-
-		String rideFrom="Donostia";
-		String rideTo="Zarautz";
-		
-		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-		Date rideDate=null;;
-		
-		boolean driverCreated=false;
-
-		try {
-			rideDate = sdf.parse("05/10/2026");
-		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}	
-		
-		try {
-			//Check if exist this ride for this driver, and if exist, remove it.
-			
-			testDA.open();
-			if (!testDA.existDriver(driverUsername)) {
-				testDA.createDriver(driverUsername,null);
-			    driverCreated=true;
-			}
-			
-			boolean b=testDA.existRide(driverUsername,rideFrom, rideTo, rideDate);
-			if (b) {testDA.removeRide(driverUsername, rideFrom, rideTo, rideDate);
-				System.out.println("Se lo borro");
-			}
-			testDA.close();
-			
-			
-			//invoke System Under Test (sut)  
-			sut.open();
-			Ride ride=sut.createRide(rideFrom, rideTo, rideDate, 0, 0, driverUsername);
-			
-
-			sut.close();
-			//verify the results
-			assertNotNull(ride);
-			assertEquals(ride.getFrom(),rideFrom);
-			assertEquals(ride.getTo(),rideTo);
-			assertEquals(ride.getDate(),rideDate);
-			
-			//ride is in DB
-			testDA.open();
-			boolean existRide=testDA.existRide(driverUsername,ride.getFrom(), ride.getTo(), ride.getDate());
-				
-			assertTrue(existRide);
-			testDA.close();
-			
-		   } catch (RideAlreadyExistException e) {
-			// if the program goes to this point fail  
-			fail();
-			//reestablish the state of the system (create object in the database)
-			
-			
-			} catch (RideMustBeLaterThanTodayException e) {
-				// if the program goes to this point fail  
-
-			fail();
-			
-		} finally {
-
-			testDA.open();
-			//reestablish the state of the system (create object in the database)
-
-			if (driverCreated) 
-				testDA.removeDriver(driverUsername);
-
-			testDA.close();	      
-		        }
-		   } 
-	
 	
 	@Test
 	//sut.createRide:  The Driver is null. The test must return null. If  an Exception is returned the createRide method is not well implemented.
-		public void test3() {
+		public void test1() {
 		Ride ride=null;
 			try {
 				
@@ -192,7 +57,7 @@ public class CreateRideBDWhiteTest {
 				
 				//invoke System Under Test (sut)  
 				sut.open();
-			    ride=sut.createRide(rideFrom, rideTo, rideDate, 0, 0, driverUsername);
+			    ride=sut.createRide(rideFrom, rideTo, rideDate, 2, 10, driverUsername);
 
 				//verify the results
 				assertNull(ride);
@@ -214,14 +79,175 @@ public class CreateRideBDWhiteTest {
 				}
 					   }
 	@Test
-	//sut.createRide:  The ride "from" is null. The test must return null. If  an Exception is returned the createRide method is not well implemented.
+	//sut.createRide:  The Driver("Driver Test") does not exist in the DB. The test must return null 
+	//The test supposes that the "Driver Test" does not exist in the DB
+	public void test2() {
+		
+		String driverUsername="Driver Test";
 
-	//This method detects a fail in createRide method because the method does not check if the parameters are null, and the ride is created.
+		String rideFrom="Donostia";
+		String rideTo="Zarautz";
+		
+		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+		Date rideDate=null;;
+		try {
+			rideDate = sdf.parse("05/10/2026");
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}	
+		try {
+			
+			//define parameters
+					
+			
+			//invoke System Under Test (sut)  
+			sut.open();
+		    Ride r=sut.createRide(rideFrom, rideTo, rideDate, 0, 0, driverUsername);
+			sut.close();
+			
+			assertNull(r);
+			
+		   } catch (RideAlreadyExistException e) {
+			 //verify the results
+				sut.close();
+				fail();
+			} catch (RideMustBeLaterThanTodayException e) {
+			// TODO Auto-generated catch block
+			fail();
+		} 
+		   } 
+	@Test
+	//sut.createRide:  the date of the ride must be later than today. The RideMustBeLaterThanTodayException 
+	// exception must be thrown. 
+	public void test3() {
+		
+		String driverUsername="Driver Test";
+		String driverPassword="123";
 
-	public void test4() {
+		String rideFrom="Donostia";
+		String rideTo="Zarautz";
+		
+		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+		Date rideDate=null;;
+		
 		boolean driverCreated=false;
-		String driverUsername="Test driver";
-		String rideFrom=null;
+
+		try {
+			rideDate = sdf.parse("05/10/2018");
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}	
+		try {
+			
+			//define parameters
+			testDA.open();
+			if (!testDA.existDriver(driverUsername)) {
+				testDA.createDriver(driverUsername,driverPassword);
+			    driverCreated=true;
+			}
+			testDA.close();		
+			
+			//invoke System Under Test (sut)  
+			sut.open();
+		    sut.createRide(rideFrom, rideTo, rideDate, 2, 10, driverUsername);
+			sut.close();
+			
+			fail();
+			
+		   } catch (RideMustBeLaterThanTodayException  e) {
+			 //verify the results
+				sut.close();
+				assertTrue(true);
+			} catch (RideAlreadyExistException e) {
+				sut.close();
+				fail();
+		} finally {
+				  //Remove the created objects in the database (cascade removing)   
+				testDA.open();
+				  if (driverCreated) 
+					  testDA.removeDriver(driverUsername);
+		          testDA.close();
+		        }
+		   } 
+
+	@Test
+	//sut.createRide:  The Driver("Driver Test") HAS  one ride "from" "to" in that "date". 
+	// and the Exception RideAlreadyExistException must be thrown
+	public void test4() {
+		//define paramaters
+		String driverUsername="Driver Test";
+
+		String rideFrom="Donostia";
+		String rideTo="Zarautz";
+		
+		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+		Date rideDate=null;;
+		
+
+		try {
+			rideDate = sdf.parse("05/10/2026");
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}	
+		
+		try {
+			//Check if exist this ride for this driver, and if exist, remove it.
+			
+			testDA.open();
+			testDA.addDriverWithRide( driverUsername,  rideFrom,  rideTo,   rideDate,2,10);
+			testDA.close();
+			
+			
+			//invoke System Under Test (sut)  
+			sut.open();
+			Ride ride=sut.createRide(rideFrom, rideTo, rideDate, 2, 10, driverUsername);
+			
+
+			sut.close();
+			//verify the results
+			assertNotNull(ride);
+			assertEquals(ride.getFrom(),rideFrom);
+			assertEquals(ride.getTo(),rideTo);
+			assertEquals(ride.getDate(),rideDate);
+			
+			fail();
+		
+			
+		   } catch (RideAlreadyExistException e) {
+			// if the program goes to this point fail  
+				assertTrue(true);
+			
+			
+			} catch (RideMustBeLaterThanTodayException e) {
+				// if the program goes to this point fail  
+
+			fail();
+			
+		} finally {
+
+			testDA.open();
+			//reestablish the state of the system (create object in the database)
+
+				testDA.removeDriver(driverUsername);
+
+			testDA.close();	      
+		        }
+		   } 
+	
+	
+	
+	@Test
+	//sut.createRide:  The Driver("Driver Test") HAS  NOT one ride "from" "to" in that "date". 
+	// and the Ride must be created in DB
+	//The test supposes that the "Driver Test" does not exist in the DB before the test
+
+	public void test5() {
+		boolean driverCreated=false;
+		String driverUsername="Driver Test";
+		String rideFrom="Donostia";
 		String rideTo="Zarautz";
 		
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
@@ -235,27 +261,24 @@ public class CreateRideBDWhiteTest {
 		Ride ride=null;
 		
 		testDA.open();
-		if (!testDA.existDriver(driverUsername)) {
+		
 			testDA.createDriver(driverUsername,null);
-		    driverCreated=true;
-		}
 		
 		testDA.close();
 		try {
 			//invoke System Under Test (sut)  
 			sut.open();
-			 ride=sut.createRide(rideFrom, rideTo, rideDate, 0, 0, driverUsername);
+			 ride=sut.createRide(rideFrom, rideTo, rideDate, 2, 10, driverUsername);
 			sut.close();			
 			
 			//verify the results
-			System.out.println(ride);
-			assertNull(ride);
+			assertNotNull(ride);
 			
 			//q is in DB
 			testDA.open();
 			boolean exist=testDA.existRide(driverUsername,rideFrom, rideTo, rideDate);
 				
-			assertTrue(!exist);
+			assertTrue(exist);
 			testDA.close();
 			
 		   } catch (RideAlreadyExistException e) {
@@ -275,9 +298,7 @@ public class CreateRideBDWhiteTest {
 		finally {   
 
 			testDA.open();
-			if (driverCreated) 
 				testDA.removeDriver(driverUsername);
-			
 			testDA.close();
 			
 		        }

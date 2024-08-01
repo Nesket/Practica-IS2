@@ -172,7 +172,7 @@ public class Ride implements Serializable {
 	}
 
 	public String toString() {
-		return from + "; " + to + "; " + date + "; " + price;
+		return from + "; " + to + "; " + date + "; " + nPlaces+" "+price;
 	}
 
 	public void setnPlaces(int f) {
