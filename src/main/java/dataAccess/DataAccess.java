@@ -231,9 +231,11 @@ public class DataAccess {
 		if (driverName==null) return null;
 		try {
 			if (new Date().compareTo(date) > 0) {
+				System.out.println("ppppp");
 				throw new RideMustBeLaterThanTodayException(
 						ResourceBundle.getBundle("Etiquetas").getString("CreateRideGUI.ErrorRideMustBeLaterThanToday"));
 			}
+
 			db.getTransaction().begin();
 			Driver driver = db.find(Driver.class, driverName);
 			if (driver.doesRideExists(from, to, date)) {
@@ -249,9 +251,9 @@ public class DataAccess {
 			return ride;
 		} catch (NullPointerException e) {
 			// TODO Auto-generated catch block
-			db.getTransaction().commit();
 			return null;
 		}
+		
 
 	}
 

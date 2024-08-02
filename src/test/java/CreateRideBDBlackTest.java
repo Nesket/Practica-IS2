@@ -121,7 +121,7 @@ public class CreateRideBDBlackTest {
 		try {
 			//invoke System Under Test (sut)  
 			sut.open();
-			 ride=sut.createRide(rideFrom, rideTo, rideDate, 0, 0, driverUsername);
+			 ride=sut.createRide(rideFrom, rideTo, rideDate, 2, 10, driverUsername);
 			sut.close();			
 			
 			//verify the results
@@ -182,7 +182,7 @@ public class CreateRideBDBlackTest {
 		try {
 			//invoke System Under Test (sut)  
 			sut.open();
-			 ride=sut.createRide(rideFrom, rideTo, rideDate, 0, 0, driverUsername);
+			 ride=sut.createRide(rideFrom, rideTo, rideDate, 2, 10, driverUsername);
 			sut.close();			
 			
 			//verify the results
@@ -219,25 +219,23 @@ public class CreateRideBDBlackTest {
 		   }
 	
 	@Test
-	//sut.createRide:  The ride "to" is null. The test must return null. If  an Exception is returned the createRide method is not well implemented.
+	//sut.createRide:  The ride date is null. The test must return null. If  an Exception is returned the createRide method is not well implemented.
 	public void test4() {
 		String driverUsername="Test driver";
 		String rideFrom="Donostia";
 		String rideTo="Zarautz";
 		
-		Date rideDate=null;;
+		Date rideDate=null;
 		
 		Ride ride=null;
 		
 		testDA.open();
-		
 			testDA.createDriver(driverUsername,null);
-		
 		testDA.close();
 		try {
 			//invoke System Under Test (sut)  
 			sut.open();
-			 ride=sut.createRide(rideFrom, rideTo, rideDate, 0, 0, driverUsername);
+			 ride=sut.createRide(rideFrom, rideTo, rideDate, 2, 10, driverUsername);
 			sut.close();			
 			
 			//verify the results
@@ -246,7 +244,7 @@ public class CreateRideBDBlackTest {
 			//q is in DB
 			testDA.open();
 			boolean exist=testDA.existRide(driverUsername,rideFrom, rideTo, rideDate);
-				
+
 			assertTrue(!exist);
 			testDA.close();
 			
@@ -255,7 +253,6 @@ public class CreateRideBDBlackTest {
 			// if the program goes to this point fail  
 			fail();
 			} catch (RideMustBeLaterThanTodayException e) {
-
 			// TODO Auto-generated catch block
 			fail();
 			}  catch (Exception e) {
@@ -397,7 +394,7 @@ public class CreateRideBDBlackTest {
 		   }
 	
 	@Test
-	//sut.createRide:  The Driver is null. The test must return null. If  an Exception is returned the createRide method is not well implemented.
+	//sut.createRide:  The driverUsername is null. The test must return null. If  an Exception is returned the createRide method is not well implemented.
 		public void test7() {
 		Ride ride=null;
 			try {
@@ -445,7 +442,6 @@ public class CreateRideBDBlackTest {
 					sut.close();
 				}
 	}
-	
 	@Test
 	//sut.createRide:  the date of the ride must be later than today. The RideMustBeLaterThanTodayException 
 	// exception must be thrown. 
@@ -502,7 +498,7 @@ public class CreateRideBDBlackTest {
 		   } 
 	
 	
-	
+
 	@Test
 	//sut.createRide:  The ride from==to. The test must return null. If  an Exception is returned the createRide method is not well implemented.
 	public void test9() {
@@ -627,11 +623,6 @@ public class CreateRideBDBlackTest {
 			testDA.close();	      
 		        }
 		   } 
-	
-	
-	
-	
-	
 		   
 }
 
