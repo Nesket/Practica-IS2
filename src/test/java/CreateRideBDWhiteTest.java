@@ -114,6 +114,7 @@ public class CreateRideBDWhiteTest {
 				fail();
 			} catch (RideMustBeLaterThanTodayException e) {
 			// TODO Auto-generated catch block
+			sut.close();
 			fail();
 		} 
 		   } 
@@ -205,10 +206,7 @@ public class CreateRideBDWhiteTest {
 			sut.open();
 			Ride ride=sut.createRide(rideFrom, rideTo, rideDate, 2, 10, driverUsername);
 			
-
-			//sut.close();
 			//if the program goes to this point fail
-			
 			fail();
 		
 			
@@ -287,7 +285,7 @@ public class CreateRideBDWhiteTest {
 			}  catch (Exception e) {
 			// TODO Auto-generated catch block
 			fail();
-			}
+			}    
 		
 		
 		finally {   
