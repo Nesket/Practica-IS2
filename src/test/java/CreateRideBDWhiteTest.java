@@ -194,7 +194,7 @@ public class CreateRideBDWhiteTest {
 		}	
 		
 		try {
-			//Check if exist this ride for this driver, and if exist, remove it.
+			//Create a driver and her ride
 			
 			testDA.open();
 			testDA.addDriverWithRide( driverUsername,  rideFrom,  rideTo,   rideDate,2,10);
@@ -206,12 +206,8 @@ public class CreateRideBDWhiteTest {
 			Ride ride=sut.createRide(rideFrom, rideTo, rideDate, 2, 10, driverUsername);
 			
 
-			sut.close();
-			//verify the results
-			assertNotNull(ride);
-			assertEquals(ride.getFrom(),rideFrom);
-			assertEquals(ride.getTo(),rideTo);
-			assertEquals(ride.getDate(),rideDate);
+			//sut.close();
+			//if the program goes to this point fail
 			
 			fail();
 		
@@ -222,14 +218,13 @@ public class CreateRideBDWhiteTest {
 			
 			
 			} catch (RideMustBeLaterThanTodayException e) {
+				fail();
 				// if the program goes to this point fail  
-
-			fail();
 			
 		} finally {
-
+			sut.close();
 			testDA.open();
-			//reestablish the state of the system (create object in the database)
+			//reestablish the state of the system (remove the driver and her rides in the database)
 
 				testDA.removeDriver(driverUsername);
 
