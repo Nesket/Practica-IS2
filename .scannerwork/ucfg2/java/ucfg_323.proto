@@ -1,0 +1,125 @@
+
+(domain.Ride#toString()Ljava/lang/String;I
+=/Users/nesket/git/Practica-IS2/src/main/java/domain/Ride.java® ®("1*†
+
+1
+¯	 ¯(c
+a
+
+¯	 ¯(
+%0java.lang.String"__id*5
+
+__unknown_file (*
+domain.Ride"
+fromn
+l
+
+¯	 ¯(
+%1java.lang.String"__concat*&
+
+¯	 ¯(
+
+%0java.lang.String*
+
+¯ ¯(
+; a
+_
+
+¯ ¯(
+%2java.lang.String"__id*3
+
+__unknown_file (*
+domain.Ride"
+to€
+~
+
+¯	 ¯(
+%3java.lang.String"__concat*&
+
+¯	 ¯(
+
+%1java.lang.String*&
+
+¯ ¯(
+
+%2java.lang.Stringn
+l
+
+¯	 ¯( 
+%4java.lang.String"__concat*&
+
+¯	 ¯(
+
+%3java.lang.String*
+
+¯ ¯( 
+; a
+_
+
+¯# ¯('
+%5java.util.Date"__id*5
+
+__unknown_file (*
+domain.Ride"
+date~
+|
+
+¯	 ¯('
+%6java.lang.String"__concat*&
+
+¯	 ¯( 
+
+%4java.lang.String*$
+
+¯# ¯('
+
+%5java.util.Daten
+l
+
+¯	 ¯(.
+%7java.lang.String"__concat*&
+
+¯	 ¯('
+
+%6java.lang.String*
+
+¯* ¯(.
+; n
+l
+
+¯	 ¯(8
+%8java.lang.String"__concat*&
+
+¯	 ¯(.
+
+%7java.lang.String*
+
+¯1 ¯(8
+""m
+k
+
+¯	 ¯(<
+%9java.lang.String"__concat*&
+
+¯	 ¯(8
+
+%8java.lang.String*
+
+¯9 ¯(<
+ o
+m
+
+¯	 ¯(B
+%10java.lang.String"__concat*&
+
+¯	 ¯(<
+
+%9java.lang.String*
+
+¯= ¯(B
+"""'
+
+¯ ¯(C
+
+%10java.lang.StringB
+domain.RideH

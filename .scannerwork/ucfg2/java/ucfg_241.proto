@@ -1,0 +1,115 @@
+
+SbusinessLogic.BLFacadeImplementation#isAdded(Ljava/lang/String;Ljava/lang/String;)Zb
+V/Users/nesket/git/Practica-IS2/src/main/java/businessLogic/BLFacadeImplementation.javaª ª("startingBlock*Ä
+startingBlock
+ª ª(5ë
+é
+
+∫ ∫(
+
+%6"
+__annotate*2
+
+__unknown_file (
+java.lang.Override*:
+
+__unknown_file (
+
+usernamejava.lang.String^
+\
+
+ª ª('
+usernamejava.lang.String"__annotation*"
+
+__unknown_file (
+
+%6ç
+ä
+
+∫ ∫(
+
+%7"
+__annotate*2
+
+__unknown_file (
+java.lang.Override*6
+
+__unknown_file (
+
+matrjava.lang.StringZ
+X
+
+ª0 ª(4
+matrjava.lang.String"__annotation*"
+
+__unknown_file (
+
+%7*
+1*Ü
+1
+º º(á
+Ñ
+
+º º(
+%0dataAccess.DataAccess"__id*S
+
+__unknown_file (7*5&
+$businessLogic.BLFacadeImplementation"
+	dbManager|z
+
+º º(
+
+%1void"dataAccess.DataAccess#open()V*9
+
+__unknown_file (
+
+%0dataAccess.DataAccess2open()á
+Ñ
+
+Ω Ω( 
+%2dataAccess.DataAccess"__id*S
+
+__unknown_file (7*5&
+$businessLogic.BLFacadeImplementation"
+	dbManager¬ø
+
+Ω Ω(8
+%3boolean"DdataAccess.DataAccess#isAdded(Ljava/lang/String;Ljava/lang/String;)Z*9
+
+__unknown_file (
+
+%2dataAccess.DataAccess*:
+
+__unknown_file (
+
+usernamejava.lang.String*6
+
+__unknown_file (
+
+matrjava.lang.String2-isAdded(Ljava/lang/String;Ljava/lang/String;)á
+Ñ
+
+æ æ(
+%4dataAccess.DataAccess"__id*S
+
+__unknown_file (7*5&
+$businessLogic.BLFacadeImplementation"
+	dbManager~|
+
+æ æ(
+
+%5void"dataAccess.DataAccess#close()V*9
+
+__unknown_file (
+
+%4dataAccess.DataAccess2close()"
+
+ø ø(
+"":*
+
+ª ª((
+usernamejava.lang.String:&
+
+ª) ª(4
+matrjava.lang.StringB(&
+$businessLogic.BLFacadeImplementationHX

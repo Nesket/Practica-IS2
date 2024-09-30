@@ -1,0 +1,6 @@
+businessLogic.BLFacadeImplementation#bookRide(Ljava/lang/String;LRide;ID)Z
+9716c67eca0d0cb4735957884a8545e7
+==
+close dataAccess.DataAccess#close()V
+open dataAccess.DataAccess#open()V
+bookRide dataAccess.DataAccess#bookRide(Ljava/lang/String;LRide;ID)Z

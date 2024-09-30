@@ -1,0 +1,36 @@
+gui.TravelerGUI#<init>(Ljava/lang/String;)V
+dbb6e0f386ebeac04977da648ced9955
+java.util.ResourceBundle#getString(Ljava/lang/String;)Ljava/lang/String;
+javax.swing.JButton#<init>()V
+javax.swing.JPanel#<init>()V
+javax.swing.ImageIcon#<init>(Ljava/lang/String;)V
+javax.swing.ImageIcon#instance-init#
+gui.TravelerGUI#setBussinessLogic(LbusinessLogic/BLFacade;)V
+javax.swing.JPanel#instance-init#
+javax.swing.JLabel#<init>(Ljava/lang/String;)V
+gui.LoginGUI#getBusinessLogic()LbusinessLogic/BLFacade;
+javax.swing.ImageIcon#<init>(Ljava/awt/Image;)V
+javax.swing.JLabel#instance-init#
+java.util.ResourceBundle#getBundle(Ljava/lang/String;)Ljava/util/ResourceBundle;
+java.awt.Font#<init>(Ljava/lang/String;II)V
+java.awt.Font#instance-init#
+javax.swing.JButton#instance-init#
+==
+setFont javax.swing.JComponent#setFont(Ljava/awt/Font;)V
+getImage javax.swing.ImageIcon#getImage()Ljava/awt/Image;
+setText javax.swing.AbstractButton#setText(Ljava/lang/String;)V
+setVisible javax.swing.JComponent#setVisible(Z)V
+getScaledInstance java.awt.Image#getScaledInstance(III)Ljava/awt/Image;
+setIcon javax.swing.AbstractButton#setIcon(Ljavax/swing/Icon;)V
+setResizable java.awt.Frame#setResizable(Z)V
+setBounds java.awt.Component#setBounds(IIII)V
+setHorizontalAlignment javax.swing.JLabel#setHorizontalAlignment(I)V
+add java.awt.Container#add(Ljava/awt/Component;)Ljava/awt/Component;
+updateAlertaAurkituak businessLogic.BLFacade#updateAlertaAurkituak(Ljava/lang/String;)Z
+setSize java.awt.Window#setSize(II)V
+setEnabled javax.swing.AbstractButton#setEnabled(Z)V
+setTitle java.awt.Frame#setTitle(Ljava/lang/String;)V
+addActionListener javax.swing.AbstractButton#addActionListener(Ljava/awt/event/ActionListener;)V
+setLayout java.awt.Container#setLayout(Ljava/awt/LayoutManager;)V
+setContentPane javax.swing.JFrame#setContentPane(Ljava/awt/Container;)V
+setForeground javax.swing.JComponent#setForeground(Ljava/awt/Color;)V

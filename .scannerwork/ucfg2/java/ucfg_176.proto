@@ -1,0 +1,68 @@
+
+btestOperations.TestBusinessLogic#createDriver(Ljava/lang/String;Ljava/lang/String;)Ldomain/Driver;\
+R/Users/nesket/git/Practica-IS2/src/test/java/testOperations/TestBusinessLogic.java ("1*–	
+1   (ç
+ä
+   (#
+%0testOperations.TestDataAccess"__id*S
+
+__unknown_file (7*5"
+ testOperations.TestBusinessLogic"
+dbManagerTestãà
+   (
+
+%1void"%testOperations.TestDataAccess#open()V*A
+
+__unknown_file (%
+#
+%0testOperations.TestDataAccess2open()ç
+ä
+! !(#
+%2testOperations.TestDataAccess"__id*S
+
+__unknown_file (7*5"
+ testOperations.TestBusinessLogic"
+dbManagerTestÎË
+! !(8
+%3domain.Driver"_testOperations.TestDataAccess#createDriver(Ljava/lang/String;Ljava/lang/String;)Ldomain/Driver;*A
+
+__unknown_file (%
+#
+%2testOperations.TestDataAccess*7
+
+__unknown_file (
+
+emailjava.lang.String*6
+
+__unknown_file (
+
+namejava.lang.String22createDriver(Ljava/lang/String;Ljava/lang/String;)^
+\
+! !(9
+driverdomain.Driver"__id*1
+
+__unknown_file (
+
+%3domain.Driverç
+ä
+" "(#
+%4testOperations.TestDataAccess"__id*S
+
+__unknown_file (7*5"
+ testOperations.TestBusinessLogic"
+dbManagerTestçä
+" "(
+
+%5void"&testOperations.TestDataAccess#close()V*A
+
+__unknown_file (%
+#
+%4testOperations.TestDataAccess2close()"%
+# #(
+
+driverdomain.Driver:%
+ (*
+emailjava.lang.String:$
++ (6
+namejava.lang.StringB$"
+ testOperations.TestBusinessLogicH

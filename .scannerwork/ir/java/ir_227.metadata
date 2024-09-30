@@ -1,0 +1,6 @@
+businessLogic.BLFacadeImplementation#deleteDiscount(Ldomain/Discount;)V
+2ebd492345464fd33b8d26cf8a5084ff
+==
+close dataAccess.DataAccess#close()V
+open dataAccess.DataAccess#open()V
+deleteDiscount dataAccess.DataAccess#deleteDiscount(Ldomain/Discount;)V

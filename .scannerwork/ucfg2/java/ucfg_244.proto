@@ -1,0 +1,65 @@
+
+FbusinessLogic.BLFacadeImplementation#getAllDiscounts()Ljava/util/List;b
+V/Users/nesket/git/Practica-IS2/src/main/java/businessLogic/BLFacadeImplementation.javaá á(&"1*â
+1
+â â(‡
+„
+
+â â(
+%0dataAccess.DataAccess"__id*S
+
+__unknown_file (7*5&
+$businessLogic.BLFacadeImplementation"
+	dbManager|z
+
+â â(
+
+%1void"dataAccess.DataAccess#open()V*9
+
+__unknown_file (
+
+%0dataAccess.DataAccess2open()‡
+„
+
+ã ã( 
+%2dataAccess.DataAccess"__id*S
+
+__unknown_file (7*5&
+$businessLogic.BLFacadeImplementation"
+	dbManager¬©
+
+ã ã(2
+%3java.util.List"7dataAccess.DataAccess#getAllDiscounts()Ljava/util/List;*9
+
+__unknown_file (
+
+%2dataAccess.DataAccess2getAllDiscounts()_
+]
+
+ã ã(3
+disjava.util.List"__id*2
+
+__unknown_file (
+
+%3java.util.List‡
+„
+
+ä ä(
+%4dataAccess.DataAccess"__id*S
+
+__unknown_file (7*5&
+$businessLogic.BLFacadeImplementation"
+	dbManager~|
+
+ä ä(
+
+%5void"dataAccess.DataAccess#close()V*9
+
+__unknown_file (
+
+%4dataAccess.DataAccess2close()"%
+
+å å(
+
+disjava.util.ListB(&
+$businessLogic.BLFacadeImplementationH

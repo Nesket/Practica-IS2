@@ -1,0 +1,72 @@
+
+stestOperations.TestBusinessLogic#existRide(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/Date;)Z\
+R/Users/nesket/git/Practica-IS2/src/test/java/testOperations/TestBusinessLogic.java6 6("1*Û	
+17 7(ç
+ä
+7 7(#
+%0testOperations.TestDataAccess"__id*S
+
+__unknown_file (7*5"
+ testOperations.TestBusinessLogic"
+dbManagerTestãà
+7 7(
+
+%1void"%testOperations.TestDataAccess#open()V*A
+
+__unknown_file (%
+#
+%0testOperations.TestDataAccess2open()ç
+ä
+8 8(#
+%2testOperations.TestDataAccess"__id*S
+
+__unknown_file (7*5"
+ testOperations.TestBusinessLogic"
+dbManagerTestÅ˛
+8 8(;
+%3boolean"ptestOperations.TestDataAccess#existRide(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/Date;)Z*A
+
+__unknown_file (%
+#
+%2testOperations.TestDataAccess*7
+
+__unknown_file (
+
+emailjava.lang.String*6
+
+__unknown_file (
+
+fromjava.lang.String*4
+
+__unknown_file (
+
+tojava.lang.String*4
+
+__unknown_file (
+
+datejava.util.Date2QexistRide(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/Date;)ç
+ä
+9 9(#
+%4testOperations.TestDataAccess"__id*S
+
+__unknown_file (7*5"
+ testOperations.TestBusinessLogic"
+dbManagerTestçä
+9 9(
+
+%5void"&testOperations.TestDataAccess#close()V*A
+
+__unknown_file (%
+#
+%4testOperations.TestDataAccess2close()"
+: :(
+"":%
+6 6((
+emailjava.lang.String:$
+6) 6(5
+fromjava.lang.String:"
+66 6(@
+tojava.lang.String:"
+6A 6(J
+datejava.util.DateB$"
+ testOperations.TestBusinessLogicHX
