@@ -1,16 +1,15 @@
 
-@configuration.ConfigXML#getBusinessLogicPort()Ljava/lang/String;S
-G/Users/iturrioz/git/Bets2021/src/main/java/configuration/ConfigXML.java– –(#"1*ö
-1S
-G/Users/iturrioz/git/Bets2021/src/main/java/configuration/ConfigXML.java—	 —(ª
-§
-S
-G/Users/iturrioz/git/Bets2021/src/main/java/configuration/ConfigXML.java—	 —(
-%0java.lang.String"__id*2*0
-configuration.ConfigXML"
-businessLogicPort"o
-S
-G/Users/iturrioz/git/Bets2021/src/main/java/configuration/ConfigXML.java— —(
-
-%0java.lang.StringB
-configuration.ConfigXML
+Agui.ErreserbaOnartuGUI#getBusinessLogic()LbusinessLogic/BLFacade;R
+H/Users/nesket/git/Practica-IS2/src/main/java/gui/ErreserbaOnartuGUI.java (("1*¼
+1	 (€
+~
+	 (
+%0businessLogic.BLFacade"__id*N
+
+__unknown_file (2*0
+gui.ErreserbaOnartuGUI"
+appFacadeInterface"*
+ (
+
+%0businessLogic.BLFacadeB"
+gui.ErreserbaOnartuGUIH

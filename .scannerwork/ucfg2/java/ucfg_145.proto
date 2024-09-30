@@ -1,0 +1,150 @@
+
+'domain.User#equals(Ljava/lang/Object;)ZG
+=/Users/nesket/git/Practica-IS2/src/main/java/domain/User.javao o("startingBlock*!
+2x
+ x("
+x x(
+""*…
+3v v(_
+]
+v v(
+otherdomain.User"__id*5
+
+__unknown_file (
+
+objjava.lang.Objecte
+c
+w w(
+%5java.lang.String"__id*9
+
+__unknown_file (*
+domain.User"
+
+usernamel
+j
+w w( 
+%6java.lang.String"__id*@
+
+__unknown_file ($*"
+
+otherdomain.User"
+
+username·
+´
+w w( 
+%7boolean"	__compare*"
+
+__unknown_file (
+!=*4
+
+__unknown_file (
+
+%5java.lang.String*4
+
+__unknown_file (
+
+%6java.lang.String*
+2
+1*„
+startingBlocko o("Š
+‡
+n n(
+
+%8"
+__annotate*2
+
+__unknown_file (
+java.lang.Override*5
+
+__unknown_file (
+
+objjava.lang.ObjectW
+U
+o o(!
+objjava.lang.Object"__annotation*"
+
+__unknown_file (
+
+%8*
+9*!
+4u
+ u("
+u u(
+""*ó
+5t t(‹ˆ
+t t(
+%2java.lang.Class",java.lang.Object#getClass()Ljava/lang/Class;*+
+
+__unknown_file (
+domain.User2
+getClass()•’
+t t("
+%3java.lang.Class",java.lang.Object#getClass()Ljava/lang/Class;*5
+
+__unknown_file (
+
+objjava.lang.Object2
+getClass()µ
+²
+t t("
+%4boolean"	__compare*"
+
+__unknown_file (
+!=*3
+
+__unknown_file (
+
+%2java.lang.Class*3
+
+__unknown_file (
+
+%3java.lang.Class*
+3
+4*!
+6s
+ s("
+s s(
+""*¾
+7r r(	¦
+£
+r r(
+%1boolean"	__compare*"
+
+__unknown_file (
+==*5
+
+__unknown_file (
+
+objjava.lang.Object*"
+
+__unknown_file (
+""*
+5
+6*!
+8q
+ q("
+q q(
+""*Ç
+9p p(
+¯
+¬
+p p(
+%0boolean"	__compare*"
+
+__unknown_file (
+==*+
+
+__unknown_file (
+domain.User*5
+
+__unknown_file (
+
+objjava.lang.Object*
+7
+8*!
+1y	 y("
+y y(
+"":#
+o o(!
+objjava.lang.ObjectB
+domain.UserHX

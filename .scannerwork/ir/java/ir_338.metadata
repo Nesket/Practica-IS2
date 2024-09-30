@@ -1,0 +1,31 @@
+gui.ErreklamazioakGUI#<init>(Ljava/lang/String;Ljava/lang/String;Ldomain/Booking;)V
+206a6177e6ad92af58945dbc4193f726
+java.util.ResourceBundle#getString(Ljava/lang/String;)Ljava/lang/String;
+java.util.Date#<init>()V
+java.text.SimpleDateFormat#instance-init#
+javax.swing.JTextArea#instance-init#
+javax.swing.JButton#<init>(Ljava/lang/String;)V
+java.text.DateFormat#format(Ljava/util/Date;)Ljava/lang/String;
+javax.swing.JLabel#<init>()V
+java.util.Date#instance-init#
+gui.ErreklamazioakGUI#setBussinessLogic(LBLFacade;)V
+java.awt.Dimension#<init>(II)V
+javax.swing.JLabel#<init>(Ljava/lang/String;)V
+java.awt.Dimension#instance-init#
+java.text.SimpleDateFormat#<init>(Ljava/lang/String;)V
+javax.swing.JTextArea#<init>(Ljava/lang/String;)V
+java.util.ResourceBundle#getBundle(Ljava/lang/String;)Ljava/util/ResourceBundle;
+javax.swing.JLabel#instance-init#
+javax.swing.JButton#instance-init#
+==
+add java.awt.Container#add(Ljava/awt/Component;)Ljava/awt/Component;
+setText javax.swing.text.JTextComponent#setText(Ljava/lang/String;)V
+getRide domain.Booking#getRide()Ldomain/Ride;
+setTitle java.awt.Frame#setTitle(Ljava/lang/String;)V
+getContentPane javax.swing.JFrame#getContentPane()Ljava/awt/Container;
+setLayout java.awt.Container#setLayout(Ljava/awt/LayoutManager;)V
+setResizable java.awt.Frame#setResizable(Z)V
+addActionListener javax.swing.AbstractButton#addActionListener(Ljava/awt/event/ActionListener;)V
+setBounds java.awt.Component#setBounds(IIII)V
+setForeground javax.swing.JComponent#setForeground(Ljava/awt/Color;)V
+setSize java.awt.Window#setSize(Ljava/awt/Dimension;)V

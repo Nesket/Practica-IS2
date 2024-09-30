@@ -1,0 +1,92 @@
+
+ãtestOperations.TestBusinessLogic#addDriverWithRide(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/Date;IF)Ldomain/Driver;\
+R/Users/nesket/git/Practica-IS2/src/test/java/testOperations/TestBusinessLogic.java/ /(!"1*÷
+10 0(ç
+ä
+0 0(#
+%0testOperations.TestDataAccess"__id*S
+
+__unknown_file (7*5"
+ testOperations.TestBusinessLogic"
+dbManagerTestãà
+0 0(
+
+%1void"%testOperations.TestDataAccess#open()V*A
+
+__unknown_file (%
+#
+%0testOperations.TestDataAccess2open()ç
+ä
+1 1(#
+%2testOperations.TestDataAccess"__id*S
+
+__unknown_file (7*5"
+ testOperations.TestBusinessLogic"
+dbManagerTestÒÓ
+1 1(V
+%3domain.Driver"àtestOperations.TestDataAccess#addDriverWithRide(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/Date;IF)Ldomain/Driver;*A
+
+__unknown_file (%
+#
+%2testOperations.TestDataAccess*6
+
+__unknown_file (
+
+namejava.lang.String*6
+
+__unknown_file (
+
+fromjava.lang.String*4
+
+__unknown_file (
+
+tojava.lang.String*4
+
+__unknown_file (
+
+datejava.util.Date*"
+
+__unknown_file (
+""*"
+
+__unknown_file (
+""2[addDriverWithRide(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/Date;IF)^
+\
+1 1(W
+driverdomain.Driver"__id*1
+
+__unknown_file (
+
+%3domain.Driverç
+ä
+2 2(#
+%4testOperations.TestDataAccess"__id*S
+
+__unknown_file (7*5"
+ testOperations.TestBusinessLogic"
+dbManagerTestçä
+2 2(
+
+%5void"&testOperations.TestDataAccess#close()V*A
+
+__unknown_file (%
+#
+%4testOperations.TestDataAccess2close()"%
+3 3(
+
+driverdomain.Driver:$
+/" /(.
+namejava.lang.String:$
+// /(;
+fromjava.lang.String:"
+/< /(F
+tojava.lang.String:"
+/H /(R
+datejava.util.Date: 
+
+__unknown_file (
+"": 
+
+__unknown_file (
+""B$"
+ testOperations.TestBusinessLogicH

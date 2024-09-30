@@ -1,0 +1,100 @@
+
+XbusinessLogic.BLFacadeImplementation#getKotxeByMatrikula(Ljava/lang/String;)Ldomain/Car;b
+V/Users/nesket/git/Practica-IS2/src/main/java/businessLogic/BLFacadeImplementation.java√ √("startingBlock*å
+startingBlock
+√ √(,ç
+ä
+
+¬ ¬(
+
+%6"
+__annotate*2
+
+__unknown_file (
+java.lang.Override*6
+
+__unknown_file (
+
+matrjava.lang.StringZ
+X
+
+√' √(+
+matrjava.lang.String"__annotation*"
+
+__unknown_file (
+
+%6*
+1*∂
+1
+ƒ ƒ(á
+Ñ
+
+ƒ ƒ(
+%0dataAccess.DataAccess"__id*S
+
+__unknown_file (7*5&
+$businessLogic.BLFacadeImplementation"
+	dbManager|z
+
+ƒ ƒ(
+
+%1void"dataAccess.DataAccess#open()V*9
+
+__unknown_file (
+
+%0dataAccess.DataAccess2open()á
+Ñ
+
+≈ ≈(
+%2dataAccess.DataAccess"__id*S
+
+__unknown_file (7*5&
+$businessLogic.BLFacadeImplementation"
+	dbManageràÖ
+
+≈ ≈(1
+%3
+domain.Car"IdataAccess.DataAccess#getKotxeByMatrikula(Ljava/lang/String;)Ldomain/Car;*9
+
+__unknown_file (
+
+%2dataAccess.DataAccess*6
+
+__unknown_file (
+
+matrjava.lang.String2'getKotxeByMatrikula(Ljava/lang/String;)Y
+W
+
+≈ ≈(2
+kotxe
+domain.Car"__id*.
+
+__unknown_file (
+
+%3
+domain.Cará
+Ñ
+
+∆ ∆(
+%4dataAccess.DataAccess"__id*S
+
+__unknown_file (7*5&
+$businessLogic.BLFacadeImplementation"
+	dbManager~|
+
+∆ ∆(
+
+%5void"dataAccess.DataAccess#close()V*9
+
+__unknown_file (
+
+%4dataAccess.DataAccess2close()"#
+
+« «(
+
+kotxe
+domain.Car:&
+
+√  √(+
+matrjava.lang.StringB(&
+$businessLogic.BLFacadeImplementationH

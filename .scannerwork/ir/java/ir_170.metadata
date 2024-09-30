@@ -1,0 +1,36 @@
+gui.AlertaAurkituakGUI#<init>(Ljava/lang/String;)V
+63057833049dfe107013a1591b250eba
+java.util.ResourceBundle#getString(Ljava/lang/String;)Ljava/lang/String;
+javax.swing.JTable#<init>(Ljavax/swing/table/TableModel;)V
+java.text.SimpleDateFormat#instance-init#
+javax.swing.JButton#<init>(Ljava/lang/String;)V
+gui.TravelerGUI#getBusinessLogic()LbusinessLogic/BLFacade;
+gui.AlertaAurkituakGUI#setBussinessLogic(LbusinessLogic/BLFacade;)V
+javax.swing.table.DefaultTableModel#<init>([Ljava/lang/Object;I)V
+java.text.DateFormat#format(Ljava/util/Date;)Ljava/lang/String;
+javax.swing.JScrollPane#instance-init#
+java.awt.Dimension#<init>(II)V
+java.awt.BorderLayout#<init>()V
+java.awt.Dimension#instance-init#
+java.text.SimpleDateFormat#<init>(Ljava/lang/String;)V
+java.util.ResourceBundle#getBundle(Ljava/lang/String;)Ljava/util/ResourceBundle;
+javax.swing.JTable#instance-init#
+java.awt.BorderLayout#instance-init#
+javax.swing.JButton#instance-init#
+javax.swing.table.DefaultTableModel#instance-init#
+javax.swing.JScrollPane#<init>(Ljava/awt/Component;)V
+==
+add java.awt.Container#add(Ljava/awt/Component;Ljava/lang/Object;)V
+getTableHeader javax.swing.JTable#getTableHeader()Ljavax/swing/table/JTableHeader;
+setResizable java.awt.Frame#setResizable(Z)V
+getContentPane javax.swing.JFrame#getContentPane()Ljava/awt/Container;
+setColumnSelectionAllowed javax.swing.JTable#setColumnSelectionAllowed(Z)V
+setSize java.awt.Window#setSize(Ljava/awt/Dimension;)V
+setRowSelectionAllowed javax.swing.JTable#setRowSelectionAllowed(Z)V
+setTitle java.awt.Frame#setTitle(Ljava/lang/String;)V
+getAlertsByUsername businessLogic.BLFacade#getAlertsByUsername(Ljava/lang/String;)Ljava/util/List;
+setReorderingAllowed javax.swing.table.JTableHeader#setReorderingAllowed(Z)V
+setLayout java.awt.Container#setLayout(Ljava/awt/LayoutManager;)V
+addRow javax.swing.table.DefaultTableModel#addRow([Ljava/lang/Object;)V
+addActionListener javax.swing.AbstractButton#addActionListener(Ljava/awt/event/ActionListener;)V
+setDefaultEditor javax.swing.JTable#setDefaultEditor(Ljava/lang/Class;Ljavax/swing/table/TableCellEditor;)V

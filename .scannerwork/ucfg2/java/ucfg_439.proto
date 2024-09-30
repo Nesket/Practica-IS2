@@ -1,0 +1,150 @@
+
+)domain.Admin2#equals(Ljava/lang/Object;)ZI
+?/Users/nesket/git/Practica-IS2/src/main/java/domain/Admin2.java/ /("startingBlock*!
+28
+ 8("
+8 8(
+""*ã
+36 6(a
+_
+6 6(
+otherdomain.Admin2"__id*5
+
+__unknown_file (
+
+objjava.lang.Objectg
+e
+7 7(
+%5java.lang.String"__id*;
+
+__unknown_file (*
+domain.Admin2"
+
+usernamen
+l
+7 7( 
+%6java.lang.String"__id*B
+
+__unknown_file (&*$
+
+otherdomain.Admin2"
+
+username∑
+¥
+7 7( 
+%7boolean"	__compare*"
+
+__unknown_file (
+!=*4
+
+__unknown_file (
+
+%5java.lang.String*4
+
+__unknown_file (
+
+%6java.lang.String*
+2
+1*Ñ
+startingBlock/ /("ä
+á
+. .(
+
+%8"
+__annotate*2
+
+__unknown_file (
+java.lang.Override*5
+
+__unknown_file (
+
+objjava.lang.ObjectW
+U
+/ /(!
+objjava.lang.Object"__annotation*"
+
+__unknown_file (
+
+%8*
+9*!
+45
+ 5("
+5 5(
+""*ı
+54 4(çä
+4 4(
+%2java.lang.Class",java.lang.Object#getClass()Ljava/lang/Class;*-
+
+__unknown_file (
+domain.Admin22
+getClass()ïí
+4 4("
+%3java.lang.Class",java.lang.Object#getClass()Ljava/lang/Class;*5
+
+__unknown_file (
+
+objjava.lang.Object2
+getClass()µ
+≤
+4 4("
+%4boolean"	__compare*"
+
+__unknown_file (
+!=*3
+
+__unknown_file (
+
+%2java.lang.Class*3
+
+__unknown_file (
+
+%3java.lang.Class*
+3
+4*!
+63
+ 3("
+3 3(
+""*æ
+72 2(	¶
+£
+2 2(
+%1boolean"	__compare*"
+
+__unknown_file (
+==*5
+
+__unknown_file (
+
+objjava.lang.Object*"
+
+__unknown_file (
+""*
+5
+6*!
+81
+ 1("
+1 1(
+""*…
+90 0(
+±
+Æ
+0 0(
+%0boolean"	__compare*"
+
+__unknown_file (
+==*-
+
+__unknown_file (
+domain.Admin2*5
+
+__unknown_file (
+
+objjava.lang.Object*
+7
+8*!
+19	 9("
+9 9(
+"":#
+/ /(!
+objjava.lang.ObjectB
+domain.Admin2HX

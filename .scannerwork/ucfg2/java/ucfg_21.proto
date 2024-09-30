@@ -1,16 +1,82 @@
 
--domain.Question#getResult()Ljava/lang/String;I
-?/Users/iturrioz/git/Bets2021/src/main/java/domain/Question.javat t("1*≈
-1I
-?/Users/iturrioz/git/Bets2021/src/main/java/domain/Question.javau	 u(ç
-ä
-I
-?/Users/iturrioz/git/Bets2021/src/main/java/domain/Question.javau	 u(
-%0java.lang.String"__id**
-domain.Question"
-result"e
-I
-?/Users/iturrioz/git/Bets2021/src/main/java/domain/Question.javau u(
+=dataAccess.DataAccess#addCar(Ljava/lang/String;Ldomain/Car;)ZS
+G/Users/nesket/git/Practica-IS2/src/main/java/dataAccess/DataAccess.java≈ ≈("15*ÿ
+14
+« «(6ºπ
+
+« «(6
+%1boolean"DdataAccess.DataAccess#isAdded(Ljava/lang/String;Ljava/lang/String;)Z*5
+
+__unknown_file (
+dataAccess.DataAccess*:
+
+__unknown_file (
+
+usernamejava.lang.String*4
+
+__unknown_file (
 
-%0java.lang.StringB
-domain.Question
+%0java.lang.String2-isAdded(Ljava/lang/String;Ljava/lang/String;)*
+5
+10*∞
+15
+« «(óî
+
+«! «(5
+%0java.lang.String"+domain.Car#getMatrikula()Ljava/lang/String;*1
+
+__unknown_file (
+
+kotxe
+domain.Car2getMatrikula()*
+14*%
+5
+œ œ("
+
+œ œ(
+""*≥
+9
+   (%]
+[
+
+   (%
+dridomain.Driver"__id*1
+
+__unknown_file (
+
+%2domain.DriverΩ∫
+
+À À(
+
+%3void"#domain.Driver#addCar(Ldomain/Car;)V*2
+
+__unknown_file (
+
+dridomain.Driver*1
+
+__unknown_file (
+
+kotxe
+domain.Car2addCar(Ldomain/Car;)*
+5*í
+10
+   (˙˜
+
+   ($
+%2domain.Driver"BdataAccess.DataAccess#getDriver(Ljava/lang/String;)Ldomain/Driver;*5
+
+__unknown_file (
+dataAccess.DataAccess*:
+
+__unknown_file (
+
+usernamejava.lang.String2getDriver(Ljava/lang/String;)*
+9:*
+
+≈ ≈('
+usernamejava.lang.String:!
+
+≈( ≈(1
+kotxe
+domain.CarB
+dataAccess.DataAccessHX

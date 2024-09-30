@@ -1,0 +1,6 @@
+businessLogic.BLFacadeImplementation#getActualMoney(Ljava/lang/String;)D
+fd617b13a080d44dd7cc66c81a8f828a
+==
+getActualMoney dataAccess.DataAccess#getActualMoney(Ljava/lang/String;)D
+close dataAccess.DataAccess#close()V
+open dataAccess.DataAccess#open()V

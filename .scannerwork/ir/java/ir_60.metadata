@@ -1,0 +1,41 @@
+gui.EzabatuGUI#<init>()V
+d1693c8bc8b6b071ec41718c6702a7c8
+gui.EzabatuGUI#setBussinessLogic(LbusinessLogic/BLFacade;)V
+javax.swing.JTable#<init>()V
+java.util.ResourceBundle#getString(Ljava/lang/String;)Ljava/lang/String;
+java.text.NumberFormat#format(D)Ljava/lang/String;
+javax.swing.JButton#<init>(Ljava/lang/String;)V
+javax.swing.table.DefaultTableModel#<init>([Ljava/lang/Object;I)V
+javax.swing.JScrollPane#instance-init#
+javax.swing.JLabel#<init>()V
+java.awt.Dimension#<init>(II)V
+gui.LoginGUI#getBusinessLogic()LbusinessLogic/BLFacade;
+java.awt.BorderLayout#<init>(II)V
+java.awt.Dimension#instance-init#
+java.util.ResourceBundle#getBundle(Ljava/lang/String;)Ljava/util/ResourceBundle;
+javax.swing.JLabel#instance-init#
+javax.swing.JTable#instance-init#
+java.awt.BorderLayout#instance-init#
+javax.swing.JButton#instance-init#
+javax.swing.JScrollPane#<init>(Ljava/awt/Component;)V
+javax.swing.table.DefaultTableModel#instance-init#
+==
+add java.awt.Container#add(Ljava/awt/Component;Ljava/lang/Object;)V
+getErreklamaKop domain.User#getErreklamaKop()I
+getBalorazioa domain.User#getBalorazioa()D
+getTableHeader javax.swing.JTable#getTableHeader()Ljavax/swing/table/JTableHeader;
+setResizable java.awt.Frame#setResizable(Z)V
+getContentPane javax.swing.JFrame#getContentPane()Ljava/awt/Container;
+setModel javax.swing.JTable#setModel(Ljavax/swing/table/TableModel;)V
+setColumnSelectionAllowed javax.swing.JTable#setColumnSelectionAllowed(Z)V
+setSize java.awt.Window#setSize(Ljava/awt/Dimension;)V
+setRowSelectionAllowed javax.swing.JTable#setRowSelectionAllowed(Z)V
+getBalkop domain.User#getBalkop()I
+setTitle java.awt.Frame#setTitle(Ljava/lang/String;)V
+setReorderingAllowed javax.swing.table.JTableHeader#setReorderingAllowed(Z)V
+getUsername domain.User#getUsername()Ljava/lang/String;
+setLayout java.awt.Container#setLayout(Ljava/awt/LayoutManager;)V
+addRow javax.swing.table.DefaultTableModel#addRow([Ljava/lang/Object;)V
+addActionListener javax.swing.AbstractButton#addActionListener(Ljava/awt/event/ActionListener;)V
+getUserList businessLogic.BLFacade#getUserList()Ljava/util/List;
+setDefaultEditor javax.swing.JTable#setDefaultEditor(Ljava/lang/Class;Ljavax/swing/table/TableCellEditor;)V

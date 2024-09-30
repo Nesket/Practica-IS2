@@ -1,0 +1,3 @@
+domain.Driver#doesRideExists(Ljava/lang/String;Ljava/lang/String;Ljava/util/Date;)Z
+371658c89a711335cf271387a28e524e
+java.util.Objects#equals(Ljava/lang/Object;Ljava/lang/Object;)Z

@@ -1,0 +1,38 @@
+gui.MovementsGUI#<init>(Ljava/lang/String;)V
+87e6163ee51df3175a3b3bcb88ec246a
+javax.swing.JTable#<init>()V
+java.util.ResourceBundle#getString(Ljava/lang/String;)Ljava/lang/String;
+javax.swing.JButton#<init>(Ljava/lang/String;)V
+javax.swing.table.DefaultTableModel#<init>([Ljava/lang/Object;I)V
+javax.swing.JScrollPane#instance-init#
+gui.MovementsGUI#setBussinessLogic(LbusinessLogic/BLFacade;)V
+java.awt.BorderLayout#<init>()V
+java.awt.Dimension#<init>(II)V
+gui.LoginGUI#getBusinessLogic()LbusinessLogic/BLFacade;
+java.awt.Dimension#instance-init#
+java.lang.String#equals(Ljava/lang/Object;)Z
+java.util.ResourceBundle#getBundle(Ljava/lang/String;)Ljava/util/ResourceBundle;
+javax.swing.JTable#instance-init#
+java.awt.BorderLayout#instance-init#
+javax.swing.JButton#instance-init#
+javax.swing.JScrollPane#<init>(Ljava/awt/Component;)V
+javax.swing.table.DefaultTableModel#instance-init#
+==
+add java.awt.Container#add(Ljava/awt/Component;Ljava/lang/Object;)V
+getTableHeader javax.swing.JTable#getTableHeader()Ljavax/swing/table/JTableHeader;
+getAllMovements businessLogic.BLFacade#getAllMovements(Ldomain/User;)Ljava/util/List;
+getContentPane javax.swing.JFrame#getContentPane()Ljava/awt/Container;
+setResizable java.awt.Frame#setResizable(Z)V
+setModel javax.swing.JTable#setModel(Ljavax/swing/table/TableModel;)V
+setColumnSelectionAllowed javax.swing.JTable#setColumnSelectionAllowed(Z)V
+setSize java.awt.Window#setSize(Ljava/awt/Dimension;)V
+setRowSelectionAllowed javax.swing.JTable#setRowSelectionAllowed(Z)V
+getKopurua domain.Movement#getKopurua()D
+getUser businessLogic.BLFacade#getUser(Ljava/lang/String;)Ldomain/User;
+setTitle java.awt.Frame#setTitle(Ljava/lang/String;)V
+setReorderingAllowed javax.swing.table.JTableHeader#setReorderingAllowed(Z)V
+getEragiketa domain.Movement#getEragiketa()Ljava/lang/String;
+setLayout java.awt.Container#setLayout(Ljava/awt/LayoutManager;)V
+addActionListener javax.swing.AbstractButton#addActionListener(Ljava/awt/event/ActionListener;)V
+addRow javax.swing.table.DefaultTableModel#addRow([Ljava/lang/Object;)V
+setDefaultEditor javax.swing.JTable#setDefaultEditor(Ljava/lang/Class;Ljavax/swing/table/TableCellEditor;)V

@@ -1,0 +1,18 @@
+gui.LoginGUI#<init>()V
+53d16b69c21751bf04683b9b9c5f80bd
+java.awt.Dimension#<init>(II)V
+gui.LoginGUI#setBusinessLogic(LbusinessLogic/BLFacade;)V
+java.util.ResourceBundle#getString(Ljava/lang/String;)Ljava/lang/String;
+java.awt.Dimension#instance-init#
+java.util.ResourceBundle#getBundle(Ljava/lang/String;)Ljava/util/ResourceBundle;
+javax.swing.JLabel#instance-init#
+javax.swing.JLabel#<init>()V
+==
+add java.awt.Container#add(Ljava/awt/Component;)Ljava/awt/Component;
+setTitle java.awt.Frame#setTitle(Ljava/lang/String;)V
+getContentPane javax.swing.JFrame#getContentPane()Ljava/awt/Container;
+setLayout java.awt.Container#setLayout(Ljava/awt/LayoutManager;)V
+setResizable java.awt.Frame#setResizable(Z)V
+addActionListener javax.swing.AbstractButton#addActionListener(Ljava/awt/event/ActionListener;)V
+setBounds java.awt.Component#setBounds(IIII)V
+setSize java.awt.Window#setSize(Ljava/awt/Dimension;)V
