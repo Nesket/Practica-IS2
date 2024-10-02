@@ -122,7 +122,7 @@ public class GauzatuEragiketaMockWhiteTest {
     }
     
     @Test
-    public void test4() {
+    public void test5() {
         double initialUserMoney = 3;
 
         // Prepare parameters

@@ -111,7 +111,7 @@ public class GauzatuEragiketaBDWhiteTest {
 	}
 
 	@Test
-	public void test4() {
+	public void test5() {
 		// Prepare parameters
 		String username = "user2";
 		double amount = 2;
