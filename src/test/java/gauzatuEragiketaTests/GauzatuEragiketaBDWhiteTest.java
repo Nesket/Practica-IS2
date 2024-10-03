@@ -31,6 +31,7 @@ public class GauzatuEragiketaBDWhiteTest {
 
 	@Test
 	public void test1() {
+		System.out.println("\n----- TEST 1 -----");
 		double initialUserMoney = 3;
 
 		// Prepare parameters
@@ -44,7 +45,7 @@ public class GauzatuEragiketaBDWhiteTest {
 			testDA.removeDriver(username);
 		}
 		driver = testDA.createDriver(username, "fake_password");
-		driver.setMoney(initialUserMoney);
+		testDA.setMoneyToDriver(initialUserMoney, driver);
 		testDA.close();
 
 		// Invoke System Under Test
@@ -54,15 +55,22 @@ public class GauzatuEragiketaBDWhiteTest {
 
 		// Check results
 		assertTrue(result);
+
+		testDA.open();
+		driver = testDA.getDriver(username);
+		testDA.close();
+		
+		assertEquals(initialUserMoney + amount, driver.getMoney(), 0.0);
 	}
 
 	@Test
 	public void test2() {
+		System.out.println("\n----- TEST 2 -----");
 		double initialUserMoney = 3;
 
 		// Prepare parameters
 		String username = "user1";
-		double amount = 2;
+		double amount = 4;
 		boolean deposit = false;
 
 		// Prepare existing user
@@ -70,8 +78,8 @@ public class GauzatuEragiketaBDWhiteTest {
 		if (testDA.existDriver(username)) {
 			testDA.removeDriver(username);
 		}
-		User u = testDA.createDriver(username, "fake_password");
-		u.setMoney(initialUserMoney);
+		driver = testDA.createDriver(username, "fake_password");
+		testDA.setMoneyToDriver(initialUserMoney, driver);
 		testDA.close();
 
 		// Invoke System Under Test
@@ -81,10 +89,17 @@ public class GauzatuEragiketaBDWhiteTest {
 
 		// Check results
 		assertTrue(result);
+		
+		testDA.open();
+		driver = testDA.getDriver(username);
+		testDA.close();
+		
+		assertEquals(0, driver.getMoney(), 0.0);
 	}
 
 	@Test
 	public void test3() {
+		System.out.println("\n----- TEST 3 -----");
 		double initialUserMoney = 3;
 
 		// Prepare parameters
@@ -97,8 +112,8 @@ public class GauzatuEragiketaBDWhiteTest {
 		if (testDA.existDriver(username)) {
 			testDA.removeDriver(username);
 		}
-		User u = testDA.createDriver(username, "fake_password");
-		u.setMoney(initialUserMoney);
+		driver = testDA.createDriver(username, "fake_password");
+		testDA.setMoneyToDriver(initialUserMoney, driver);
 		testDA.close();
 
 		// Invoke System Under Test
@@ -108,10 +123,17 @@ public class GauzatuEragiketaBDWhiteTest {
 
 		// Check results
 		assertTrue(result);
+		
+		testDA.open();
+		driver = testDA.getDriver(username);
+		testDA.close();
+		
+		assertEquals(initialUserMoney - amount, driver.getMoney(), 0.0);
 	}
 
 	@Test
 	public void test5() {
+		System.out.println("\n----- TEST 5 -----");
 		// Prepare parameters
 		String username = "user2";
 		double amount = 2;

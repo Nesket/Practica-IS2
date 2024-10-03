@@ -68,8 +68,8 @@ public class GauzatuEragiketaBDBlackTest {
 		if (testDA.existDriver(username)) {
 			testDA.removeDriver(username);
 		}
-		User u = testDA.createDriver(username, "fake_password");
-		u.setMoney(initialUserMoney);
+		driver = testDA.createDriver(username, "fake_password");
+		testDA.setMoneyToDriver(initialUserMoney, driver);
 		testDA.close();
 
 		// Invoke System Under Test
@@ -114,17 +114,17 @@ public class GauzatuEragiketaBDBlackTest {
 		double initialUserMoney = 20;
 
 		// Prepare parameters
-		String username = "user1";
-		double amount = 10;
-		boolean deposit = true;
+		username = "user1";
+		amount = 10.0;
+		deposit = true;
 
 		// Prepare existing user
 		testDA.open();
 		if (testDA.existDriver(username)) {
 			testDA.removeDriver(username);
 		}
-		User u = testDA.createDriver(username, "fake_password");
-		u.setMoney(initialUserMoney);
+		driver = testDA.createDriver(username, "fake_password");
+		testDA.setMoneyToDriver(initialUserMoney, driver);
 		testDA.close();
 
 		// Invoke System Under Test
@@ -134,6 +134,12 @@ public class GauzatuEragiketaBDBlackTest {
 
 		// Check results
 		assertTrue(result);
+		
+		testDA.open();
+		driver = testDA.getDriver(username);
+		testDA.close();
+		
+		assertEquals(initialUserMoney + amount, driver.getMoney(), 0.0);
 	}
 
 	@Test
@@ -141,17 +147,17 @@ public class GauzatuEragiketaBDBlackTest {
 		double initialUserMoney = 20;
 
 		// Prepare parameters
-		String username = "user1";
-		double amount = 10;
-		boolean deposit = false;
+		username = "user1";
+		amount = 10.0;
+		deposit = false;
 
 		// Prepare existing user
 		testDA.open();
 		if (testDA.existDriver(username)) {
 			testDA.removeDriver(username);
 		}
-		User u = testDA.createDriver(username, "fake_password");
-		u.setMoney(initialUserMoney);
+		driver = testDA.createDriver(username, "fake_password");
+		testDA.setMoneyToDriver(initialUserMoney, driver);
 		testDA.close();
 
 		// Invoke System Under Test
@@ -161,6 +167,12 @@ public class GauzatuEragiketaBDBlackTest {
 
 		// Check results
 		assertTrue(result);
+		
+		testDA.open();
+		driver = testDA.getDriver(username);
+		testDA.close();
+		
+		assertEquals(initialUserMoney - amount, driver.getMoney(), 0.0);
 	}
 	
 	@Test
@@ -168,17 +180,17 @@ public class GauzatuEragiketaBDBlackTest {
 		double initialUserMoney = 20;
 
 		// Prepare parameters
-		String username = "user1";
-		double amount = 23;
-		boolean deposit = false;
+		username = "user1";
+		amount = 23.0;
+		deposit = false;
 
 		// Prepare existing user
 		testDA.open();
 		if (testDA.existDriver(username)) {
 			testDA.removeDriver(username);
 		}
-		User u = testDA.createDriver(username, "fake_password");
-		u.setMoney(initialUserMoney);
+		driver = testDA.createDriver(username, "fake_password");
+		testDA.setMoneyToDriver(initialUserMoney, driver);
 		testDA.close();
 
 		// Invoke System Under Test
@@ -188,6 +200,12 @@ public class GauzatuEragiketaBDBlackTest {
 
 		// Check results
 		assertTrue(result);
+		
+		testDA.open();
+		driver = testDA.getDriver(username);
+		testDA.close();
+		
+		assertEquals(0, driver.getMoney(), 0.0);
 	}
 
 }
