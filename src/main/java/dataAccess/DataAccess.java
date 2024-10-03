@@ -481,8 +481,10 @@ public class DataAccess {
 		try {
 			db.getTransaction().begin();
 			User user = getUser(username);
+			System.out.println(user.getUsername());
 			if (user != null) {
 				double currentMoney = user.getMoney();
+				System.out.println(">>"+currentMoney);
 				if (deposit) {
 					user.setMoney(currentMoney + amount);
 				} else {
@@ -503,7 +505,6 @@ public class DataAccess {
 			db.getTransaction().commit();
 			return false;
 		} catch (Exception e) {
-			System.out.println("\n\n >>> ENTRA AQUÍ EN test4() CUANDO NO EXISTE EL USUARIO PORQUE getUser DEVUELVE LANZA javax.persistence.NoResultException\n\n");
 			e.printStackTrace();
 			db.getTransaction().rollback();
 			return false;
