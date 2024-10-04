@@ -98,14 +98,14 @@ public class BidaiakKudeatuGUI extends JFrame {
 		jButtonClose = new JButton(ResourceBundle.getBundle("Etiquetas").getString("EgoeraGUI.Close"));
 		jButtonClose.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				jButtonClose_actionPerformed();
+				jButtonClose_actionPerformed(e);
 			}
 		});
 		getContentPane().add(jButtonClose, BorderLayout.SOUTH);
 
 	}
 
-	private void jButtonClose_actionPerformed() {
+	private void jButtonClose_actionPerformed(ActionEvent e) {
 		this.setVisible(false);
 	}
 
