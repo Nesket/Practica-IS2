@@ -13,6 +13,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import configuration.ConfigXML;
+import jdk.jfr.internal.Logger;
 
 import javax.swing.JTextArea;
 import javax.xml.ws.Endpoint;
@@ -102,7 +103,7 @@ public class BusinessLogicServer extends JDialog {
 			try{
 				
 				if (!c.isDatabaseLocal()) {
-					System.out.println("\nWARNING: Please be sure ObjectdbManagerServer is launched\n           in machine: "+c.getDatabaseNode()+" port: "+c.getDatabasePort()+"\n");	
+					Logger.log(null, null, "\nWARNING: Please be sure ObjectdbManagerServer is launched\n           in machine: "+c.getDatabaseNode()+" port: "+c.getDatabasePort()+"\n");
 				}
 				
 				service= "http://"+c.getBusinessLogicNode() +":"+ c.getBusinessLogicPort()+"/ws/"+c.getBusinessLogicName();
