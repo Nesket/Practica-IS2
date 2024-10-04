@@ -12,45 +12,42 @@ import configuration.ConfigXML;
 import domain.Driver;
 import domain.Ride;
 
-
 public class TestDataAccess {
-	protected  EntityManager  db;
-	protected  EntityManagerFactory emf;
+	protected EntityManager db;
+	protected EntityManagerFactory emf;
 
-	ConfigXML  c=ConfigXML.getInstance();
+	ConfigXML c = ConfigXML.getInstance();
 
+	public TestDataAccess() {
 
-	public TestDataAccess()  {
-		
 		System.out.println("TestDataAccess created");
 
-		//open();
-		
+		// open();
+
 	}
 
-	
-	public void open(){
-		
+	public void open() {
 
-		String fileName=c.getDbFilename();
-		
+		String fileName = c.getDbFilename();
+
 		if (c.isDatabaseLocal()) {
-			  emf = Persistence.createEntityManagerFactory("objectdb:"+fileName);
-			  db = emf.createEntityManager();
+			emf = Persistence.createEntityManagerFactory("objectdb:" + fileName);
+			db = emf.createEntityManager();
 		} else {
 			Map<String, String> properties = new HashMap<String, String>();
-			  properties.put("javax.persistence.jdbc.user", c.getUser());
-			  properties.put("javax.persistence.jdbc.password", c.getPassword());
+			properties.put("javax.persistence.jdbc.user", c.getUser());
+			properties.put("javax.persistence.jdbc.password", c.getPassword());
 
-			  emf = Persistence.createEntityManagerFactory("objectdb://"+c.getDatabaseNode()+":"+c.getDatabasePort()+"/"+fileName, properties);
+			emf = Persistence.createEntityManagerFactory(
+					"objectdb://" + c.getDatabaseNode() + ":" + c.getDatabasePort() + "/" + fileName, properties);
 
-			  db = emf.createEntityManager();
-    	   }
+			db = emf.createEntityManager();
+		}
 		System.out.println("TestDataAccess opened");
 
-		
 	}
-	public void close(){
+
+	public void close() {
 		db.close();
 		System.out.println("TestDataAccess closed");
 	}
@@ -58,82 +55,105 @@ public class TestDataAccess {
 	public boolean removeDriver(String name) {
 		System.out.println(">> TestDataAccess: removeDriver");
 		Driver d = db.find(Driver.class, name);
-		if (d!=null) {
+		if (d != null) {
 			db.getTransaction().begin();
 			db.remove(d);
 			db.getTransaction().commit();
 			return true;
-		} else 
-		return false;
-    }
+		} else
+			return false;
+	}
+
 	public Driver createDriver(String name, String pass) {
 		System.out.println(">> TestDataAccess: addDriver");
-		Driver driver=null;
-			db.getTransaction().begin();
-			try {
-			    driver=new Driver(name,pass);
-				db.persist(driver);
-				db.getTransaction().commit();
-			}
-			catch (Exception e){
-				e.printStackTrace();
-			}
-			return driver;
-    }
-	public boolean existDriver(String email) {
-		 return  db.find(Driver.class, email)!=null;
-		 
-
-	}
-		
-		public Driver addDriverWithRide(String name, String from, String to,  Date date, int nPlaces, float price) {
-			System.out.println(">> TestDataAccess: addDriverWithRide");
-				Driver driver=null;
-				db.getTransaction().begin();
-				try {
-					 driver = db.find(Driver.class, name);
-					if (driver==null) {
-						System.out.println("Entra en null");
-						driver=new Driver(name,null);
-				    	db.persist(driver);
-					}
-				    driver.addRide(from, to, date, nPlaces, price);
-					db.getTransaction().commit();
-					System.out.println("Driver created "+driver);
-					
-					return driver;
-					
-				}
-				catch (Exception e){
-					e.printStackTrace();
-				}
-				return null;
-	    }
-		
-		
-		public boolean existRide(String name, String from, String to, Date date) {
-			System.out.println(">> TestDataAccess: existRide");
-			Driver d = db.find(Driver.class, name);
-			if (d!=null) {
-				return d.doesRideExists(from, to, date);
-			} else 
-			return false;
+		Driver driver = null;
+		db.getTransaction().begin();
+		try {
+			driver = new Driver(name, pass);
+			db.persist(driver);
+			db.getTransaction().commit();
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
-		public Ride removeRide(String name, String from, String to, Date date ) {
-			System.out.println(">> TestDataAccess: removeRide");
-			Driver d = db.find(Driver.class, name);
-			if (d!=null) {
-				db.getTransaction().begin();
-				Ride r= d.removeRide(from, to, date);
-				db.getTransaction().commit();
-				System.out.println("created rides" +d.getCreatedRides());
-				return r;
+		return driver;
+	}
+	
+	public Driver getDriver(String name) {
+		System.out.println(">> TestDataAccess: getDriver");
+		Driver driver = null;
+		db.getTransaction().begin();
+		try {
+			driver = db.find(Driver.class, name);
 
-			} else 
+			return driver;
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	public void setMoneyToDriver(double money, Driver driver) {
+		System.out.println(">> TestDataAccess: setMoneyToDriver");
+		db.getTransaction().begin();
+		try {
+			driver.setMoney(money);
+			db.getTransaction().commit();
+			System.out.println("Driver's money updated to " + money);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	public boolean existDriver(String email) {
+		return db.find(Driver.class, email) != null;
+	}
+
+	public Driver addDriverWithRide(String name, String from, String to, Date date, int nPlaces, float price) {
+		System.out.println(">> TestDataAccess: addDriverWithRide");
+		Driver driver = null;
+		db.getTransaction().begin();
+		try {
+			driver = db.find(Driver.class, name);
+			if (driver == null) {
+				System.out.println("Entra en null");
+				driver = new Driver(name, null);
+				db.persist(driver);
+			}
+			driver.addRide(from, to, date, nPlaces, price);
+			db.getTransaction().commit();
+			System.out.println("Driver created " + driver);
+
+			return driver;
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	public boolean existRide(String name, String from, String to, Date date) {
+		System.out.println(">> TestDataAccess: existRide");
+		Driver d = db.find(Driver.class, name);
+		if (d != null) {
+			return d.doesRideExists(from, to, date);
+		} else
+			return false;
+	}
+
+	public Ride removeRide(String name, String from, String to, Date date) {
+		System.out.println(">> TestDataAccess: removeRide");
+		Driver d = db.find(Driver.class, name);
+		if (d != null) {
+			db.getTransaction().begin();
+			Ride r = d.removeRide(from, to, date);
+			db.getTransaction().commit();
+			System.out.println("created rides" + d.getCreatedRides());
+			return r;
+
+		} else
 			return null;
 
-		}
+	}
 
-
-		
 }
