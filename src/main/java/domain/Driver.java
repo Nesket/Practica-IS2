@@ -25,7 +25,7 @@ public class Driver extends User implements Serializable {
 	private List<Car> cars = new Vector<Car>();;
 	@XmlIDREF
 	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-	private List<Ride> createdRides = new ArrayList<Ride>();
+	private List<Ride> createdRides = new ArrayList<>();
 
 	public Driver(String username, String passwd) {
 		super(username, passwd, "Driver");

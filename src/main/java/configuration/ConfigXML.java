@@ -69,7 +69,7 @@ public class ConfigXML {
 		return businessLogicLocal;
 	}
 
-    private static ConfigXML single_instance = null;
+    private static ConfigXML singleInstance = null;
 	
 	private ConfigXML(){
 		
@@ -142,10 +142,10 @@ public class ConfigXML {
 	
     public static synchronized ConfigXML getInstance()
     {
-        if (single_instance == null)
-            single_instance = new ConfigXML();
+        if (singleInstance == null)
+            singleInstance = new ConfigXML();
  
-        return single_instance;
+        return singleInstance;
     }
 
 	public String getBusinessLogicNode() {
