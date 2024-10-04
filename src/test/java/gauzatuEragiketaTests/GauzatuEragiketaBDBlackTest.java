@@ -38,13 +38,19 @@ public class GauzatuEragiketaBDBlackTest {
 	
 	@SuppressWarnings("unused")
 	private Boolean deposit;
-
+	
+	private double initialUserMoney = 20;
+	
+	private void setInitValues(String username, Double amount, Boolean deposit) {
+		this.username = username;
+		this.amount = amount;
+		this.deposit = deposit;
+	}
+	
 	@Test
 	public void test1() {
 		// Prepare parameters
-		username = null;
-		amount = 2.0;
-		deposit = false;
+		setInitValues(null, 2.0, false);
 
 		// Invoke System Under Test
 		sut.open();
@@ -56,12 +62,8 @@ public class GauzatuEragiketaBDBlackTest {
 	
 	@Test
 	public void test2() {
-		double initialUserMoney = 20;
-
 		// Prepare parameters
-		username = "user1";
-		amount = null;
-		deposit = false;
+		setInitValues("user1", null, false);
 
 		// Prepare existing user
 		testDA.open();
@@ -75,7 +77,7 @@ public class GauzatuEragiketaBDBlackTest {
 		// Invoke System Under Test
 		sut.open();
 		try {			
-			boolean result = sut.gauzatuEragiketa(username, amount, deposit);
+			sut.gauzatuEragiketa(username, amount, deposit);
 			fail();
 		} catch (Exception e) {
 			assertTrue(true);
@@ -85,12 +87,8 @@ public class GauzatuEragiketaBDBlackTest {
 	
 	@Test
 	public void test3() {
-		double initialUserMoney = 20;
-
 		// Prepare parameters
-		username = "user2";
-		amount = null;
-		deposit = false;
+		setInitValues("user2", null, false);
 		
 		// Prepare non-existing user
 		testDA.open();
@@ -111,12 +109,8 @@ public class GauzatuEragiketaBDBlackTest {
 
 	@Test
 	public void test4() {
-		double initialUserMoney = 20;
-
 		// Prepare parameters
-		username = "user1";
-		amount = 10.0;
-		deposit = true;
+		setInitValues("user1", 10.0, true);
 
 		// Prepare existing user
 		testDA.open();
@@ -144,12 +138,8 @@ public class GauzatuEragiketaBDBlackTest {
 
 	@Test
 	public void test5() {
-		double initialUserMoney = 20;
-
 		// Prepare parameters
-		username = "user1";
-		amount = 10.0;
-		deposit = false;
+		setInitValues("user1", 10.0, false);
 
 		// Prepare existing user
 		testDA.open();
@@ -177,12 +167,8 @@ public class GauzatuEragiketaBDBlackTest {
 	
 	@Test
 	public void test6() {
-		double initialUserMoney = 20;
-
 		// Prepare parameters
-		username = "user1";
-		amount = 23.0;
-		deposit = false;
+		setInitValues("user1", 23.0, false);
 
 		// Prepare existing user
 		testDA.open();

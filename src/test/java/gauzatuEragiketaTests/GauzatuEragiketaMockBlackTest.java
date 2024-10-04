@@ -59,6 +59,14 @@ public class GauzatuEragiketaMockBlackTest {
 	
 	@SuppressWarnings("unused")
 	private Boolean deposit;
+	
+	private double initialUserMoney = 20;
+	
+	private void setInitValues(String username, Double amount, Boolean deposit) {
+		this.username = username;
+		this.amount = amount;
+		this.deposit = deposit;
+	}
 
     @Before
     public  void init() {
@@ -79,9 +87,7 @@ public class GauzatuEragiketaMockBlackTest {
     @Test
 	public void test1() {
 		// Prepare parameters
-		username = null;
-		amount = 2.0;
-		deposit = false;
+		setInitValues(null, 2.0, false);
 
 		// Invoke System Under Test
 		sut.open();
@@ -93,12 +99,8 @@ public class GauzatuEragiketaMockBlackTest {
 	
 	@Test
 	public void test2() {
-		double initialUserMoney = 20;
-
 		// Prepare parameters
-		username = "mockedUser";
-		amount = null;
-		deposit = false;
+		setInitValues("mockedUser", null, false);
 
 		// Prepare existing user
 		User mockUser = Mockito.mock(Driver.class);
@@ -120,12 +122,8 @@ public class GauzatuEragiketaMockBlackTest {
 	
 	@Test
 	public void test3() {
-		double initialUserMoney = 20;
-
 		// Prepare parameters
-		username = "mockedUser";
-		amount = null;
-		deposit = false;
+		setInitValues("mockedUser", null, false);
 		
 		// Prepare non-existing user
 		User mockUser = Mockito.mock(Driver.class);
@@ -147,12 +145,8 @@ public class GauzatuEragiketaMockBlackTest {
 
 	@Test
 	public void test4() {
-		double initialUserMoney = 20;
-
 		// Prepare parameters
-		username = "mockedUser";
-		amount = 10.0;
-		deposit = true;
+		setInitValues("mockedUser", 10.0, true);
 
 		// Prepare existing user
 		User mockUser = Mockito.mock(Driver.class);
@@ -174,12 +168,8 @@ public class GauzatuEragiketaMockBlackTest {
 
 	@Test
 	public void test5() {
-		double initialUserMoney = 20;
-
 		// Prepare parameters
-		username = "mockedUser";
-		amount = 10.0;
-		deposit = false;
+		setInitValues("mockedUser", 10.0, false);
 
 		// Prepare existing user
 		User mockUser = Mockito.mock(Driver.class);
@@ -201,12 +191,8 @@ public class GauzatuEragiketaMockBlackTest {
 	
 	@Test
 	public void test6() {
-		double initialUserMoney = 20;
-
 		// Prepare parameters
-		username = "mockedUser";
-		amount = 23.0;
-		deposit = false;
+		setInitValues("mockedUser", 23.0, false);
 
 		// Prepare existing user
 		User mockUser = Mockito.mock(Driver.class);

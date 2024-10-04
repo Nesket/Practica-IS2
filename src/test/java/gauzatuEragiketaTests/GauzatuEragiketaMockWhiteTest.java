@@ -50,6 +50,23 @@ public class GauzatuEragiketaMockWhiteTest {
 
     @SuppressWarnings("unused")
     private Driver driver;
+    
+    @SuppressWarnings("unused")
+	private String username;
+	
+	@SuppressWarnings("unused")
+	private double amount;
+	
+	@SuppressWarnings("unused")
+	private boolean deposit;
+	
+	private double initialUserMoney = 3;
+	
+	private void setInitValues(String username, double amount, boolean deposit) {
+		this.username = username;
+		this.amount = amount;
+		this.deposit = deposit;
+	}
 
     @Before
     public  void init() {
@@ -70,12 +87,8 @@ public class GauzatuEragiketaMockWhiteTest {
     @Test
 	public void test1() {
 		System.out.println("\n----- TEST 1 -----");
-		double initialUserMoney = 3;
-
 		// Prepare parameters
-		String username = "mockedUser";
-		double amount = 2;
-		boolean deposit = true;
+		setInitValues("mockedUser", 2, true);
 
 		// Prepare existing user
 		User mockUser = Mockito.mock(Driver.class);
@@ -98,12 +111,8 @@ public class GauzatuEragiketaMockWhiteTest {
 	@Test
 	public void test2() {
 		System.out.println("\n----- TEST 2 -----");
-		double initialUserMoney = 3;
-
 		// Prepare parameters
-		String username = "mockedUser";
-		double amount = 4;
-		boolean deposit = false;
+		setInitValues("mockedUser", 4, false);
 
 		// Prepare existing user
 		User mockUser = Mockito.mock(Driver.class);
@@ -126,12 +135,8 @@ public class GauzatuEragiketaMockWhiteTest {
 	@Test
 	public void test3() {
 		System.out.println("\n----- TEST 3 -----");
-		double initialUserMoney = 3;
-
 		// Prepare parameters
-		String username = "mockedUser";
-		double amount = 2;
-		boolean deposit = false;
+		setInitValues("mockedUser", 2, false);
 
 		// Prepare existing user
 		User mockUser = Mockito.mock(Driver.class);
@@ -155,9 +160,7 @@ public class GauzatuEragiketaMockWhiteTest {
 	public void test5() {
 		System.out.println("\n----- TEST 5 -----");
 		// Prepare parameters
-		String username = "mockedUser";
-		double amount = 2;
-		boolean deposit = false;
+		setInitValues("mockedUser", 2, false);
 
 		// Prepare non-existing user
 		Mockito.when(db.createQuery(Mockito.anyString(), Mockito.any(Class.class))).thenReturn(typedQuery);		

@@ -28,16 +28,30 @@ public class GauzatuEragiketaBDWhiteTest {
 
 	@SuppressWarnings("unused")
 	private Driver driver;
+	
+	@SuppressWarnings("unused")
+	private String username;
+	
+	@SuppressWarnings("unused")
+	private double amount;
+	
+	@SuppressWarnings("unused")
+	private boolean deposit;
+	
+	private double initialUserMoney = 3;
+	
+	private void setInitValues(String username, double amount, boolean deposit) {
+		this.username = username;
+		this.amount = amount;
+		this.deposit = deposit;
+	}
 
 	@Test
 	public void test1() {
 		System.out.println("\n----- TEST 1 -----");
-		double initialUserMoney = 3;
 
 		// Prepare parameters
-		String username = "user1";
-		double amount = 2;
-		boolean deposit = true;
+		setInitValues("user1", 2, true);
 
 		// Prepare existing user
 		testDA.open();
@@ -66,12 +80,9 @@ public class GauzatuEragiketaBDWhiteTest {
 	@Test
 	public void test2() {
 		System.out.println("\n----- TEST 2 -----");
-		double initialUserMoney = 3;
 
 		// Prepare parameters
-		String username = "user1";
-		double amount = 4;
-		boolean deposit = false;
+		setInitValues("user1", 4, false);
 
 		// Prepare existing user
 		testDA.open();
@@ -100,12 +111,9 @@ public class GauzatuEragiketaBDWhiteTest {
 	@Test
 	public void test3() {
 		System.out.println("\n----- TEST 3 -----");
-		double initialUserMoney = 3;
 
 		// Prepare parameters
-		String username = "user1";
-		double amount = 2;
-		boolean deposit = false;
+		setInitValues("user1", 2, false);
 
 		// Prepare existing user
 		testDA.open();
@@ -134,10 +142,9 @@ public class GauzatuEragiketaBDWhiteTest {
 	@Test
 	public void test5() {
 		System.out.println("\n----- TEST 5 -----");
+		
 		// Prepare parameters
-		String username = "user2";
-		double amount = 2;
-		boolean deposit = false;
+		setInitValues("user2", 2, false);
 
 		// Prepare non-existing user
 		testDA.open();
