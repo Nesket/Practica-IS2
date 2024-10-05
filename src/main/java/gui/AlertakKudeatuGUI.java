@@ -83,7 +83,7 @@ public class AlertakKudeatuGUI extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				JFrame a = new AlertaSortuGUI(username);
 				a.setVisible(true);
-				closeButton_actionPerformed(e);
+				closeButton_actionPerformed();
 			}
 		});
 		buttonPanel.add(addButton);
@@ -152,14 +152,14 @@ public class AlertakKudeatuGUI extends JFrame {
 		closeButton = new JButton(ResourceBundle.getBundle("Etiquetas").getString("Close"));
 		closeButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				closeButton_actionPerformed(e);
+				closeButton_actionPerformed();
 			}
 		});
 		buttonPanel.add(closeButton);
 
 	}
 
-	private void closeButton_actionPerformed(ActionEvent e) {
+	private void closeButton_actionPerformed() {
 		this.setVisible(false);
 	}
 
