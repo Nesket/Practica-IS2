@@ -226,10 +226,8 @@ public class CreateRideGUI extends JFrame {
 						UtilDate.trim(jCalendar.getDate()), inputSeats, price, driver.getUsername());
 				jLabelMsg.setText(ResourceBundle.getBundle("Etiquetas").getString("CreateRideGUI.RideCreated"));
 
-			} catch (RideMustBeLaterThanTodayException e1) {
-				jLabelMsg.setText(e1.getMessage());
-			} catch (RideAlreadyExistException e1) {
-				jLabelMsg.setText(e1.getMessage());
+			} catch (RideMustBeLaterThanTodayException | RideAlreadyExistException e1) {
+			    jLabelMsg.setText(e1.getMessage());
 			}
 
 	}
