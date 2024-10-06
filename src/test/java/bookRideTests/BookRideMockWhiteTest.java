@@ -235,8 +235,6 @@ static DataAccess sut = new DataAccess();
 			Mockito.doReturn(10.00).when(mockedRide).getPrice();
 			Mockito.doReturn(10.00).when(mockedUser).getMoney();
 			
-			Booking mockedBooking = Mockito.mock(Booking.class);
-			
 			// Invoke System Under Test
 			sut.open();
 			

@@ -561,6 +561,7 @@ public class DataAccess {
 			System.out.println("Ride booked successfully!");
 			return true;
 		} catch (Exception e) {
+			System.out.println(e.getMessage());
 			db.getTransaction().rollback();
 			return false;
 		}
