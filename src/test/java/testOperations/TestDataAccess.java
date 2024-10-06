@@ -12,9 +12,14 @@ import configuration.ConfigXML;
 import domain.Driver;
 import domain.Ride;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 public class TestDataAccess {
 	protected EntityManager db;
 	protected EntityManagerFactory emf;
+	
+	private static final Logger logger = LoggerFactory.getLogger(TestDataAccess.class);
 
 	ConfigXML c = ConfigXML.getInstance();
 
@@ -101,7 +106,7 @@ public class TestDataAccess {
 			db.getTransaction().commit();
 			System.out.println("Driver's money updated to " + money);
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.error("Error occurred: ", e);
 		}
 	}
 
@@ -127,7 +132,7 @@ public class TestDataAccess {
 			return driver;
 
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.error("Error occurred: ", e);
 		}
 		return null;
 	}
