@@ -147,4 +147,19 @@ public class TestDataAccess {
 			}
 		}
 		
+		public Driver getDriver(String name) {
+			System.out.println(">> TestDataAccess: getDriver");
+			Driver driver = null;
+			db.getTransaction().begin();
+			try {
+				driver = db.find(Driver.class, name);
+
+				return driver;
+
+			} catch (Exception e) {
+				logger.info("Error occurred: "+ e.getMessage());
+			}
+			return null;
+		}
+		
 }
