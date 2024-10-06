@@ -481,10 +481,8 @@ public class DataAccess {
 		try {
 			db.getTransaction().begin();
 			User user = getUser(username);
-			System.out.println(user.getUsername());
 			if (user != null) {
 				double currentMoney = user.getMoney();
-				System.out.println(">>"+currentMoney);
 				if (deposit) {
 					user.setMoney(currentMoney + amount);
 				} else {
