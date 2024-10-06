@@ -50,7 +50,7 @@ public class CreateRideMockBlackTest {
         
         Mockito.doReturn(db).when(entityManagerFactory).createEntityManager();
 		Mockito.doReturn(et).when(db).getTransaction();
-	    sut=new DataAccess(db);
+	    sut = new DataAccess(db);
     }
 	@After
     public  void tearDown() {

@@ -1,0 +1,87 @@
+
+ObusinessLogic.BLFacadeImplementation#updateAlertaAurkituak(Ljava/lang/String;)Zb
+V/Users/nesket/git/Practica-IS2/src/main/java/businessLogic/BLFacadeImplementation.java­ ­(%"startingBlock*”
+startingBlock
+­% ­(6‘
+Ž
+
+¬ ¬(
+
+%6"
+__annotate*2
+
+__unknown_file (
+java.lang.Override*:
+
+__unknown_file (
+
+usernamejava.lang.String^
+\
+
+­- ­(5
+usernamejava.lang.String"__annotation*"
+
+__unknown_file (
+
+%6*
+1*Æ
+1
+® ®(‡
+„
+
+® ®(
+%0dataAccess.DataAccess"__id*S
+
+__unknown_file (7*5&
+$businessLogic.BLFacadeImplementation"
+	dbManager|z
+
+® ®(
+
+%1void"dataAccess.DataAccess#open()V*9
+
+__unknown_file (
+
+%0dataAccess.DataAccess2open()‡
+„
+
+¯ ¯(
+%2dataAccess.DataAccess"__id*S
+
+__unknown_file (7*5&
+$businessLogic.BLFacadeImplementation"
+	dbManager‚ÿ
+
+¯ ¯(9
+%3boolean"@dataAccess.DataAccess#updateAlertaAurkituak(Ljava/lang/String;)Z*9
+
+__unknown_file (
+
+%2dataAccess.DataAccess*:
+
+__unknown_file (
+
+usernamejava.lang.String2)updateAlertaAurkituak(Ljava/lang/String;)‡
+„
+
+° °(
+%4dataAccess.DataAccess"__id*S
+
+__unknown_file (7*5&
+$businessLogic.BLFacadeImplementation"
+	dbManager~|
+
+° °(
+
+%5void"dataAccess.DataAccess#close()V*9
+
+__unknown_file (
+
+%4dataAccess.DataAccess2close()"
+
+± ±(
+"":*
+
+­& ­(5
+usernamejava.lang.StringB(&
+$businessLogic.BLFacadeImplementationHX

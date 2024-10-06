@@ -1,0 +1,22 @@
+gui.AlertaSortuGUI#<init>(Ljava/lang/String;)V
+dbb60539e328fe163b9b9814c6eaf6a3
+java.awt.Dimension#<init>(II)V
+java.util.ResourceBundle#getString(Ljava/lang/String;)Ljava/lang/String;
+java.awt.Dimension#instance-init#
+java.awt.Rectangle#instance-init#
+java.util.ResourceBundle#getBundle(Ljava/lang/String;)Ljava/util/ResourceBundle;
+java.awt.Rectangle#<init>(IIII)V
+gui.AlertaSortuGUI#setBussinessLogic(LBLFacade;)V
+==
+setColumns javax.swing.JTextField#setColumns(I)V
+add java.awt.Container#add(Ljava/awt/Component;)Ljava/awt/Component;
+add java.awt.Container#add(Ljava/awt/Component;Ljava/lang/Object;)V
+add java.awt.Container#add(Ljava/lang/String;Ljava/awt/Component;)Ljava/awt/Component;
+setTitle java.awt.Frame#setTitle(Ljava/lang/String;)V
+getContentPane javax.swing.JFrame#getContentPane()Ljava/awt/Container;
+setLayout java.awt.Container#setLayout(Ljava/awt/LayoutManager;)V
+addActionListener javax.swing.AbstractButton#addActionListener(Ljava/awt/event/ActionListener;)V
+setBounds java.awt.Component#setBounds(Ljava/awt/Rectangle;)V
+setBounds java.awt.Component#setBounds(IIII)V
+setForeground javax.swing.JComponent#setForeground(Ljava/awt/Color;)V
+setSize java.awt.Window#setSize(Ljava/awt/Dimension;)V

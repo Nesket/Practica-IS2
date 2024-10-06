@@ -1,0 +1,16 @@
+gui.CreateRideGUI#instance-init#
+a64e5ab91679c9cbdcf429b5da01f920
+null
+java.util.ResourceBundle#getString(Ljava/lang/String;)Ljava/lang/String;
+javax.swing.JButton#<init>(Ljava/lang/String;)V
+javax.swing.JScrollPane#instance-init#
+javax.swing.JLabel#<init>()V
+javax.swing.JScrollPane#<init>()V
+javax.swing.JLabel#<init>(Ljava/lang/String;)V
+javax.swing.JTextField#instance-init#
+javax.swing.JTextField#<init>()V
+javax.swing.JLabel#instance-init#
+java.util.ResourceBundle#getBundle(Ljava/lang/String;)Ljava/util/ResourceBundle;
+javax.swing.JComboBox#instance-init#
+javax.swing.JComboBox#<init>()V
+javax.swing.JButton#instance-init#

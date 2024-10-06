@@ -14,7 +14,6 @@ import org.w3c.dom.NodeList;
  * It provides the configuration data from the "resources/config.xml" XML file
  */
 public class ConfigXML {
-	
 	private String configFile = "src/main/resources/config.xml";
 		
 	private String businessLogicNode;
@@ -69,8 +68,9 @@ public class ConfigXML {
 	public boolean isBusinessLogicLocal() {
 		return businessLogicLocal;
 	}
-	private static ConfigXML theInstance = new ConfigXML();
 
+    private static ConfigXML singleInstance = null;
+	
 	private ConfigXML(){
 		
 		  try {
@@ -139,9 +139,13 @@ public class ConfigXML {
 
 	 }
 	
-	public static ConfigXML getInstance() {
-		return theInstance;
-	}
+    public static synchronized ConfigXML getInstance()
+    {
+        if (singleInstance == null)
+            singleInstance = new ConfigXML();
+ 
+        return singleInstance;
+    }
 
 	public String getBusinessLogicNode() {
 		return businessLogicNode;

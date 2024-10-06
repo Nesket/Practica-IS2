@@ -1,17 +1,12 @@
 
-/domain.Question#getQuestion()Ljava/lang/String;I
-?/Users/iturrioz/git/Bets2021/src/main/java/domain/Question.javaH H("1*«
-1I
-?/Users/iturrioz/git/Bets2021/src/main/java/domain/Question.javaI	 I(è
-å
-I
-?/Users/iturrioz/git/Bets2021/src/main/java/domain/Question.javaI	 I(
-%0java.lang.String"__id*!*
-domain.Question"
+DdataAccess.DataAccess#getAllMovements(Ldomain/User;)Ljava/util/List;S
+G/Users/nesket/git/Practica-IS2/src/main/java/dataAccess/DataAccess.javaØ Ø(&"1*%
+1
+∞ ∞(!"
 
-question"e
-I
-?/Users/iturrioz/git/Bets2021/src/main/java/domain/Question.javaI I(
-
-%0java.lang.StringB
-domain.Question
+≤ ≤(
+"":!
+
+Ø' Ø(0
+userdomain.UserB
+dataAccess.DataAccessH

@@ -1,0 +1,40 @@
+
+(domain.User#toString()Ljava/lang/String;G
+=/Users/nesket/git/Practica-IS2/src/main/java/domain/User.javaZ Z("1*ä
+1[	 [(e
+c
+[	 [(
+%0java.lang.String"__id*9
+
+__unknown_file (*
+domain.User"
+
+usernameg
+e
+[	 [(
+%1java.lang.String"__concat*$
+[	 [(
+
+%0java.lang.String*
+[ [(
+;c
+a
+[ [( 
+%2java.lang.String"__id*7
+
+__unknown_file (*
+domain.User"
+passwdz
+x
+[	 [( 
+%3java.lang.String"__concat*$
+[	 [(
+
+%1java.lang.String*$
+[ [( 
+
+%2java.lang.String"$
+[ [(!
+
+%3java.lang.StringB
+domain.UserH
