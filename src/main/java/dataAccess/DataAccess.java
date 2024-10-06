@@ -401,10 +401,8 @@ public class DataAccess {
 		query.setParameter(USERNAME, erab);
 		List<Traveler> resultList = query.getResultList();
 		if (resultList.isEmpty()) {
-			System.out.println("Traveler not found.");
 			return null;
 		} else {
-			System.out.println(resultList.get(0));
 			return resultList.get(0);
 		}
 	}
@@ -560,9 +558,9 @@ public class DataAccess {
 			db.merge(ride);
 			db.merge(traveler);
 			db.getTransaction().commit();
+			System.out.println("Ride booked successfully!");
 			return true;
 		} catch (Exception e) {
-			System.out.println(e.getMessage());
 			db.getTransaction().rollback();
 			return false;
 		}

@@ -2,11 +2,14 @@ package bookRideTests;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.logging.Logger;
 
 import javax.persistence.EntityManager;
@@ -26,6 +29,7 @@ import org.mockito.MockitoAnnotations;
 
 import businessLogic.BLFacadeImplementation;
 import dataAccess.DataAccess;
+import domain.Booking;
 import domain.Driver;
 import domain.Ride;
 import domain.Traveler;
@@ -104,8 +108,8 @@ static DataAccess sut = new DataAccess();
 			setInitValues("mockedUser", mockRide, 1, 0);
 			
 			// Enter catch in bookRide()
-			Mockito.when(db.createQuery(Mockito.anyString(), Mockito.any(Class.class))).thenReturn(null);		
-			//Mockito.when(typedQuery.getSingleResult()).thenThrow(NoResultException.class);
+			Mockito.when(db.createQuery(Mockito.anyString(), Mockito.any(Class.class))).thenReturn(typedQuery);		
+			Mockito.when(typedQuery.getResultList()).thenThrow(NoResultException.class);
 			
 			// Invoke System Under Test
 			sut.open();
@@ -130,7 +134,7 @@ static DataAccess sut = new DataAccess();
 			
 			// Prepare non-existing user
 			Mockito.when(db.createQuery(Mockito.anyString(), Mockito.any(Class.class))).thenReturn(typedQuery);		
-			Mockito.when(typedQuery.getSingleResult()).thenReturn(null);
+
 			
 			// Invoke System Under Test
 			sut.open();
@@ -155,19 +159,94 @@ static DataAccess sut = new DataAccess();
 			
 			// Prepare existing user
 			User mockedUser = Mockito.mock(Traveler.class);
+			List<User> userList = new ArrayList<User>();
+			userList.add(mockedUser);
 			
 			Mockito.when(db.createQuery(Mockito.anyString(), Mockito.any(Class.class))).thenReturn(typedQuery);
-			Mockito.when(typedQuery.getSingleResult()).thenReturn(mockedUser);
+			Mockito.when(typedQuery.getResultList()).thenReturn(userList);
 			
 			Mockito.doReturn(0).when(mockedRide).getnPlaces();
 			
 			// Invoke System Under Test
 			sut.open();
+			
 			boolean result = sut.bookRide(username, ride, seats, desk);
 			sut.close();
 
 			// Check results
 			assertFalse(result);
+		}
+		catch(Exception e){
+			logger.info("Error encountered: "+e.getMessage());
+		}
+		
+	}
+	
+	@Test
+	public void test4() {
+		System.out.println("\n----- TEST 4 -----");
+		try {
+			Ride mockedRide = Mockito.mock(Ride.class);
+			setInitValues("mockedUser", mockedRide, 1, 0);
+			
+			// Prepare existing user
+			User mockedUser = Mockito.mock(Traveler.class);
+			List<User> userList = new ArrayList<User>();
+			userList.add(mockedUser);
+			
+			Mockito.when(db.createQuery(Mockito.anyString(), Mockito.any(Class.class))).thenReturn(typedQuery);
+			Mockito.when(typedQuery.getResultList()).thenReturn(userList);
+			
+			Mockito.doReturn(1).when(mockedRide).getnPlaces();
+			Mockito.doReturn(10.00).when(mockedRide).getPrice();
+			Mockito.doReturn(0.00).when(mockedUser).getMoney();
+			
+			// Invoke System Under Test
+			sut.open();
+			
+			boolean result = sut.bookRide(username, ride, seats, desk);
+			sut.close();
+
+			// Check results
+			assertFalse(result);
+		}
+		catch(Exception e){
+			logger.info("Error encountered: "+e.getMessage());
+		}
+		
+	}
+	
+	@Test
+	public void test5() {
+		System.out.println("\n----- TEST 5 -----");
+		try {
+			Ride mockedRide = Mockito.mock(Ride.class);
+			setInitValues("mockedUser", mockedRide, 1, 0);
+			
+			// Prepare existing user
+			User mockedUser = Mockito.mock(Traveler.class);
+			List<User> userList = new ArrayList<User>();
+			userList.add(mockedUser);
+			
+			Mockito.when(db.createQuery(Mockito.anyString(), Mockito.any(Class.class))).thenReturn(typedQuery);
+			Mockito.when(typedQuery.getResultList()).thenReturn(userList);
+			
+			Mockito.doReturn(2).when(mockedRide).getnPlaces();
+			Mockito.doReturn(10.00).when(mockedRide).getPrice();
+			Mockito.doReturn(10.00).when(mockedUser).getMoney();
+			
+			Booking mockedBooking = Mockito.mock(Booking.class);
+			
+			// Invoke System Under Test
+			sut.open();
+			
+			boolean result = sut.bookRide(username, ride, seats, desk);
+			sut.close();
+
+			// Check results
+			assertTrue(result);
+			
+			
 		}
 		catch(Exception e){
 			logger.info("Error encountered: "+e.getMessage());
