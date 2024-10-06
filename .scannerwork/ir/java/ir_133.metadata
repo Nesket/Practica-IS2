@@ -1,0 +1,15 @@
+gui.RegisterGUI#instance-init#
+39078e36e07b138c39eb365f269d28b0
+javax.swing.JPasswordField#<init>()V
+java.util.ResourceBundle#getString(Ljava/lang/String;)Ljava/lang/String;
+javax.swing.JButton#<init>(Ljava/lang/String;)V
+javax.swing.JPasswordField#instance-init#
+javax.swing.JLabel#<init>()V
+javax.swing.JLabel#<init>(Ljava/lang/String;)V
+javax.swing.JTextField#instance-init#
+javax.swing.JTextField#<init>()V
+javax.swing.JLabel#instance-init#
+java.util.ResourceBundle#getBundle(Ljava/lang/String;)Ljava/util/ResourceBundle;
+javax.swing.JComboBox#instance-init#
+javax.swing.JComboBox#<init>()V
+javax.swing.JButton#instance-init#

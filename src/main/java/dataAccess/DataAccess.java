@@ -501,6 +501,11 @@ public class DataAccess {
 				db.getTransaction().commit();
 				return true;
 			}
+			/*
+			 * Este código está muerto:
+			 * Si el usuario no existe, getUser lanzará una excepción y entrará en el catch
+			 * Si el usuario sí existe, getUser devuelve un valor y (user!=null) será TRUE
+			 */
 			db.getTransaction().commit();
 			return false;
 		} catch (Exception e) {

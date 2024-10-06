@@ -33,6 +33,7 @@ public class BezeroGUI extends JFrame {
 	private JButton jButtonErreklamatu;
 	private JButton jButtonClose;
 	private JScrollPane scrollPane;
+	static final String COMPLETED = "Completed";
 
 	public static BLFacade getBusinessLogic() {
 		return appFacadeInterface;
@@ -71,7 +72,7 @@ public class BezeroGUI extends JFrame {
 				
 				String status;
 				switch (bo.getStatus()) {
-				case "Completed":
+				case COMPLETED:
 					status = ResourceBundle.getBundle("Etiquetas").getString("Completed");
 					break;
 				case "Accepted":

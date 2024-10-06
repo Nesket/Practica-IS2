@@ -1,0 +1,24 @@
+gui.DeskontuaGUI#<init>(Ljava/lang/String;)V
+df7040ac326e5e77db67bad2758c15a6
+javax.swing.JLabel#<init>(Ljava/lang/String;)V
+javax.swing.JTextField#instance-init#
+javax.swing.JTextField#<init>()V
+java.util.ResourceBundle#getString(Ljava/lang/String;)Ljava/lang/String;
+gui.DeskontuaGUI#setBusinessLogic(LbusinessLogic/BLFacade;)V
+java.util.ResourceBundle#getBundle(Ljava/lang/String;)Ljava/util/ResourceBundle;
+javax.swing.JLabel#instance-init#
+javax.swing.JButton#<init>(Ljava/lang/String;)V
+javax.swing.JLabel#<init>()V
+javax.swing.JButton#instance-init#
+gui.AdminGUI#getBusinessLogic()LbusinessLogic/BLFacade;
+==
+setColumns javax.swing.JTextField#setColumns(I)V
+add java.awt.Container#add(Ljava/awt/Component;)Ljava/awt/Component;
+setText javax.swing.JLabel#setText(Ljava/lang/String;)V
+setText javax.swing.AbstractButton#setText(Ljava/lang/String;)V
+setSize java.awt.Window#setSize(II)V
+setTitle java.awt.Frame#setTitle(Ljava/lang/String;)V
+getContentPane javax.swing.JFrame#getContentPane()Ljava/awt/Container;
+setLayout java.awt.Container#setLayout(Ljava/awt/LayoutManager;)V
+addActionListener javax.swing.AbstractButton#addActionListener(Ljava/awt/event/ActionListener;)V
+setBounds java.awt.Component#setBounds(IIII)V

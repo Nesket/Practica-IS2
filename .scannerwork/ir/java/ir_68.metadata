@@ -1,0 +1,4 @@
+exceptions.RideMustBeLaterThanTodayException#<init>(Ljava/lang/String;)V
+fd286b1dad360953e5be2e34d4bbd572
+==
+<init> java.lang.Exception#<init>(Ljava/lang/String;)V
