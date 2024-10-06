@@ -12,17 +12,18 @@ import configuration.ConfigXML;
 import domain.Driver;
 import domain.Ride;
 
+import java.util.logging.Logger;
 
 public class TestDataAccess {
 	protected  EntityManager  db;
 	protected  EntityManagerFactory emf;
 
 	ConfigXML  c=ConfigXML.getInstance();
-
+	private static final Logger logger = Logger.getLogger(TestDataAccess.class.getName());
 
 	public TestDataAccess()  {
 		
-		System.out.println("TestDataAccess created");
+		logger.info("TestDataAccess created");
 
 		//open();
 		
@@ -46,17 +47,17 @@ public class TestDataAccess {
 
 			  db = emf.createEntityManager();
     	   }
-		System.out.println("TestDataAccess opened");
+		logger.info("TestDataAccess opened");
 
 		
 	}
 	public void close(){
 		db.close();
-		System.out.println("TestDataAccess closed");
+		logger.info("TestDataAccess closed");
 	}
 
 	public boolean removeDriver(String name) {
-		System.out.println(">> TestDataAccess: removeDriver");
+		logger.info(">> TestDataAccess: removeDriver");
 		Driver d = db.find(Driver.class, name);
 		if (d!=null) {
 			db.getTransaction().begin();
@@ -67,7 +68,7 @@ public class TestDataAccess {
 			return false;
     }
 	public Driver createDriver(String name, String pass) {
-		System.out.println(">> TestDataAccess: addDriver");
+		logger.info(">> TestDataAccess: addDriver");
 		Driver driver=null;
 			db.getTransaction().begin();
 			try {
@@ -76,7 +77,7 @@ public class TestDataAccess {
 				db.getTransaction().commit();
 			}
 			catch (Exception e){
-				e.printStackTrace();
+				logger.info("Error occurred: "+ e.getMessage());
 			}
 			return driver;
     }
@@ -87,32 +88,32 @@ public class TestDataAccess {
 	}
 		
 		public Driver addDriverWithRide(String name, String from, String to,  Date date, int nPlaces, float price) {
-			System.out.println(">> TestDataAccess: addDriverWithRide");
+			logger.info(">> TestDataAccess: addDriverWithRide");
 				Driver driver=null;
 				db.getTransaction().begin();
 				try {
 					 driver = db.find(Driver.class, name);
 					if (driver==null) {
-						System.out.println("Entra en null");
+						logger.info("Entra en null");
 						driver=new Driver(name,null);
 				    	db.persist(driver);
 					}
 				    driver.addRide(from, to, date, nPlaces, price);
 					db.getTransaction().commit();
-					System.out.println("Driver created "+driver);
+					logger.info("Driver created "+driver);
 					
 					return driver;
 					
 				}
 				catch (Exception e){
-					e.printStackTrace();
+					logger.info("Error occurred: "+ e.getMessage());
 				}
 				return null;
 	    }
 		
 		
 		public boolean existRide(String name, String from, String to, Date date) {
-			System.out.println(">> TestDataAccess: existRide");
+			logger.info(">> TestDataAccess: existRide");
 			Driver d = db.find(Driver.class, name);
 			if (d!=null) {
 				return d.doesRideExists(from, to, date);
@@ -120,13 +121,13 @@ public class TestDataAccess {
 			return false;
 		}
 		public Ride removeRide(String name, String from, String to, Date date ) {
-			System.out.println(">> TestDataAccess: removeRide");
+			logger.info(">> TestDataAccess: removeRide");
 			Driver d = db.find(Driver.class, name);
 			if (d!=null) {
 				db.getTransaction().begin();
 				Ride r= d.removeRide(from, to, date);
 				db.getTransaction().commit();
-				System.out.println("created rides" +d.getCreatedRides());
+				logger.info("created rides" +d.getCreatedRides());
 				return r;
 
 			} else 
@@ -134,6 +135,16 @@ public class TestDataAccess {
 
 		}
 
-
+		public void setMoneyToDriver(double money, Driver driver) {
+			System.out.println(">> TestDataAccess: setMoneyToDriver");
+			db.getTransaction().begin();
+			try {
+				driver.setMoney(money);
+				db.getTransaction().commit();
+				System.out.println("Driver's money updated to " + money);
+			} catch (Exception e) {
+				logger.info("Error occurred: "+ e.getMessage());
+			}
+		}
 		
 }

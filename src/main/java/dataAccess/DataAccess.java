@@ -401,8 +401,10 @@ public class DataAccess {
 		query.setParameter(USERNAME, erab);
 		List<Traveler> resultList = query.getResultList();
 		if (resultList.isEmpty()) {
+			System.out.println("Traveler not found.");
 			return null;
 		} else {
+			System.out.println(resultList.get(0));
 			return resultList.get(0);
 		}
 	}
@@ -530,16 +532,19 @@ public class DataAccess {
 
 			Traveler traveler = getTraveler(username);
 			if (traveler == null) {
+				System.out.println("User does not exist.");
 				return false;
 			}
 
 			if (ride.getnPlaces() < seats) {
+				System.out.println("Not enough seats available.");
 				return false;
 			}
 
 			double ridePriceDesk = (ride.getPrice() - desk) * seats;
 			double availableBalance = traveler.getMoney();
 			if (availableBalance < ridePriceDesk) {
+				System.out.println("User does not have enough money.");
 				return false;
 			}
 
@@ -557,7 +562,7 @@ public class DataAccess {
 			db.getTransaction().commit();
 			return true;
 		} catch (Exception e) {
-			e.printStackTrace();
+			System.out.println(e.getMessage());
 			db.getTransaction().rollback();
 			return false;
 		}
