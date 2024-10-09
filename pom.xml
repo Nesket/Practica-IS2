@@ -25,8 +25,12 @@
 </repositories>
 
 <properties>
-    <maven.compiler.target>1.8</maven.compiler.target>
-    <maven.compiler.source>1.8</maven.compiler.source>
+	<maven.compiler.target>1.8</maven.compiler.target>
+	<maven.compiler.source>1.8</maven.compiler.source>
+	<sonar.organization>nesket</sonar.organization>
+	<sonar.host.url>https://sonarcloud.io</sonar.host.url>
+	<sonar.projectKey>Nesket_Practica-IS2</sonar.projectKey>
+	<sonar.login>1b2849700ae7a6a38293de72eb5e5dd22d2c0065</sonar.login>
 </properties>
 
 <!-- https://mvnrepository.com/artifact/junit/junit -->
