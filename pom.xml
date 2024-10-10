@@ -6,7 +6,7 @@
 
 <build>
     <plugins>
-	<plugin>
+		<plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-surefire-plugin</artifactId>
           <version>2.19.1</version>
@@ -14,6 +14,25 @@
                <testFailureIgnore>true</testFailureIgnore>
             </configuration>
         </plugin>
+	    <plugin>
+			<groupId>org.jacoco</groupId>
+			<artifactId>jacoco-maven-plugin</artifactId>
+			<version>0.8.8</version>
+			<executions>
+				<execution>
+					<id>prepare-agent</id>
+					<goals>
+						<goal>prepare-agent</goal>
+					</goals>
+				</execution>
+				<execution>
+					<id>report</id>
+					<goals>
+						<goal>report</goal>
+					</goals>
+				</execution>
+			</executions>
+		</plugin>
    </plugins>
 </build>
  <repositories>
@@ -25,8 +44,12 @@
 </repositories>
 
 <properties>
-    <maven.compiler.target>1.8</maven.compiler.target>
-    <maven.compiler.source>1.8</maven.compiler.source>
+	<maven.compiler.target>1.8</maven.compiler.target>
+	<maven.compiler.source>1.8</maven.compiler.source>
+	<sonar.organization>nesket</sonar.organization>
+	<sonar.host.url>https://sonarcloud.io</sonar.host.url>
+	<sonar.projectKey>Nesket_Practica-IS2</sonar.projectKey>
+	<sonar.login>1b2849700ae7a6a38293de72eb5e5dd22d2c0065</sonar.login>
 </properties>
 
 <!-- https://mvnrepository.com/artifact/junit/junit -->

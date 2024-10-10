@@ -539,7 +539,9 @@ public class DataAccess {
 		try {
 			db.getTransaction().begin();
 			System.out.println("ANTES DE IF TRAVELER");
+			System.out.println(username);
 			Traveler traveler = getTraveler(username);
+			
 			if (traveler == null) {
 				System.out.println("User does not exist.");
 				return false;
