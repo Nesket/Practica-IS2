@@ -366,26 +366,46 @@ public class DataAccess {
 	}
 
 	public boolean isRegistered(String erab, String passwd) {
-		TypedQuery<Long> travelerQuery = db.createQuery(
-				"SELECT COUNT(t) FROM Traveler t WHERE t.username = :username AND t.passwd = :passwd", Long.class);
-		travelerQuery.setParameter(USERNAME, erab);
-		travelerQuery.setParameter("passwd", passwd);
-		Long travelerCount = travelerQuery.getSingleResult();
+		Long travelerCount = isTravelerRegistered(erab, passwd);
+		Long driverCount = isDriverRegistered(erab, passwd);
+		boolean isAdmin = isAdmin(erab, passwd);
 
-		TypedQuery<Long> driverQuery = db.createQuery(
-				"SELECT COUNT(d) FROM Driver d WHERE d.username = :username AND d.passwd = :passwd", Long.class);
-		driverQuery.setParameter(USERNAME, erab);
-		driverQuery.setParameter("passwd", passwd);
-		Long driverCount = driverQuery.getSingleResult();
+		return travelerCount > 0 || driverCount > 0 || isAdmin;
+	}
 
+
+
+	private boolean isAdmin(String erab, String passwd) {
 		/*TypedQuery<Long> adminQuery = db.createQuery(
 				"SELECT COUNT(a) FROM Admin a WHERE a.username = :username AND a.passwd = :passwd", Long.class);
 		adminQuery.setParameter("username", erab);
 		adminQuery.setParameter("passwd", passwd);
 		Long adminCount = adminQuery.getSingleResult();*/
-
+		
 		boolean isAdmin=((erab.compareTo("admin")==0) && (passwd.compareTo(adminPass)==0));
-		return travelerCount > 0 || driverCount > 0 || isAdmin;
+		return isAdmin;
+	}
+
+
+
+	private Long isDriverRegistered(String erab, String passwd) {
+		TypedQuery<Long> driverQuery = db.createQuery(
+				"SELECT COUNT(d) FROM Driver d WHERE d.username = :username AND d.passwd = :passwd", Long.class);
+		driverQuery.setParameter(USERNAME, erab);
+		driverQuery.setParameter("passwd", passwd);
+		Long driverCount = driverQuery.getSingleResult();
+		return driverCount;
+	}
+
+
+
+	private Long isTravelerRegistered(String erab, String passwd) {
+		TypedQuery<Long> travelerQuery = db.createQuery(
+				"SELECT COUNT(t) FROM Traveler t WHERE t.username = :username AND t.passwd = :passwd", Long.class);
+		travelerQuery.setParameter(USERNAME, erab);
+		travelerQuery.setParameter("passwd", passwd);
+		Long travelerCount = travelerQuery.getSingleResult();
+		return travelerCount;
 	}
 
 	public Driver getDriver(String erab) {
