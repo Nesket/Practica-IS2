@@ -7,6 +7,7 @@ import java.awt.Font;
 import java.util.ResourceBundle;
 
 import java.awt.event.ActionListener;
+import java.lang.reflect.InvocationTargetException;
 import java.awt.event.ActionEvent;
 
 public class DriverGUI extends JFrame {
@@ -50,66 +51,13 @@ public class DriverGUI extends JFrame {
 
 		panel = new JPanel();
 		panel.setBounds(259, 217, 240, 36);
-
-		jButtonCreateQuery = new JButton();
-		jButtonCreateQuery.setBounds(40, 70, 240, 50);
-		jButtonCreateQuery.setText(ResourceBundle.getBundle("Etiquetas").getString("DriverGUI.CreateRide"));
-		jButtonCreateQuery.addActionListener(new java.awt.event.ActionListener() {
-			public void actionPerformed(java.awt.event.ActionEvent e) {
-				JFrame a = new CreateRideGUI(username);
-				a.setVisible(true);
-			}
-		});
-
-		jButtonDiruaKudeatu = new JButton();
-		jButtonDiruaKudeatu.setBounds(40, 150, 240, 50);
-		jButtonDiruaKudeatu.setText(ResourceBundle.getBundle("Etiquetas").getString("UserGUI.ManageMoney"));
-		jButtonDiruaKudeatu.addActionListener(new java.awt.event.ActionListener() {
-			public void actionPerformed(java.awt.event.ActionEvent e) {
-				JFrame a = new MoneyGUI(username);
-				a.setVisible(true);
-			}
-		});
-
-		jButtonErreserbak = new JButton();
-		jButtonErreserbak.setBounds(320, 150, 240, 50);
-		jButtonErreserbak.setText(ResourceBundle.getBundle("Etiquetas").getString("TravelerGUI.BookManager"));
-		jButtonErreserbak.addActionListener(new java.awt.event.ActionListener() {
-			public void actionPerformed(java.awt.event.ActionEvent e) {
-				JFrame a = new ErreserbaOnartuGUI(username);
-				a.setVisible(true);
-			}
-		});
-
-		jButtonBidaiak = new JButton();
-		jButtonBidaiak.setBounds(320, 70, 240, 50);
-		jButtonBidaiak.setText(ResourceBundle.getBundle("Etiquetas").getString("DriverGUI.RideManager"));
-		jButtonBidaiak.addActionListener(new java.awt.event.ActionListener() {
-			public void actionPerformed(java.awt.event.ActionEvent e) {
-				JFrame a = new BidaiakKudeatuGUI(username);
-				a.setVisible(true);
-			}
-		});
-
-		jButtonKotxeak = new JButton();
-		jButtonKotxeak.setBounds(320, 230, 240, 50);
-		jButtonKotxeak.setText(ResourceBundle.getBundle("Etiquetas").getString("KotxeaGUI.CarManager"));
-		jButtonKotxeak.addActionListener(new java.awt.event.ActionListener() {
-			public void actionPerformed(java.awt.event.ActionEvent e) {
-				JFrame a = new KotxeakKudeatuGUI(username);
-				a.setVisible(true);
-			}
-		});
-
-		jButtonBezeroa = new JButton();
-		jButtonBezeroa.setBounds(40, 230, 240, 50);
-		jButtonBezeroa.setText(ResourceBundle.getBundle("Etiquetas").getString("BezeroGUI.Bezeroak"));
-		jButtonBezeroa.addActionListener(new java.awt.event.ActionListener() {
-			public void actionPerformed(java.awt.event.ActionEvent e) {
-				JFrame a = new BezeroGUI(username);
-				a.setVisible(true);
-			}
-		});
+		
+		createJButton(username, 40, 70, 240, 50, "DriverGUI.CreateRide", "CreateRideGUI");
+		createJButton(username, 40, 150, 240, 50, "UserGUI.ManageMoney", "MoneyGUI");
+		createJButton(username, 320, 150, 240, 50, "TravelerGUI.BookManager", "ErreserbaOnartuGUI");
+		createJButton(username, 320, 70, 240, 50, "DriverGUI.RideManager", "BidaiakKudeatuGUI");
+		createJButton(username, 320, 230, 240, 50, "KotxeaGUI.CarManager", "KotxeakKudeatuGUI");
+		createJButton(username, 40, 230, 240, 50, "BezeroGUI.Bezeroak", "BezeroGUI");
 
 		jButtonClose.setBounds(250, 320, 100, 30);
 		jButtonClose.addActionListener(new ActionListener() {
@@ -134,6 +82,24 @@ public class DriverGUI extends JFrame {
 
 		setResizable(false);
 
+	}
+
+	private void createJButton(String username, int x, int y, int width, int height, String stringToGet,
+			String className) {
+		jButtonCreateQuery = new JButton();
+		jButtonCreateQuery.setBounds(x, y, width, height);
+		jButtonCreateQuery.setText(ResourceBundle.getBundle("Etiquetas").getString(stringToGet));
+		jButtonCreateQuery.addActionListener(new java.awt.event.ActionListener() {
+			public void actionPerformed(java.awt.event.ActionEvent e) {
+				try {
+					Class<?> clazz = Class.forName(className);
+					JFrame a = (JFrame) clazz.getConstructor(String.class).newInstance(username);
+					a.setVisible(true);
+				} catch (ClassNotFoundException | InstantiationException | IllegalAccessException | IllegalArgumentException | InvocationTargetException | NoSuchMethodException | SecurityException e1) {
+					e1.printStackTrace();
+				} 
+			}
+		});
 	}
 
 	private void jButtonClose_actionPerformed(ActionEvent e) {

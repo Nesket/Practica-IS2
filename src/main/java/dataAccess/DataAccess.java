@@ -266,8 +266,6 @@ public class DataAccess {
 			// TODO Auto-generated catch block
 			return null;
 		}
-		
-
 	}
 
 	/**
@@ -368,26 +366,46 @@ public class DataAccess {
 	}
 
 	public boolean isRegistered(String erab, String passwd) {
-		TypedQuery<Long> travelerQuery = db.createQuery(
-				"SELECT COUNT(t) FROM Traveler t WHERE t.username = :username AND t.passwd = :passwd", Long.class);
-		travelerQuery.setParameter(USERNAME, erab);
-		travelerQuery.setParameter("passwd", passwd);
-		Long travelerCount = travelerQuery.getSingleResult();
+		Long travelerCount = isTravelerRegistered(erab, passwd);
+		Long driverCount = isDriverRegistered(erab, passwd);
+		boolean isAdmin = isAdmin(erab, passwd);
 
-		TypedQuery<Long> driverQuery = db.createQuery(
-				"SELECT COUNT(d) FROM Driver d WHERE d.username = :username AND d.passwd = :passwd", Long.class);
-		driverQuery.setParameter(USERNAME, erab);
-		driverQuery.setParameter("passwd", passwd);
-		Long driverCount = driverQuery.getSingleResult();
+		return travelerCount > 0 || driverCount > 0 || isAdmin;
+	}
 
+
+
+	private boolean isAdmin(String erab, String passwd) {
 		/*TypedQuery<Long> adminQuery = db.createQuery(
 				"SELECT COUNT(a) FROM Admin a WHERE a.username = :username AND a.passwd = :passwd", Long.class);
 		adminQuery.setParameter("username", erab);
 		adminQuery.setParameter("passwd", passwd);
 		Long adminCount = adminQuery.getSingleResult();*/
-
+		
 		boolean isAdmin=((erab.compareTo("admin")==0) && (passwd.compareTo(adminPass)==0));
-		return travelerCount > 0 || driverCount > 0 || isAdmin;
+		return isAdmin;
+	}
+
+
+
+	private Long isDriverRegistered(String erab, String passwd) {
+		TypedQuery<Long> driverQuery = db.createQuery(
+				"SELECT COUNT(d) FROM Driver d WHERE d.username = :username AND d.passwd = :passwd", Long.class);
+		driverQuery.setParameter(USERNAME, erab);
+		driverQuery.setParameter("passwd", passwd);
+		Long driverCount = driverQuery.getSingleResult();
+		return driverCount;
+	}
+
+
+
+	private Long isTravelerRegistered(String erab, String passwd) {
+		TypedQuery<Long> travelerQuery = db.createQuery(
+				"SELECT COUNT(t) FROM Traveler t WHERE t.username = :username AND t.passwd = :passwd", Long.class);
+		travelerQuery.setParameter(USERNAME, erab);
+		travelerQuery.setParameter("passwd", passwd);
+		Long travelerCount = travelerQuery.getSingleResult();
+		return travelerCount;
 	}
 
 	public Driver getDriver(String erab) {
@@ -753,12 +771,11 @@ public class DataAccess {
 		return era;
 	}
 
-	public boolean erreklamazioaBidali(String nor, String nori, Date gaur, Booking booking, String textua,
-			boolean aurk) {
+	public boolean erreklamazioaBidali(ErreklamazioaBidaliParameter parameterObject) {
 		try {
 			db.getTransaction().begin();
 
-			Complaint erreklamazioa = new Complaint(nor, nori, gaur, booking, textua, aurk);
+			Complaint erreklamazioa = new Complaint(parameterObject.getNor(), parameterObject.getNori(), parameterObject.getGaur(), parameterObject.getBooking(), parameterObject.getTextua(), parameterObject.isAurk());
 			db.persist(erreklamazioa);
 			db.getTransaction().commit();
 			return true;
@@ -872,41 +889,71 @@ public class DataAccess {
 	public void deleteUser(User us) {
 		try {
 			if (us.getMota().equals("Driver")) {
-				List<Ride> rl = getRidesByDriver(us.getUsername());
-				if (rl != null) {
-					for (Ride ri : rl) {
-						cancelRide(ri);
-					}
-				}
-				Driver d = getDriver(us.getUsername());
-				List<Car> cl = d.getCars();
-				if (cl != null) {
-					for (int i = cl.size() - 1; i >= 0; i--) {
-						Car ci = cl.get(i);
-						deleteCar(ci);
-					}
-				}
+				removeUserRides(us);
+				removeCarOfDriver(us);
 			} else {
-				List<Booking> lb = getBookedRides(us.getUsername());
-				if (lb != null) {
-					for (Booking li : lb) {
-						li.setStatus("Rejected");
-						li.getRide().setnPlaces(li.getRide().getnPlaces() + li.getSeats());
-					}
-				}
-				List<Alert> la = getAlertsByUsername(us.getUsername());
-				if (la != null) {
-					for (Alert lx : la) {
-						deleteAlert(lx.getAlertNumber());
-					}
-				}
+				rejectRidesOfUser(us);
+				removeUserAlerts(us);
 			}
-			db.getTransaction().begin();
-			us = db.merge(us);
-			db.remove(us);
-			db.getTransaction().commit();
+			removeUserFromDB(us);
 		} catch (Exception e) {
 			e.printStackTrace();
+		}
+	}
+
+
+
+	private void removeUserFromDB(User us) {
+		db.getTransaction().begin();
+		us = db.merge(us);
+		db.remove(us);
+		db.getTransaction().commit();
+	}
+
+
+
+	private void removeUserAlerts(User us) {
+		List<Alert> la = getAlertsByUsername(us.getUsername());
+		if (la != null) {
+			for (Alert lx : la) {
+				deleteAlert(lx.getAlertNumber());
+			}
+		}
+	}
+
+
+
+	private void rejectRidesOfUser(User us) {
+		List<Booking> lb = getBookedRides(us.getUsername());
+		if (lb != null) {
+			for (Booking li : lb) {
+				li.setStatus("Rejected");
+				li.getRide().setnPlaces(li.getRide().getnPlaces() + li.getSeats());
+			}
+		}
+	}
+
+
+
+	private void removeCarOfDriver(User us) {
+		Driver d = getDriver(us.getUsername());
+		List<Car> cl = d.getCars();
+		if (cl != null) {
+			for (int i = cl.size() - 1; i >= 0; i--) {
+				Car ci = cl.get(i);
+				deleteCar(ci);
+			}
+		}
+	}
+
+
+
+	private void removeUserRides(User us) {
+		List<Ride> rl = getRidesByDriver(us.getUsername());
+		if (rl != null) {
+			for (Ride ri : rl) {
+				cancelRide(ri);
+			}
 		}
 	}
 
