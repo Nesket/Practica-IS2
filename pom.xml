@@ -1,131 +1,168 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <groupId>Rides24</groupId>
-  <artifactId>Rides24</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
-
-<build>
-    <plugins>
-		<plugin>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-surefire-plugin</artifactId>
-          <version>2.19.1</version>
-          <configuration>
-               <testFailureIgnore>true</testFailureIgnore>
-            </configuration>
-        </plugin>
-	    <plugin>
-			<groupId>org.jacoco</groupId>
-			<artifactId>jacoco-maven-plugin</artifactId>
-			<version>0.8.8</version>
-			<executions>
-				<execution>
-					<id>prepare-agent</id>
-					<goals>
-						<goal>prepare-agent</goal>
-					</goals>
-				</execution>
-				<execution>
-					<id>report</id>
-					<goals>
-						<goal>report</goal>
-					</goals>
-				</execution>
-			</executions>
-		</plugin>
-   </plugins>
-</build>
- <repositories>
-	<repository>
-		<id>objectdb</id>
-		<name>ObjectDB Repository</name>
-		<url>https://m2.objectdb.com</url>
-	</repository>
-</repositories>
-
-<properties>
-	<maven.compiler.target>1.8</maven.compiler.target>
-	<maven.compiler.source>1.8</maven.compiler.source>
-	<sonar.organization>nesket</sonar.organization>
-	<sonar.host.url>https://sonarcloud.io</sonar.host.url>
-	<sonar.projectKey>Nesket_Practica-IS2</sonar.projectKey>
-	<sonar.login>1b2849700ae7a6a38293de72eb5e5dd22d2c0065</sonar.login>
-</properties>
-
-<!-- https://mvnrepository.com/artifact/junit/junit -->
-<dependencies>
-	<dependency>
-  	  <groupId>junit</groupId>
-  	  <artifactId>junit</artifactId>
-  	  <version>4.5</version>
- 	   <scope>test</scope>
-	</dependency> 
-		<dependency>
-			<groupId>com.toedter</groupId>
-			<artifactId>jcalendar</artifactId>
-			<version>1.4</version>
-		</dependency>
-
-		<!-- API JAXB -->
-		<dependency>
-			<groupId>jakarta.xml.bind</groupId>
-			<artifactId>jakarta.xml.bind-api</artifactId>
-			<version>2.3.2</version>
-		</dependency>
-
-		<!-- Runtime -->
-		<dependency>
-			<groupId>org.glassfish.jaxb</groupId>
-			<artifactId>jaxb-runtime</artifactId>
-			<version>2.3.2</version>
-		</dependency>
-
-
-		<!-- API JAX-WS -->
-		<dependency>
-			<groupId>jakarta.xml.ws</groupId>
-			<artifactId>jakarta.xml.ws-api</artifactId>
-			<version>2.3.2</version>
-		</dependency>
-		
-		<!-- Runtime -->
-		<dependency>
-			<groupId>com.sun.xml.ws</groupId>
-			<artifactId>jaxws-rt</artifactId>
-			<version>2.3.5</version>
-		</dependency>
-
-		<dependency>
-			<groupId>com.objectdb</groupId>
-			<artifactId>objectdb</artifactId>
-			<version>2.8.1</version>
-		</dependency>
-		<dependency>
-			<groupId>org.eclipse.persistence</groupId>
-			<artifactId>javax.persistence</artifactId>
-			<version>2.1.0</version>
-		</dependency>
-		<dependency>
-			<groupId>javax.transaction</groupId>
-			<artifactId>jta</artifactId>
-			<version>1.1</version>
-		</dependency>	
-		<dependency>
-    		<groupId>org.mockito</groupId>
-   			 <artifactId>mockito-inline</artifactId>
-   			 <version>5.2.0</version>
-   			 <scope>test</scope>
-		</dependency>
-		<dependency>
-	        <groupId>org.slf4j</groupId>
-	        <artifactId>slf4j-api</artifactId>
-	        <version>1.7.36</version>
-	    </dependency>
-		<dependency>
-	        <groupId>ch.qos.logback</groupId>
-	        <artifactId>logback-classic</artifactId>
-	        <version>1.2.11</version>
-	    </dependency>
-	</dependencies>
-
+<project xmlns="http://maven.apache.org/POM/4.0.0" 
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 
+                             http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>Rides24</groupId>
+    <artifactId>Rides24</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    
+    <!-- Propiedades del Proyecto -->
+    <properties>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <junit.jupiter.version>5.9.3</junit.jupiter.version>
+        <junit.vintage.version>5.9.3</junit.vintage.version>
+        <mockito.version>5.2.0</mockito.version>
+        <maven.surefire.plugin.version>3.0.0-M7</maven.surefire.plugin.version>
+        <sonar.organization>nesket</sonar.organization>
+        <sonar.host.url>https://sonarcloud.io</sonar.host.url>
+        <sonar.projectKey>Nesket_Practica-IS2</sonar.projectKey>
+        <sonar.login>1b2849700ae7a6a38293de72eb5e5dd22d2c0065</sonar.login>
+    </properties>
+    
+    <!-- Repositorios -->
+    <repositories>
+        <repository>
+            <id>objectdb</id>
+            <name>ObjectDB Repository</name>
+            <url>https://m2.objectdb.com</url>
+        </repository>
+    </repositories>
+    
+    <!-- Dependencias -->
+    <dependencies>
+        <!-- JUnit 5 (JUnit Jupiter) -->
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter</artifactId>
+            <version>${junit.jupiter.version}</version>
+            <scope>test</scope>
+        </dependency>
+        
+        <!-- JUnit Vintage Engine para compatibilidad con JUnit 4 -->
+        <dependency>
+            <groupId>org.junit.vintage</groupId>
+            <artifactId>junit-vintage-engine</artifactId>
+            <version>${junit.vintage.version}</version>
+            <scope>test</scope>
+        </dependency>
+        
+        <!-- Mockito Inline -->
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-inline</artifactId>
+            <version>${mockito.version}</version>
+            <scope>test</scope>
+        </dependency>
+        
+        <!-- JCalendar -->
+        <dependency>
+            <groupId>com.toedter</groupId>
+            <artifactId>jcalendar</artifactId>
+            <version>1.4</version>
+        </dependency>
+        
+        <!-- API JAXB -->
+        <dependency>
+            <groupId>jakarta.xml.bind</groupId>
+            <artifactId>jakarta.xml.bind-api</artifactId>
+            <version>2.3.2</version>
+        </dependency>
+        
+        <!-- Runtime JAXB -->
+        <dependency>
+            <groupId>org.glassfish.jaxb</groupId>
+            <artifactId>jaxb-runtime</artifactId>
+            <version>2.3.2</version>
+        </dependency>
+        
+        <!-- API JAX-WS -->
+        <dependency>
+            <groupId>jakarta.xml.ws</groupId>
+            <artifactId>jakarta.xml.ws-api</artifactId>
+            <version>2.3.2</version>
+        </dependency>
+        
+        <!-- Runtime JAX-WS -->
+        <dependency>
+            <groupId>com.sun.xml.ws</groupId>
+            <artifactId>jaxws-rt</artifactId>
+            <version>2.3.5</version>
+        </dependency>
+        
+        <!-- ObjectDB -->
+        <dependency>
+            <groupId>com.objectdb</groupId>
+            <artifactId>objectdb</artifactId>
+            <version>2.8.1</version>
+        </dependency>
+        
+        <!-- JPA API -->
+        <dependency>
+            <groupId>org.eclipse.persistence</groupId>
+            <artifactId>javax.persistence</artifactId>
+            <version>2.1.0</version>
+        </dependency>
+        
+        <!-- JTA -->
+        <dependency>
+            <groupId>javax.transaction</groupId>
+            <artifactId>jta</artifactId>
+            <version>1.1</version>
+        </dependency>
+        
+        <!-- SLF4J API -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>1.7.36</version>
+        </dependency>
+        
+        <!-- Logback Classic -->
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>1.2.11</version>
+        </dependency>
+    </dependencies>
+    
+    <!-- Configuración del Build -->
+    <build>
+        <plugins>
+            <!-- Plugin Maven Surefire para ejecutar tests -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>${maven.surefire.plugin.version}</version>
+                <configuration>
+                    <testFailureIgnore>true</testFailureIgnore>
+                    <useModulePath>false</useModulePath>
+                </configuration>
+            </plugin>
+            
+            <!-- Plugin JaCoCo para cobertura de código -->
+            <plugin>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+                <version>0.8.8</version>
+                <executions>
+                    <execution>
+                        <id>prepare-agent</id>
+                        <goals>
+                            <goal>prepare-agent</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>report</id>
+                        <goals>
+                            <goal>report</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+    
 </project>
