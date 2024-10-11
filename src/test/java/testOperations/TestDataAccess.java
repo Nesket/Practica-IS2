@@ -2,6 +2,7 @@ package testOperations;
 
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.persistence.EntityManager;
@@ -9,6 +10,7 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
 import configuration.ConfigXML;
+import domain.Booking;
 import domain.Driver;
 import domain.Ride;
 import domain.Traveler;
@@ -63,6 +65,7 @@ public class TestDataAccess {
 			db.getTransaction().begin();
 			db.remove(d);
 			db.getTransaction().commit();
+			logger.info("Driver with username = "+name+" was removed.");
 			return true;
 		} else {
 			logger.info("Driver with username = "+name+" was not removed.");
@@ -128,6 +131,7 @@ public class TestDataAccess {
 			} 
 			
 		}
+		
 		public Ride removeRide(String name, String from, String to, Date date ) {
 			logger.info(">> TestDataAccess: removeRide");
 			Driver d = db.find(Driver.class, name);
@@ -135,7 +139,7 @@ public class TestDataAccess {
 				db.getTransaction().begin();
 				Ride r= d.removeRide(from, to, date);
 				db.getTransaction().commit();
-				logger.info("created rides" +d.getCreatedRides());
+				logger.info("Ride from "+from+ " to "+ to+ " on "+date.toString()+" was removed.");
 				return r;
 			} else {
 				logger.info("Ride from "+from+ " to "+ to+ " on "+date.toString()+" was not removed.");
@@ -238,22 +242,50 @@ public class TestDataAccess {
 			}
 		}
 		
-		public Ride addRideToDriver(Driver driver, String rideFrom, String rideTo, Date rideDate, int nPlaces, float price) {
+		public Ride addRideToDriver(String driverUsername, String rideFrom, String rideTo, Date rideDate, int nPlaces, float price) {
 			logger.info(">> TestDataAccess: addRideToDriver");
 				db.getTransaction().begin();
 				try {
+					Driver driver = db.find(Driver.class, driverUsername);
 				    Ride ride = driver.addRide(rideFrom, rideTo, rideDate, nPlaces, price);
 				    db.persist(ride);
 				    db.getTransaction().commit();
+					logger.info("Ride from "+rideFrom+ " to "+ rideTo+ " on "+rideDate.toString()+" was created.");
 					logger.info("Ride added to driver with username = "+driver.getUsername());
-					
 					return ride;
 					
 				}
 				catch (Exception e){
 					logger.info("Error occurred adding ride to driver: "+ e.getMessage());
+					return null;
 				}
-				return null;
+				
 	    }
+		
+		public boolean existBooking(String username, String driverUsername, String from, String to, Date date, double price) {
+			logger.info(">> TestDataAccess: existBooking");
+			Traveler t = db.find(Traveler.class, username);
+			boolean exists = false;
+			if (t!=null) {
+				List<Booking> bookings = t.getBookedRides();
+				if(bookings.size() > 0) {
+					for (Booking b: bookings) {
+						String bDriverUsername = b.getRide().getDriver().getUsername();
+						String bRideFrom = b.getRide().getFrom();
+						String bRideTo = b.getRide().getTo();
+						Date bRideDate = b.getRide().getDate();
+						Double bRidePrice = b.getRide().getPrice();
+						if((bDriverUsername.equals(driverUsername))&&(bRideFrom.equals(from))&&(bRideTo.equals(to))&&(bRideDate.equals(date))&&(bRidePrice.equals(price))) {
+							exists = true;
+							System.out.println("Booking for ride from "+from+ " to "+ to+ " on "+date.toString()+" with driver with username = "+driverUsername+" and price = "+price+" exists.");
+							return exists;
+						}
+						
+					}
+				}
+			}
+			System.out.println("Booking for ride from "+from+ " to "+ to+ " on "+date.toString()+" with driver with username = "+driverUsername+" and price = "+price+" does not exist.");
+			return exists;
+		}
 	}
 
