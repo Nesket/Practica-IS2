@@ -1,9 +1,6 @@
 package bookRideTests;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
+import static org.junit.Assert.*;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -42,19 +39,6 @@ public class BookRideBDBlackTest {
 	private static final Logger logger = Logger.getLogger(BLFacadeImplementation.class.getName());
 	
 	static DataAccess sut = new DataAccess();
-	
-	protected MockedStatic<Persistence> persistenceMock;
-
-	@Mock
-	protected  EntityManagerFactory entityManagerFactory;
-	@Mock
-	protected  EntityManager db;
-	@Mock
-    protected  EntityTransaction  et;
-	
-	// Mocked TypedQuery
-    @Mock
-    TypedQuery<User> typedQuery;
     
  // additional operations needed to execute the test
     static TestDataAccess testDA = new TestDataAccess();
@@ -77,7 +61,20 @@ public class BookRideBDBlackTest {
 	@SuppressWarnings("unused")
 	private double desk;
 	
+	@SuppressWarnings("unused")
 	private double initialUserMoney = 10;
+	
+	@SuppressWarnings("unused")
+	private String driverUsername;
+	
+	@SuppressWarnings("unused")
+	private String rideFrom;
+	
+	@SuppressWarnings("unused")
+	private String rideTo;
+	
+	@SuppressWarnings("unused")
+	private Date rideDate;
 	
 	private void setInitValues(String username, Ride ride, int seats, double desk) {
 		this.username = username;
@@ -86,29 +83,12 @@ public class BookRideBDBlackTest {
 		this.desk = desk;
 	}
 
-	@Before
-    public  void init() {
-        MockitoAnnotations.openMocks(this);
-        persistenceMock = Mockito.mockStatic(Persistence.class);
-		persistenceMock.when(() -> Persistence.createEntityManagerFactory(Mockito.any()))
-        .thenReturn(entityManagerFactory);
-        
-        Mockito.doReturn(db).when(entityManagerFactory).createEntityManager();
-		Mockito.doReturn(et).when(db).getTransaction();
-	    sut=new DataAccess(db);
-    }
-	@After
-    public  void tearDown() {
-		persistenceMock.close();
-    }
-
 	@Test
-	public void test1() {
+	public void test1() { // everything correct, should return true
 		System.out.println("\n----- TEST 1 -----");
 		try {
 			// Prepare parameters
 			setInitValues("user1", ride, 1, 0);
-									
 			// Prepare existing user
 			String fakePassword = "fakepassword";
 			testDA.open();
@@ -118,16 +98,14 @@ public class BookRideBDBlackTest {
 						
 			traveler = testDA.createTraveler(username, fakePassword);
 			testDA.setMoneyToTraveler(10, traveler);
-			testDA.close();
 			
 			// Prepare existing driver and existing ride
-			String driverUsername="Driver Test";
+			driverUsername="Driver Test";
 			
-			String rideFrom="Donostia";
-			String rideTo="Zarautz";
+			rideFrom="Donostia";
+			rideTo="Zarautz";
 			
 			SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-			Date rideDate=null;
 			
 
 			try {
@@ -136,81 +114,79 @@ public class BookRideBDBlackTest {
 				logger.info("Error encountered: "+e.getMessage());
 			}	
 			
-			testDA.open();
 			if (testDA.existDriver(driverUsername)) {
 				testDA.removeDriver(driverUsername);
 			}
 			driver = testDA.createDriver(driverUsername, fakePassword);
-			testDA.close();
 			
-			testDA.open();
 			int nPlaces = 2;
 			float price = 10;
-			this.ride = testDA.addRideToDriver(driver, rideFrom, rideTo, rideDate, nPlaces, price);
+			ride = testDA.addRideToDriver(driverUsername, rideFrom, rideTo, rideDate, nPlaces, price);
+			testDA.existRide(driverUsername, rideFrom, rideTo, rideDate);
 			testDA.close();
 			
 			// Invoke System Under Test
 			sut.open();
 			
-			boolean result = sut.bookRide(username, ride, seats, desk);
+			boolean result = sut.bookRide(username, ride, 1, 0);
 			sut.close();
 
 			// Check results
 			assertTrue(result);
-			
+			testDA.open();
+			testDA.existBooking(username, driverUsername, rideFrom, rideTo, rideDate, price);
+			testDA.close();
 			
 		}
 		catch(Exception e){
 			logger.info("Error encountered: "+e.getMessage());
 		}
+		 finally {
+	        // Clean up: remove the created test data
+	        testDA.open();
+	        testDA.removeTraveler(username);
+	        testDA.removeRide(driverUsername, rideFrom, rideTo, rideDate);
+	        testDA.removeDriver(driverUsername);
+	        testDA.close();
+	    }
 		
 	}
 	
 	@Test
-	public void test2() {
+	public void test2() { // username equals null, should return false
 		System.out.println("\n----- TEST 2 -----");
 		try {
+			
+			
+			// Prepare parameters
+			setInitValues(null, ride, 1, 0);
+			
 			// Prepare existing driver and existing ride
-			String driverUsername="Driver Test";
-			String fakePassword = "fakepassword";
-			
-			String rideFrom="Donostia";
-			String rideTo="Zarautz";
-			
+			String fakePassword = "fakePassword";
+			driverUsername="Driver Test";
+						
+			rideFrom="Donostia";
+			rideTo="Zarautz";
+						
 			SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-			Date rideDate=null;
-			
+						
 
 			try {
 				rideDate = sdf.parse("05/10/2026");
 			} catch (ParseException e) {
 				logger.info("Error encountered: "+e.getMessage());
 			}	
-			
 			testDA.open();
 			if (testDA.existDriver(driverUsername)) {
 				testDA.removeDriver(driverUsername);
 			}
 			driver = testDA.createDriver(driverUsername, fakePassword);
+						
+			int nPlaces = 2;
+			float price = 10;
+			ride = testDA.addRideToDriver(driverUsername, rideFrom, rideTo, rideDate, nPlaces, price);
+			testDA.existRide(driverUsername, rideFrom, rideTo, rideDate);
 			testDA.close();
-			
-			//Check if this ride exists for this driver, and if it exists, remove it.
-			testDA.open();
-			driver = testDA.addDriverWithRide( driverUsername,  rideFrom,  rideTo,   rideDate,2,10);
-			testDA.close();
-			
-			
-			testDA.open();
-			if (testDA.existRide(driverUsername, rideFrom, rideTo, rideDate)) {
-				testDA.removeRide(driverUsername, rideFrom, rideTo, rideDate);
-			}
-			
-			ride = testDA.createRide(rideFrom, rideTo, rideDate, 2, 10, driver);
-			testDA.close();
-			
-			// Prepare parameters
-			
-			setInitValues(null, ride, 1, 0);
 			
 			// Invoke System Under Test
 			sut.open();
@@ -226,11 +202,17 @@ public class BookRideBDBlackTest {
 		catch(Exception e){
 			logger.info("Error encountered: "+e.getMessage());
 		}
-		
+		 finally {
+		        // Clean up: remove the created test data
+		        testDA.open();
+		        testDA.removeRide(driverUsername, rideFrom, rideTo, rideDate);
+		        testDA.removeDriver(driverUsername);
+		        testDA.close();
+		    }
 	}
 	
 	@Test
-	public void test3() {
+	public void test3() { // ride equals null, should return false
 		System.out.println("\n----- TEST 3 -----");
 		
 		try{
@@ -258,12 +240,270 @@ public class BookRideBDBlackTest {
 			// Check results
 			assertFalse(result);
 						
-						
 		}
 		catch(Exception e){
 			logger.info("Error encountered: "+e.getMessage());
-		}		
+		}
+		finally {
+	        // Clean up: remove the created test data
+	        testDA.open();
+	        testDA.removeTraveler(username);
+	        testDA.close();
+	    }
+		
 	}
 	
+	@Test
+	public void test4() { // seats equals -1, should return false
+		System.out.println("\n----- TEST 4 -----");
+		try {
+			// Prepare parameters
+			setInitValues("user1", ride, -1, 0);
+			// Prepare existing user
+			String fakePassword = "fakepassword";
+			testDA.open();
+			if (testDA.existTraveler(username)) {
+				testDA.removeTraveler(username);
+			}
+						
+			traveler = testDA.createTraveler(username, fakePassword);
+			testDA.setMoneyToTraveler(10, traveler);
+			
+			// Prepare existing driver and existing ride
+			driverUsername="Driver Test";
+			
+			rideFrom="Donostia";
+			rideTo="Zarautz";
+			
+			SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+			
+
+			try {
+				rideDate = sdf.parse("05/10/2026");
+			} catch (ParseException e) {
+				logger.info("Error encountered: "+e.getMessage());
+			}	
+			
+			if (testDA.existDriver(driverUsername)) {
+				testDA.removeDriver(driverUsername);
+			}
+			driver = testDA.createDriver(driverUsername, fakePassword);
+			
+			int nPlaces = 2;
+			float price = 10;
+			ride = testDA.addRideToDriver(driverUsername, rideFrom, rideTo, rideDate, nPlaces, price);
+			testDA.existRide(driverUsername, rideFrom, rideTo, rideDate);
+			testDA.close();
+			
+			// Invoke System Under Test
+			sut.open();
+			
+			boolean result = sut.bookRide(username, ride, 1, 0);
+			sut.close();
+
+			// Check results
+			assertFalse(result);
+			
+		}
+		catch(Exception e){
+			logger.info("Error encountered: "+e.getMessage());
+		}
+		 finally {
+	        // Clean up: remove the created test data
+	        testDA.open();
+	        testDA.removeTraveler(username);
+	        testDA.removeRide(driverUsername, rideFrom, rideTo, rideDate);
+	        testDA.removeDriver(driverUsername);
+	        testDA.close();
+	    }
+		
+	}
 	
+	@Test
+	public void test5() { // discount equals 101, should return false
+		System.out.println("\n----- TEST 5 -----");
+		try {
+			// Prepare parameters
+			setInitValues("user1", ride, 1, 101);
+			// Prepare existing user
+			String fakePassword = "fakepassword";
+			testDA.open();
+			if (testDA.existTraveler(username)) {
+				testDA.removeTraveler(username);
+			}
+						
+			traveler = testDA.createTraveler(username, fakePassword);
+			testDA.setMoneyToTraveler(10, traveler);
+			
+			// Prepare existing driver and existing ride
+			driverUsername="Driver Test";
+			
+			rideFrom="Donostia";
+			rideTo="Zarautz";
+			
+			SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+			
+
+			try {
+				rideDate = sdf.parse("05/10/2026");
+			} catch (ParseException e) {
+				logger.info("Error encountered: "+e.getMessage());
+			}	
+			
+			if (testDA.existDriver(driverUsername)) {
+				testDA.removeDriver(driverUsername);
+			}
+			driver = testDA.createDriver(driverUsername, fakePassword);
+			
+			int nPlaces = 2;
+			float price = 10;
+			ride = testDA.addRideToDriver(driverUsername, rideFrom, rideTo, rideDate, nPlaces, price);
+			testDA.existRide(driverUsername, rideFrom, rideTo, rideDate);
+			testDA.close();
+			
+			// Invoke System Under Test
+			sut.open();
+			
+			boolean result = sut.bookRide(username, ride, 1, 0);
+			sut.close();
+
+			// Check results
+			assertFalse(result);
+			
+		}
+		catch(Exception e){
+			logger.info("Error encountered: "+e.getMessage());
+		}
+		 finally {
+	        // Clean up: remove the created test data
+	        testDA.open();
+	        testDA.removeTraveler(username);
+	        testDA.removeRide(driverUsername, rideFrom, rideTo, rideDate);
+	        testDA.removeDriver(driverUsername);
+	        testDA.close();
+	    }
+		
+	}
+	
+	@Test
+	public void test6() { // not enough seats available, should return false
+		System.out.println("\n----- TEST 6 -----");
+		try {
+			// Prepare parameters
+			setInitValues("user1", ride, 1, 0);
+			// Prepare existing user
+			String fakePassword = "fakepassword";
+			testDA.open();
+			if (testDA.existTraveler(username)) {
+				testDA.removeTraveler(username);
+			}
+									
+			traveler = testDA.createTraveler(username, fakePassword);
+			testDA.setMoneyToTraveler(10, traveler);
+			
+			// Prepare existing driver and existing ride
+			driverUsername="Driver Test";
+			
+			rideFrom="Donostia";
+			rideTo="Zarautz";
+			
+			SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+			
+
+			try {
+				rideDate = sdf.parse("10/10/2026");
+			} catch (ParseException e) {
+				logger.info("Error encountered: "+e.getMessage());
+			}	
+			
+			if (testDA.existDriver(driverUsername)) {
+				testDA.removeDriver(driverUsername);
+			}
+			driver = testDA.createDriver(driverUsername, fakePassword);
+			
+			int nPlaces = 0;
+			float price = 10;
+			ride = testDA.addRideToDriver(driverUsername, rideFrom, rideTo, rideDate, nPlaces, price);
+			testDA.existRide(driverUsername, rideFrom, rideTo, rideDate);
+			testDA.close();
+			
+			// Invoke System Under Test
+			sut.open();
+			
+			boolean result = sut.bookRide(username, ride, 1, 0);
+			sut.close();
+
+			// Check results
+			assertFalse(result);
+			
+		}
+		catch(Exception e){
+			logger.info("Error encountered: "+e.getMessage());
+		}
+		 finally {
+	        // Clean up: remove the created test data
+	        testDA.open();
+	        testDA.removeRide(driverUsername, rideFrom, rideTo, rideDate);
+	        testDA.removeDriver(driverUsername);
+	        testDA.close();
+	    }
+		
+	}
+	
+	@Test
+	public void test7() { // user is not in the DB, should return false
+		System.out.println("\n----- TEST 7 -----");
+		try {
+			// Prepare parameters
+			setInitValues("user2", ride, 1, 0);
+			
+			// Prepare existing driver and existing ride
+			String fakePassword = "fakepassword";
+			driverUsername="Driver Test";
+			
+			rideFrom="Donostia";
+			rideTo="Zarautz";
+			
+			SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+			
+
+			try {
+				rideDate = sdf.parse("05/10/2026");
+			} catch (ParseException e) {
+				logger.info("Error encountered: "+e.getMessage());
+			}	
+			testDA.open();
+			if (testDA.existDriver(driverUsername)) {
+				testDA.removeDriver(driverUsername);
+			}
+			driver = testDA.createDriver(driverUsername, fakePassword);
+			
+			int nPlaces = 2;
+			float price = 10;
+			ride = testDA.addRideToDriver(driverUsername, rideFrom, rideTo, rideDate, nPlaces, price);
+			testDA.existRide(driverUsername, rideFrom, rideTo, rideDate);
+			testDA.close();
+			
+			// Invoke System Under Test
+			sut.open();
+			
+			boolean result = sut.bookRide(username, ride, 1, 0);
+			sut.close();
+
+			// Check results
+			assertFalse(result);
+			
+		}
+		catch(Exception e){
+			logger.info("Error encountered: "+e.getMessage());
+		}
+		 finally {
+	        // Clean up: remove the created test data
+	        testDA.open();
+	        testDA.removeRide(driverUsername, rideFrom, rideTo, rideDate);
+	        testDA.removeDriver(driverUsername);
+	        testDA.close();
+	    }
+		
+	}
 }

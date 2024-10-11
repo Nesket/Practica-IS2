@@ -1,9 +1,6 @@
 package bookRideTests;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
+import static org.junit.Assert.*;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -41,26 +38,16 @@ import testOperations.TestDataAccess;
 public class BookRideBDWhiteTest {
 	private static final Logger logger = Logger.getLogger(BLFacadeImplementation.class.getName());
 	
-static DataAccess sut = new DataAccess();
-	
-	protected MockedStatic<Persistence> persistenceMock;
-
-	@Mock
-	protected  EntityManagerFactory entityManagerFactory;
-	@Mock
-	protected  EntityManager db;
-	@Mock
-    protected  EntityTransaction  et;
-	
-	// Mocked TypedQuery
-    @Mock
-    TypedQuery<User> typedQuery;
+	static DataAccess sut = new DataAccess();
     
  // additional operations needed to execute the test
     static TestDataAccess testDA = new TestDataAccess();
 
     @SuppressWarnings("unused")
     private Driver driver;
+    
+    @SuppressWarnings("unused")
+    private Traveler traveler;
     
     @SuppressWarnings("unused")
 	private String username;
@@ -74,7 +61,20 @@ static DataAccess sut = new DataAccess();
 	@SuppressWarnings("unused")
 	private double desk;
 	
+	@SuppressWarnings("unused")
 	private double initialUserMoney = 10;
+	
+	@SuppressWarnings("unused")
+	private String driverUsername;
+	
+	@SuppressWarnings("unused")
+	private String rideFrom;
+	
+	@SuppressWarnings("unused")
+	private String rideTo;
+	
+	@SuppressWarnings("unused")
+	private Date rideDate;
 	
 	private void setInitValues(String username, Ride ride, int seats, double desk) {
 		this.username = username;
@@ -82,90 +82,165 @@ static DataAccess sut = new DataAccess();
 		this.seats = seats;
 		this.desk = desk;
 	}
-
-	@Before
-    public  void init() {
-        MockitoAnnotations.openMocks(this);
-        persistenceMock = Mockito.mockStatic(Persistence.class);
-		persistenceMock.when(() -> Persistence.createEntityManagerFactory(Mockito.any()))
-        .thenReturn(entityManagerFactory);
-        
-        Mockito.doReturn(db).when(entityManagerFactory).createEntityManager();
-		Mockito.doReturn(et).when(db).getTransaction();
-	    sut=new DataAccess(db);
-    }
-	@After
-    public  void tearDown() {
-		persistenceMock.close();
-    }
-	
 	
 	@Test
-	public void test1() {
+	public void test1() { // username equals null, enters in catch from bookRide() from the beginning,
+						  // should return false
 		System.out.println("\n----- TEST 1 -----");
 		try {
-			Ride mockRide = Mockito.mock(Ride.class);
-			setInitValues("mockedUser", mockRide, 1, 0);
 			
-			// Enter catch in bookRide()
-			Mockito.when(db.createQuery(Mockito.anyString(), Mockito.any(Class.class))).thenReturn(typedQuery);		
-			Mockito.when(typedQuery.getResultList()).thenThrow(NoResultException.class);
+			
+			// Prepare parameters
+			setInitValues(null, ride, 1, 0);
+			
+			// Prepare existing driver and existing ride
+			String fakePassword = "fakePassword";
+			driverUsername="Driver Test";
+						
+			rideFrom="Donostia";
+			rideTo="Zarautz";
+						
+			SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+						
+
+			try {
+				rideDate = sdf.parse("05/10/2026");
+			} catch (ParseException e) {
+				logger.info("Error encountered: "+e.getMessage());
+			}	
+			testDA.open();
+			if (testDA.existDriver(driverUsername)) {
+				testDA.removeDriver(driverUsername);
+			}
+			driver = testDA.createDriver(driverUsername, fakePassword);
+						
+			int nPlaces = 2;
+			float price = 10;
+			ride = testDA.addRideToDriver(driverUsername, rideFrom, rideTo, rideDate, nPlaces, price);
+			testDA.existRide(driverUsername, rideFrom, rideTo, rideDate);
+			testDA.close();
 			
 			// Invoke System Under Test
 			sut.open();
+			
 			boolean result = sut.bookRide(username, ride, seats, desk);
 			sut.close();
 
 			// Check results
 			assertFalse(result);
+			
+			
 		}
 		catch(Exception e){
 			logger.info("Error encountered: "+e.getMessage());
 		}
-		
+		 finally {
+		        // Clean up: remove the created test data
+		        testDA.open();
+		        testDA.removeRide(driverUsername, rideFrom, rideTo, rideDate);
+		        testDA.removeDriver(driverUsername);
+		        testDA.close();
+		    }
 	}
 	
 	@Test
-	public void test2() {
+	public void test2() { // user is not in the DB, should return false
 		System.out.println("\n----- TEST 2 -----");
 		try {
-			Ride mockRide = Mockito.mock(Ride.class);
-			setInitValues("mockedUser", mockRide, 1, 0);
+			// Prepare parameters
+			setInitValues("user2", ride, 1, 0);
 			
-			// Prepare non-existing user
-			Mockito.when(db.createQuery(Mockito.anyString(), Mockito.any(Class.class))).thenReturn(typedQuery);		
+			// Prepare existing driver and existing ride
+			String fakePassword = "fakepassword";
+			driverUsername="Driver Test";
+			
+			rideFrom="Donostia";
+			rideTo="Zarautz";
+			
+			SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+			
 
+			try {
+				rideDate = sdf.parse("05/10/2026");
+			} catch (ParseException e) {
+				logger.info("Error encountered: "+e.getMessage());
+			}	
+			testDA.open();
+			if (testDA.existDriver(driverUsername)) {
+				testDA.removeDriver(driverUsername);
+			}
+			driver = testDA.createDriver(driverUsername, fakePassword);
+			
+			int nPlaces = 2;
+			float price = 10;
+			ride = testDA.addRideToDriver(driverUsername, rideFrom, rideTo, rideDate, nPlaces, price);
+			testDA.existRide(driverUsername, rideFrom, rideTo, rideDate);
+			testDA.close();
 			
 			// Invoke System Under Test
 			sut.open();
+			
 			boolean result = sut.bookRide(username, ride, seats, desk);
 			sut.close();
 
 			// Check results
 			assertFalse(result);
+			
 		}
 		catch(Exception e){
 			logger.info("Error encountered: "+e.getMessage());
 		}
+		 finally {
+	        // Clean up: remove the created test data
+	        testDA.open();
+	        testDA.removeRide(driverUsername, rideFrom, rideTo, rideDate);
+	        testDA.removeDriver(driverUsername);
+	        testDA.close();
+	    }
 		
 	}
 	
 	@Test
-	public void test3() {
+	public void test3() { // not enough seats available, should return false
 		System.out.println("\n----- TEST 3 -----");
 		try {
-			Ride mockedRide = Mockito.mock(Ride.class);
-			setInitValues("mockedUser", mockedRide, 1, 0);
-			
+			// Prepare parameters
+			setInitValues("user1", ride, 12, 0);
 			// Prepare existing user
-			User mockedUser = Mockito.mock(Traveler.class);
-			List<User> userList = new ArrayList<User>();
-			userList.add(mockedUser);
+			String fakePassword = "fakepassword";
+			testDA.open();
+			if (testDA.existTraveler(username)) {
+				testDA.removeTraveler(username);
+			}
+									
+			traveler = testDA.createTraveler(username, fakePassword);
+			testDA.setMoneyToTraveler(10, traveler);
 			
-			Mockito.when(db.createQuery(Mockito.anyString(), Mockito.any(Class.class))).thenReturn(typedQuery);
-			Mockito.when(typedQuery.getResultList()).thenReturn(userList);
+			// Prepare existing driver and existing ride
+			driverUsername="Driver Test";
 			
-			Mockito.doReturn(0).when(mockedRide).getnPlaces();
+			rideFrom="Donostia";
+			rideTo="Zarautz";
+			
+			SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+			
+
+			try {
+				rideDate = sdf.parse("05/10/2026");
+			} catch (ParseException e) {
+				logger.info("Error encountered: "+e.getMessage());
+			}	
+			
+			if (testDA.existDriver(driverUsername)) {
+				testDA.removeDriver(driverUsername);
+			}
+			driver = testDA.createDriver(driverUsername, fakePassword);
+			
+			int nPlaces = 2;
+			float price = 10;
+			ride = testDA.addRideToDriver(driverUsername, rideFrom, rideTo, rideDate, nPlaces, price);
+			testDA.existRide(driverUsername, rideFrom, rideTo, rideDate);
+			testDA.close();
 			
 			// Invoke System Under Test
 			sut.open();
@@ -175,31 +250,62 @@ static DataAccess sut = new DataAccess();
 
 			// Check results
 			assertFalse(result);
+			
 		}
 		catch(Exception e){
 			logger.info("Error encountered: "+e.getMessage());
 		}
+		 finally {
+	        // Clean up: remove the created test data
+	        testDA.open();
+	        testDA.removeRide(driverUsername, rideFrom, rideTo, rideDate);
+	        testDA.removeDriver(driverUsername);
+	        testDA.close();
+	    }
 		
 	}
 	
 	@Test
-	public void test4() {
+	public void test4() { // traveler does not have enough money, should return false
 		System.out.println("\n----- TEST 4 -----");
 		try {
-			Ride mockedRide = Mockito.mock(Ride.class);
-			setInitValues("mockedUser", mockedRide, 1, 0);
-			
+			// Prepare parameters
+			setInitValues("user3", ride, 1, 0);
 			// Prepare existing user
-			User mockedUser = Mockito.mock(Traveler.class);
-			List<User> userList = new ArrayList<User>();
-			userList.add(mockedUser);
+			String fakePassword = "fakepassword";
+			testDA.open();
+			if (testDA.existTraveler(username)) {
+				testDA.removeTraveler(username);
+			}
+									
+			traveler = testDA.createTraveler(username, fakePassword);
+			testDA.setMoneyToTraveler(0, traveler);
 			
-			Mockito.when(db.createQuery(Mockito.anyString(), Mockito.any(Class.class))).thenReturn(typedQuery);
-			Mockito.when(typedQuery.getResultList()).thenReturn(userList);
+			// Prepare existing driver and existing ride
+			driverUsername="Driver Test";
 			
-			Mockito.doReturn(1).when(mockedRide).getnPlaces();
-			Mockito.doReturn(10.00).when(mockedRide).getPrice();
-			Mockito.doReturn(0.00).when(mockedUser).getMoney();
+			rideFrom="Donostia";
+			rideTo="Zarautz";
+			
+			SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+			
+
+			try {
+				rideDate = sdf.parse("05/10/2026");
+			} catch (ParseException e) {
+				logger.info("Error encountered: "+e.getMessage());
+			}	
+			
+			if (testDA.existDriver(driverUsername)) {
+				testDA.removeDriver(driverUsername);
+			}
+			driver = testDA.createDriver(driverUsername, fakePassword);
+			
+			int nPlaces = 2;
+			float price = 10;
+			ride = testDA.addRideToDriver(driverUsername, rideFrom, rideTo, rideDate, nPlaces, price);
+			testDA.existRide(driverUsername, rideFrom, rideTo, rideDate);
+			testDA.close();
 			
 			// Invoke System Under Test
 			sut.open();
@@ -209,31 +315,62 @@ static DataAccess sut = new DataAccess();
 
 			// Check results
 			assertFalse(result);
+			
 		}
 		catch(Exception e){
 			logger.info("Error encountered: "+e.getMessage());
 		}
+		 finally {
+	        // Clean up: remove the created test data
+	        testDA.open();
+	        testDA.removeRide(driverUsername, rideFrom, rideTo, rideDate);
+	        testDA.removeDriver(driverUsername);
+	        testDA.close();
+	    }
 		
 	}
 	
 	@Test
-	public void test5() {
-		System.out.println("\n----- TEST 5 -----");
+	public void test5() { // everything correct, should return true
+		System.out.println("\n----- TEST 1 -----");
 		try {
-			Ride mockedRide = Mockito.mock(Ride.class);
-			setInitValues("mockedUser", mockedRide, 1, 0);
-			
+			// Prepare parameters
+			setInitValues("user1", ride, 1, 0);
 			// Prepare existing user
-			User mockedUser = Mockito.mock(Traveler.class);
-			List<User> userList = new ArrayList<User>();
-			userList.add(mockedUser);
+			String fakePassword = "fakepassword";
+			testDA.open();
+			if (testDA.existTraveler(username)) {
+				testDA.removeTraveler(username);
+			}
+						
+			traveler = testDA.createTraveler(username, fakePassword);
+			testDA.setMoneyToTraveler(10, traveler);
 			
-			Mockito.when(db.createQuery(Mockito.anyString(), Mockito.any(Class.class))).thenReturn(typedQuery);
-			Mockito.when(typedQuery.getResultList()).thenReturn(userList);
+			// Prepare existing driver and existing ride
+			driverUsername="Driver Test";
 			
-			Mockito.doReturn(2).when(mockedRide).getnPlaces();
-			Mockito.doReturn(10.00).when(mockedRide).getPrice();
-			Mockito.doReturn(10.00).when(mockedUser).getMoney();
+			rideFrom="Donostia";
+			rideTo="Zarautz";
+			
+			SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+			
+
+			try {
+				rideDate = sdf.parse("05/10/2026");
+			} catch (ParseException e) {
+				logger.info("Error encountered: "+e.getMessage());
+			}	
+			
+			if (testDA.existDriver(driverUsername)) {
+				testDA.removeDriver(driverUsername);
+			}
+			driver = testDA.createDriver(driverUsername, fakePassword);
+			
+			int nPlaces = 2;
+			float price = 10;
+			ride = testDA.addRideToDriver(driverUsername, rideFrom, rideTo, rideDate, nPlaces, price);
+			testDA.existRide(driverUsername, rideFrom, rideTo, rideDate);
+			testDA.close();
 			
 			// Invoke System Under Test
 			sut.open();
@@ -243,13 +380,22 @@ static DataAccess sut = new DataAccess();
 
 			// Check results
 			assertTrue(result);
-			
+			testDA.open();
+			testDA.existBooking(username, driverUsername, rideFrom, rideTo, rideDate, price);
+			testDA.close();
 			
 		}
 		catch(Exception e){
 			logger.info("Error encountered: "+e.getMessage());
 		}
+		 finally {
+	        // Clean up: remove the created test data
+	        testDA.open();
+	        testDA.removeTraveler(username);
+	        testDA.removeRide(driverUsername, rideFrom, rideTo, rideDate);
+	        testDA.removeDriver(driverUsername);
+	        testDA.close();
+	    }
 		
 	}
-	
 }

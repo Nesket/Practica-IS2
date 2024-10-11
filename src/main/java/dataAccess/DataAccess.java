@@ -425,8 +425,10 @@ public class DataAccess {
 		query.setParameter(USERNAME, erab);
 		List<Traveler> resultList = query.getResultList();
 		if (resultList.isEmpty()) {
+			System.out.println("Traveler with username = "+erab+ " not found.");
 			return null;
 		} else {
+			System.out.println("Traveler with username = "+erab+ " found.");
 			return resultList.get(0);
 		}
 	}
@@ -556,42 +558,33 @@ public class DataAccess {
 	public boolean bookRide(String username, Ride ride, int seats, double desk) {
 		try {
 			db.getTransaction().begin();
-			System.out.println("ANTES DE IF TRAVELER");
-			System.out.println(username);
 			Traveler traveler = getTraveler(username);
-			
 			if (traveler == null) {
 				System.out.println("User does not exist.");
 				return false;
 			}
-			System.out.println("PASA TRAVELER");
 
 			if (ride.getnPlaces() < seats) {
 				System.out.println("Not enough seats available.");
 				return false;
 			}
-			System.out.println("PASA ENOUGH SEATS");
 			double ridePriceDesk = (ride.getPrice() - desk) * seats;
 			double availableBalance = traveler.getMoney();
 			if (availableBalance < ridePriceDesk) {
 				System.out.println("User does not have enough money.");
 				return false;
 			}
-			System.out.println("PASA ENOUGH MONEY");
 			Booking booking = new Booking(ride, traveler, seats);
 			booking.setTraveler(traveler);
 			booking.setDeskontua(desk);
 			db.persist(booking);
-			System.out.println("PASA BOOKING");
 			ride.setnPlaces(ride.getnPlaces() - seats);
 			traveler.addBookedRide(booking);
 			traveler.setMoney(availableBalance - ridePriceDesk);
 			traveler.setIzoztatutakoDirua(traveler.getIzoztatutakoDirua() + ridePriceDesk);
-			System.out.println("PASA SET TRAVELER INFO");
 			db.merge(ride);
 			db.merge(traveler);
 			db.getTransaction().commit();
-			System.out.println("Ride booked successfully!");
 			return true;
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
