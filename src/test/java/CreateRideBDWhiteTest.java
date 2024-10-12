@@ -10,7 +10,6 @@ import java.util.Date;
 
 import org.junit.Test;
 
-import dataAccess.CreateRideParameter;
 import dataAccess.DataAccess;
 import domain.Ride;
 import exceptions.RideAlreadyExistException;
@@ -58,7 +57,7 @@ public class CreateRideBDWhiteTest {
 				
 				//invoke System Under Test (sut)  
 				sut.open();
-			    ride=sut.createRide(new CreateRideParameter(rideFrom, rideTo, rideDate, 2, 10, driverUsername));
+			    ride=sut.createRide(rideFrom, rideTo, rideDate, 2, 10, driverUsername);
 
 				//verify the results
 				assertNull(ride);
@@ -104,7 +103,7 @@ public class CreateRideBDWhiteTest {
 			
 			//invoke System Under Test (sut)  
 			sut.open();
-		    Ride r=sut.createRide(new CreateRideParameter(rideFrom, rideTo, rideDate, 0, 0, driverUsername));
+		    Ride r=sut.createRide(rideFrom, rideTo, rideDate, 0, 0, driverUsername);
 			sut.close();
 			
 			assertNull(r);
@@ -153,7 +152,7 @@ public class CreateRideBDWhiteTest {
 			
 			//invoke System Under Test (sut)  
 			sut.open();
-		    sut.createRide(new CreateRideParameter(rideFrom, rideTo, rideDate, 2, 10, driverUsername));
+		    sut.createRide(rideFrom, rideTo, rideDate, 2, 10, driverUsername);
 			sut.close();
 			
 			fail();
@@ -205,7 +204,7 @@ public class CreateRideBDWhiteTest {
 			
 			//invoke System Under Test (sut)  
 			sut.open();
-			Ride ride=sut.createRide(new CreateRideParameter(rideFrom, rideTo, rideDate, 2, 10, driverUsername));
+			Ride ride=sut.createRide(rideFrom, rideTo, rideDate, 2, 10, driverUsername);
 			
 			//if the program goes to this point fail
 			fail();
@@ -262,7 +261,7 @@ public class CreateRideBDWhiteTest {
 		try {
 			//invoke System Under Test (sut)  
 			sut.open();
-			 ride=sut.createRide(new CreateRideParameter(rideFrom, rideTo, rideDate, 2, 10, driverUsername));
+			 ride=sut.createRide(rideFrom, rideTo, rideDate, 2, 10, driverUsername);
 			sut.close();			
 			
 			//verify the results

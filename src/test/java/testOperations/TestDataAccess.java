@@ -123,6 +123,7 @@ public class TestDataAccess {
 			logger.info(">> TestDataAccess: existRide");
 			Driver d = db.find(Driver.class, name);
 			if (d!=null) {
+				logger.info("Ride from "+from+ " to "+ to+ " on "+date.toString()+" exists.");
 				return d.doesRideExists(from, to, date);
 			} else {
 				logger.info("Ride from "+from+ " to "+ to+ " on "+date.toString()+" does not exist.");

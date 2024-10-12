@@ -225,7 +225,11 @@ public class DataAccess {
 
 	/**
 	 * This method creates a ride for a driver
-	 * @param parameterObject TODO
+	 * 
+	 * @param from        the origin location of a ride
+	 * @param to          the destination location of a ride
+	 * @param date        the date of the ride
+	 * @param nPlaces     available seats
 	 * @param driverEmail to which ride is added
 	 * 
 	 * @return the created ride, or null, or an exception
@@ -233,48 +237,35 @@ public class DataAccess {
 	 * @throws RideAlreadyExistException         if the same ride already exists for
 	 *                                           the driver
 	 */
-	public Ride createRide(CreateRideParameter parameterObject) throws RideAlreadyExistException, RideMustBeLaterThanTodayException {
-		System.out.println(">> DataAccess: createRide=> from= " + parameterObject.getFrom() + " to= " + parameterObject.getTo() + " driver=" + parameterObject.getDriverName() + " date " + parameterObject.getDate());
-		if (parameterObject.getDriverName()==null) return null;
+	public Ride createRide(String from, String to, Date date, int nPlaces, float price, String driverName)
+			throws RideAlreadyExistException, RideMustBeLaterThanTodayException {
+		System.out.println(
+				">> DataAccess: createRide=> from= " + from + " to= " + to + " driver=" + driverName + " date " + date);
+		if (driverName==null) return null;
 		try {
-			isRideLaterThanToday(parameterObject.getDate());
-			db.getTransaction().begin();
-			Driver driver = db.find(Driver.class, parameterObject.getDriverName());
-			doesRideExist(parameterObject.getFrom(), parameterObject.getTo(), parameterObject.getDate(), driver);
-			Ride ride = driver.addRide(parameterObject.getFrom(), parameterObject.getTo(), parameterObject.getDate(), parameterObject.getnPlaces(), parameterObject.getPrice());
-			db.getTransaction().commit();
-			return ride;
-		} catch (NullPointerException e) {
-			return null;
-		}
-}
-
-	/**
-	 * @param from
-	 * @param to
-	 * @param date
-	 * @param driver
-	 * @throws RideAlreadyExistException
-	 */
-	private void doesRideExist(String from, String to, Date date, Driver driver) throws RideAlreadyExistException {
-		if (driver.doesRideExists(from, to, date)) {
-			db.getTransaction().commit();
-			throw new RideAlreadyExistException(
-					ResourceBundle.getBundle("Etiquetas").getString("DataAccess.RideAlreadyExist"));
-		}
-	}
-
-	/**
-	 * @param date
-	 * @throws RideMustBeLaterThanTodayException
-	 */
-	private void isRideLaterThanToday(Date date) throws RideMustBeLaterThanTodayException {
-		if (new Date().compareTo(date) > 0) {
+			if (new Date().compareTo(date) > 0) {
 				System.out.println("ppppp");
 				throw new RideMustBeLaterThanTodayException(
 						ResourceBundle.getBundle("Etiquetas").getString("CreateRideGUI.ErrorRideMustBeLaterThanToday"));
+			}
+
+			db.getTransaction().begin();
+			Driver driver = db.find(Driver.class, driverName);
+			if (driver.doesRideExists(from, to, date)) {
+				db.getTransaction().commit();
+				throw new RideAlreadyExistException(
+						ResourceBundle.getBundle("Etiquetas").getString("DataAccess.RideAlreadyExist"));
+			}
+			Ride ride = driver.addRide(from, to, date, nPlaces, price);
+			// next instruction can be obviated
+			db.persist(driver);
+			db.getTransaction().commit();
+
+			return ride;
+		} catch (NullPointerException e) {
+			// TODO Auto-generated catch block
+			return null;
 		}
-		
 	}
 
 	/**
@@ -528,7 +519,10 @@ public class DataAccess {
 				if (deposit) {
 					user.setMoney(currentMoney + amount);
 				} else {
-					payAmount(amount, user, currentMoney);
+					if ((currentMoney - amount) < 0)
+						user.setMoney(0);
+					else
+						user.setMoney(currentMoney - amount);
 				}
 				db.merge(user);
 				db.getTransaction().commit();
@@ -546,20 +540,6 @@ public class DataAccess {
 			db.getTransaction().rollback();
 			return false;
 		}
-	}
-
-
-
-	/**
-	 * @param amount
-	 * @param user
-	 * @param currentMoney
-	 */
-	private void payAmount(double amount, User user, double currentMoney) {
-		if ((currentMoney - amount) < 0)
-			user.setMoney(0);
-		else
-			user.setMoney(currentMoney - amount);
 	}
 
 	public void addMovement(User user, String eragiketa, double amount) {
