@@ -24,14 +24,13 @@ public class FindRidesGUI extends JFrame {
 	private JComboBox<String> jComboBoxDestination = new JComboBox<String>();
 	DefaultComboBoxModel<String> destinationCities = new DefaultComboBoxModel<String>();
 
-	private JLabel jLabelOrigin = new JLabel(
-			ResourceBundle.getBundle("Etiquetas").getString("CreateRideGUI.LeavingFrom"));
-	private JLabel jLabelDestination = new JLabel(
-			ResourceBundle.getBundle("Etiquetas").getString("CreateRideGUI.GoingTo"));
-	private final JLabel jLabelEventDate = new JLabel(
-			ResourceBundle.getBundle("Etiquetas").getString("CreateRideGUI.RideDate"));
-	private final JLabel jLabelEvents = new JLabel(
-			ResourceBundle.getBundle("Etiquetas").getString("CreateRideGUI.Rides"));
+	@SuppressWarnings("unused")
+	private JLabel jLabelOrigin = createJLabel("CreateRideGUI.LeavingFrom", 6, 56, 92, 20, true, false);
+	@SuppressWarnings("unused")
+	private JLabel jLabelDestination = createJLabel("CreateRideGUI.GoingTo", 6, 81, 61, 16, false, false);
+	@SuppressWarnings("unused")
+	private final JLabel jLabelEventDate = createJLabel("CreateRideGUI.RideDate", 457, 6, 140, 25, true, true);
+	private final JLabel jLabelEvents = createJLabel("CreateRideGUI.Rides", 172, 229, 259, 16, false, false);
 
 	private JButton jButtonClose = new JButton(ResourceBundle.getBundle("Etiquetas").getString("Close"));
 
@@ -61,12 +60,6 @@ public class FindRidesGUI extends JFrame {
 		this.setSize(new Dimension(700, 500));
 		this.setTitle(ResourceBundle.getBundle("Etiquetas").getString("FindRidesGUI.FindRides"));
 
-		jLabelEventDate.setBounds(new Rectangle(457, 6, 140, 25));
-		jLabelEvents.setBounds(172, 229, 259, 16);
-
-		this.getContentPane().add(jLabelEventDate, null);
-		this.getContentPane().add(jLabelEvents);
-
 		jButtonClose.setBounds(new Rectangle(274, 419, 130, 30));
 
 		jButtonClose.addActionListener(new ActionListener() {
@@ -79,12 +72,6 @@ public class FindRidesGUI extends JFrame {
 
 		for (String location : origins)
 			originLocations.addElement(location);
-
-		jLabelOrigin.setBounds(new Rectangle(6, 56, 92, 20));
-		jLabelDestination.setBounds(6, 81, 61, 16);
-		getContentPane().add(jLabelOrigin);
-
-		getContentPane().add(jLabelDestination);
 
 		jComboBoxOrigin.setModel(originLocations);
 		jComboBoxOrigin.setBounds(new Rectangle(103, 50, 172, 20));
@@ -283,5 +270,24 @@ public class FindRidesGUI extends JFrame {
 	private void jButton2_actionPerformed(ActionEvent e) {
 		this.setVisible(false);
 	}
+	
+	public JLabel createJLabel(String stringToGet, int x, int y, int width, int height, boolean rectangle, boolean paneNull) {
+	    JLabel jLabel = new JLabel(ResourceBundle.getBundle("Etiquetas").getString(stringToGet));
+	    
+	    if (rectangle) {
+	        jLabel.setBounds(new Rectangle(x, y, width, height));
+	    } else {
+	        jLabel.setBounds(x, y, width, height);
+	    }
+	    
+	    if (paneNull) {
+	        getContentPane().add(jLabel, null);
+	    } else {
+	        getContentPane().add(jLabel);
+	    }
+	    
+	    return jLabel;
+	}
+	
 
 }
