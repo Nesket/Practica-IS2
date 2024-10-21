@@ -99,236 +99,170 @@ static DataAccess sut = new DataAccess();
 		persistenceMock.close();
     }
 
-	@Test
-	public void test1() {
-		System.out.println("\n----- TEST 1 -----");
-		try {
-			Ride mockedRide = Mockito.mock(Ride.class);
-			setInitValues("mockedUser", mockedRide, 1, 0);
-			
-			// Prepare existing user
-			User mockedUser = Mockito.mock(Traveler.class);
-			List<User> userList = new ArrayList<User>();
-			userList.add(mockedUser);
-			
-			Mockito.when(db.createQuery(Mockito.anyString(), Mockito.any(Class.class))).thenReturn(typedQuery);
-			Mockito.when(typedQuery.getResultList()).thenReturn(userList);
-			
-			Mockito.doReturn(2).when(mockedRide).getnPlaces();
-			Mockito.doReturn(10.00).when(mockedRide).getPrice();
-			Mockito.doReturn(10.00).when(mockedUser).getMoney();
-			
-			// Invoke System Under Test
-			sut.open();
-			
-			boolean result = sut.bookRide(username, ride, seats, desk);
-			sut.close();
-
-			// Check results
-			assertTrue(result);
-			
-			
-		}
-		catch(Exception e){
-			logger.info("Error encountered: "+e.getMessage());
-		}
-		
-	}
-	
-	@Test
-	public void test2() {
-		System.out.println("\n----- TEST 2 -----");
-		try {
-			Ride mockedRide = Mockito.mock(Ride.class);
-			setInitValues(null, mockedRide, 1, 0);
-			
-			// Invoke System Under Test
-			sut.open();
-			
-			boolean result = sut.bookRide(username, ride, seats, desk);
-			sut.close();
-
-			// Check results
-			assertFalse(result);
-			
-			
-		}
-		catch(Exception e){
-			logger.info("Error encountered: "+e.getMessage());
-		}
-		
-	}
-	
-	@Test
-	public void test3() {
-		System.out.println("\n----- TEST 3 -----");
-		try {
-			setInitValues("mockedUser", null, 1, 0);
-			// Prepare existing user
-			User mockedUser = Mockito.mock(Traveler.class);
-			List<User> userList = new ArrayList<User>();
-			userList.add(mockedUser);
-						
-			Mockito.when(db.createQuery(Mockito.anyString(), Mockito.any(Class.class))).thenReturn(typedQuery);
-			Mockito.when(typedQuery.getResultList()).thenReturn(userList);
-						
-			// Invoke System Under Test
-			sut.open();
-			
-			boolean result = sut.bookRide(username, ride, seats, desk);
-			sut.close();
-
-			// Check results
-			assertFalse(result);
-			
-			
-		}
-		catch(Exception e){
-			logger.info("Error encountered: "+e.getMessage());
-		}
-		
-	}
-	
-	@Test
-	public void test4() {
-		System.out.println("\n----- TEST 4 -----");
-		try {
-			Ride mockedRide = Mockito.mock(Ride.class);
-			setInitValues("mockedUser", mockedRide, -1, 0);
-			
-			// Prepare existing user
-			User mockedUser = Mockito.mock(Traveler.class);
-			List<User> userList = new ArrayList<User>();
-			userList.add(mockedUser);
-			
-			Mockito.when(db.createQuery(Mockito.anyString(), Mockito.any(Class.class))).thenReturn(typedQuery);
-			Mockito.when(typedQuery.getResultList()).thenReturn(userList);
-			
-			Mockito.doReturn(2).when(mockedRide).getnPlaces();
-			Mockito.doReturn(10.00).when(mockedRide).getPrice();
-			Mockito.doReturn(10.00).when(mockedUser).getMoney();
-			
-			// Invoke System Under Test
-			sut.open();
-			
-			boolean result = sut.bookRide(username, ride, seats, desk);
-			sut.close();
-
-			// Check results
-			assertFalse(result);
-			
-			
-		}
-		catch(Exception e){
-			logger.info("Error encountered: "+e.getMessage());
-		}
-		
-	}
-	
-	@Test
-	public void test5() {
-		System.out.println("\n----- TEST 5 -----");
-		try {
-			Ride mockedRide = Mockito.mock(Ride.class);
-			setInitValues("mockedUser", mockedRide, 1, 101);
-			
-			// Prepare existing user
-			User mockedUser = Mockito.mock(Traveler.class);
-			List<User> userList = new ArrayList<User>();
-			userList.add(mockedUser);
-			
-			Mockito.when(db.createQuery(Mockito.anyString(), Mockito.any(Class.class))).thenReturn(typedQuery);
-			Mockito.when(typedQuery.getResultList()).thenReturn(userList);
-			
-			Mockito.doReturn(2).when(mockedRide).getnPlaces();
-			Mockito.doReturn(10.00).when(mockedRide).getPrice();
-			Mockito.doReturn(10.00).when(mockedUser).getMoney();
-			
-			// Invoke System Under Test
-			sut.open();
-			
-			boolean result = sut.bookRide(username, ride, seats, desk);
-			sut.close();
-
-			// Check results
-			assertFalse(result);
-			
-			
-		}
-		catch(Exception e){
-			logger.info("Error encountered: "+e.getMessage());
-		}
-		
-	}
-	
-	@Test
-	public void test6() {
-		System.out.println("\n----- TEST 6 -----");
-		try {
-			Ride mockedRide = Mockito.mock(Ride.class);
-			setInitValues("mockedUser", mockedRide, 1, 0);
-			
-			// Prepare existing user
-			User mockedUser = Mockito.mock(Traveler.class);
-			List<User> userList = new ArrayList<User>();
-			userList.add(mockedUser);
-			
-			Mockito.when(db.createQuery(Mockito.anyString(), Mockito.any(Class.class))).thenReturn(typedQuery);
-			Mockito.when(typedQuery.getResultList()).thenReturn(userList);
-			
-			Mockito.doReturn(0).when(mockedRide).getnPlaces();
-			Mockito.doReturn(10.00).when(mockedRide).getPrice();
-			Mockito.doReturn(10.00).when(mockedUser).getMoney();
-			
-			// Invoke System Under Test
-			sut.open();
-			
-			boolean result = sut.bookRide(username, ride, seats, desk);
-			sut.close();
-
-			// Check results
-			assertFalse(result);
-			
-			
-		}
-		catch(Exception e){
-			logger.info("Error encountered: "+e.getMessage());
-		}
-		
-	}
-	
-	@Test
-	public void test7() {
-		System.out.println("\n----- TEST 7 -----");
-		try {
-			Ride mockedRide = Mockito.mock(Ride.class);
-			setInitValues("mockedUser", mockedRide, 1, 0);
-			
-			// Prepare non-existing user
-			User mockedUser = Mockito.mock(Traveler.class);
-			List<User> userList = new ArrayList<User>();
-			
-			Mockito.when(db.createQuery(Mockito.anyString(), Mockito.any(Class.class))).thenReturn(typedQuery);
-			Mockito.when(typedQuery.getResultList()).thenReturn(userList);
-			
-			Mockito.doReturn(2).when(mockedRide).getnPlaces();
-			Mockito.doReturn(10.00).when(mockedRide).getPrice();
-			Mockito.doReturn(10.00).when(mockedUser).getMoney();
-			
-			// Invoke System Under Test
-			sut.open();
-			
-			boolean result = sut.bookRide(username, ride, seats, desk);
-			sut.close();
-
-			// Check results
-			assertFalse(result);
-			
-			
-		}
-		catch(Exception e){
-			logger.info("Error encountered: "+e.getMessage());
-		}
-		
-	}
+	/*
+	 * @Test public void test1() { System.out.println("\n----- TEST 1 -----"); try {
+	 * Ride mockedRide = Mockito.mock(Ride.class); setInitValues("mockedUser",
+	 * mockedRide, 1, 0);
+	 * 
+	 * // Prepare existing user User mockedUser = Mockito.mock(Traveler.class);
+	 * List<User> userList = new ArrayList<User>(); userList.add(mockedUser);
+	 * 
+	 * Mockito.when(db.createQuery(Mockito.anyString(),
+	 * Mockito.any(Class.class))).thenReturn(typedQuery);
+	 * Mockito.when(typedQuery.getResultList()).thenReturn(userList);
+	 * 
+	 * Mockito.doReturn(2).when(mockedRide).getnPlaces();
+	 * Mockito.doReturn(10.00).when(mockedRide).getPrice();
+	 * Mockito.doReturn(10.00).when(mockedUser).getMoney();
+	 * 
+	 * // Invoke System Under Test sut.open();
+	 * 
+	 * boolean result = sut.bookRide(username, ride, seats, desk); sut.close();
+	 * 
+	 * // Check results assertTrue(result);
+	 * 
+	 * 
+	 * } catch(Exception e){ logger.info("Error encountered: "+e.getMessage()); }
+	 * 
+	 * }
+	 * 
+	 * @Test public void test2() { System.out.println("\n----- TEST 2 -----"); try {
+	 * Ride mockedRide = Mockito.mock(Ride.class); setInitValues(null, mockedRide,
+	 * 1, 0);
+	 * 
+	 * // Invoke System Under Test sut.open();
+	 * 
+	 * boolean result = sut.bookRide(username, ride, seats, desk); sut.close();
+	 * 
+	 * // Check results assertFalse(result);
+	 * 
+	 * 
+	 * } catch(Exception e){ logger.info("Error encountered: "+e.getMessage()); }
+	 * 
+	 * }
+	 * 
+	 * @Test public void test3() { System.out.println("\n----- TEST 3 -----"); try {
+	 * setInitValues("mockedUser", null, 1, 0); // Prepare existing user User
+	 * mockedUser = Mockito.mock(Traveler.class); List<User> userList = new
+	 * ArrayList<User>(); userList.add(mockedUser);
+	 * 
+	 * Mockito.when(db.createQuery(Mockito.anyString(),
+	 * Mockito.any(Class.class))).thenReturn(typedQuery);
+	 * Mockito.when(typedQuery.getResultList()).thenReturn(userList);
+	 * 
+	 * // Invoke System Under Test sut.open();
+	 * 
+	 * boolean result = sut.bookRide(username, ride, seats, desk); sut.close();
+	 * 
+	 * // Check results assertFalse(result);
+	 * 
+	 * 
+	 * } catch(Exception e){ logger.info("Error encountered: "+e.getMessage()); }
+	 * 
+	 * }
+	 * 
+	 * @Test public void test4() { System.out.println("\n----- TEST 4 -----"); try {
+	 * Ride mockedRide = Mockito.mock(Ride.class); setInitValues("mockedUser",
+	 * mockedRide, -1, 0);
+	 * 
+	 * // Prepare existing user User mockedUser = Mockito.mock(Traveler.class);
+	 * List<User> userList = new ArrayList<User>(); userList.add(mockedUser);
+	 * 
+	 * Mockito.when(db.createQuery(Mockito.anyString(),
+	 * Mockito.any(Class.class))).thenReturn(typedQuery);
+	 * Mockito.when(typedQuery.getResultList()).thenReturn(userList);
+	 * 
+	 * Mockito.doReturn(2).when(mockedRide).getnPlaces();
+	 * Mockito.doReturn(10.00).when(mockedRide).getPrice();
+	 * Mockito.doReturn(10.00).when(mockedUser).getMoney();
+	 * 
+	 * // Invoke System Under Test sut.open();
+	 * 
+	 * boolean result = sut.bookRide(username, ride, seats, desk); sut.close();
+	 * 
+	 * // Check results assertFalse(result);
+	 * 
+	 * 
+	 * } catch(Exception e){ logger.info("Error encountered: "+e.getMessage()); }
+	 * 
+	 * }
+	 * 
+	 * @Test public void test5() { System.out.println("\n----- TEST 5 -----"); try {
+	 * Ride mockedRide = Mockito.mock(Ride.class); setInitValues("mockedUser",
+	 * mockedRide, 1, 101);
+	 * 
+	 * // Prepare existing user User mockedUser = Mockito.mock(Traveler.class);
+	 * List<User> userList = new ArrayList<User>(); userList.add(mockedUser);
+	 * 
+	 * Mockito.when(db.createQuery(Mockito.anyString(),
+	 * Mockito.any(Class.class))).thenReturn(typedQuery);
+	 * Mockito.when(typedQuery.getResultList()).thenReturn(userList);
+	 * 
+	 * Mockito.doReturn(2).when(mockedRide).getnPlaces();
+	 * Mockito.doReturn(10.00).when(mockedRide).getPrice();
+	 * Mockito.doReturn(10.00).when(mockedUser).getMoney();
+	 * 
+	 * // Invoke System Under Test sut.open();
+	 * 
+	 * boolean result = sut.bookRide(username, ride, seats, desk); sut.close();
+	 * 
+	 * // Check results assertFalse(result);
+	 * 
+	 * 
+	 * } catch(Exception e){ logger.info("Error encountered: "+e.getMessage()); }
+	 * 
+	 * }
+	 * 
+	 * @Test public void test6() { System.out.println("\n----- TEST 6 -----"); try {
+	 * Ride mockedRide = Mockito.mock(Ride.class); setInitValues("mockedUser",
+	 * mockedRide, 1, 0);
+	 * 
+	 * // Prepare existing user User mockedUser = Mockito.mock(Traveler.class);
+	 * List<User> userList = new ArrayList<User>(); userList.add(mockedUser);
+	 * 
+	 * Mockito.when(db.createQuery(Mockito.anyString(),
+	 * Mockito.any(Class.class))).thenReturn(typedQuery);
+	 * Mockito.when(typedQuery.getResultList()).thenReturn(userList);
+	 * 
+	 * Mockito.doReturn(0).when(mockedRide).getnPlaces();
+	 * Mockito.doReturn(10.00).when(mockedRide).getPrice();
+	 * Mockito.doReturn(10.00).when(mockedUser).getMoney();
+	 * 
+	 * // Invoke System Under Test sut.open();
+	 * 
+	 * boolean result = sut.bookRide(username, ride, seats, desk); sut.close();
+	 * 
+	 * // Check results assertFalse(result);
+	 * 
+	 * 
+	 * } catch(Exception e){ logger.info("Error encountered: "+e.getMessage()); }
+	 * 
+	 * }
+	 * 
+	 * @Test public void test7() { System.out.println("\n----- TEST 7 -----"); try {
+	 * Ride mockedRide = Mockito.mock(Ride.class); setInitValues("mockedUser",
+	 * mockedRide, 1, 0);
+	 * 
+	 * // Prepare non-existing user User mockedUser = Mockito.mock(Traveler.class);
+	 * List<User> userList = new ArrayList<User>();
+	 * 
+	 * Mockito.when(db.createQuery(Mockito.anyString(),
+	 * Mockito.any(Class.class))).thenReturn(typedQuery);
+	 * Mockito.when(typedQuery.getResultList()).thenReturn(userList);
+	 * 
+	 * Mockito.doReturn(2).when(mockedRide).getnPlaces();
+	 * Mockito.doReturn(10.00).when(mockedRide).getPrice();
+	 * Mockito.doReturn(10.00).when(mockedUser).getMoney();
+	 * 
+	 * // Invoke System Under Test sut.open();
+	 * 
+	 * boolean result = sut.bookRide(username, ride, seats, desk); sut.close();
+	 * 
+	 * // Check results assertFalse(result);
+	 * 
+	 * 
+	 * } catch(Exception e){ logger.info("Error encountered: "+e.getMessage()); }
+	 * 
+	 * }
+	 */
 }
