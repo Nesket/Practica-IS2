@@ -180,4 +180,6 @@ public interface BLFacade {
 
 	public Complaint getComplaintsByBook(Booking bo);
 
+	public ExtendedIterator<Object> getDepartingCitiesIterator();
+
 }

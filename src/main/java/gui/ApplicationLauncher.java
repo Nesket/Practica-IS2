@@ -7,9 +7,7 @@ import javax.swing.UnsupportedLookAndFeelException;
 
 import configuration.ConfigXML;
 import businessLogic.BLFacade;
-import businessLogic.BusinessLogicFactory;
-import businessLogic.BusinessLogicLocalFactory;
-import businessLogic.BusinessLogicRemoteFactory;
+import businessLogic.BLFactory;
 
 public class ApplicationLauncher {
 
@@ -30,15 +28,8 @@ public class ApplicationLauncher {
 			e.printStackTrace();
 		}
 		
-		BusinessLogicFactory bFactory;
-		if (c.isBusinessLogicLocal()) {
-			bFactory = new BusinessLogicLocalFactory();
-
-		} else {
-			bFactory = new BusinessLogicRemoteFactory();
-		}
-		
-		BLFacade appFacadeInterface = bFactory.create(c);
+		boolean isLocal = c.isBusinessLogicLocal();
+		BLFacade appFacadeInterface = new BLFactory().getBusinessLogicFactory(isLocal);
 
 		MainGUI.setBussinessLogic(appFacadeInterface);
 		MainGUI a = new MainGUI();
