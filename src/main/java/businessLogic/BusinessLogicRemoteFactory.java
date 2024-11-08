@@ -7,9 +7,11 @@ import javax.xml.ws.Service;
 
 import configuration.ConfigXML;
 
-public class BusinessLogicRemoteFactory implements BusinessLogicFactory {
-	public BLFacade create(ConfigXML c) {
+public class BusinessLogicRemoteFactory implements BusinessLogicFactoryInterface {	
+	public BLFacade getBusinessLogicFactory() {
 		try {
+			ConfigXML c = ConfigXML.getInstance();
+
 			String serviceName = "http://" + c.getBusinessLogicNode() + ":" + c.getBusinessLogicPort() + "/ws/"
 					+ c.getBusinessLogicName() + "?wsdl";
 			URL url = new URL(serviceName);

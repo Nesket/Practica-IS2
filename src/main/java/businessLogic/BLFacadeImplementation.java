@@ -38,15 +38,12 @@ public class BLFacadeImplementation implements BLFacade {
 		dbManager = new DataAccess();
 
 		// dbManager.close();
-
 	}
 
 	public BLFacadeImplementation(DataAccess da) {
-
 		logger.info("Creating BLFacadeImplementation instance with DataAccess parameter");
 		@SuppressWarnings("unused")
 		ConfigXML c = ConfigXML.getInstance();
-
 		dbManager = da;
 	}
 
@@ -56,13 +53,16 @@ public class BLFacadeImplementation implements BLFacade {
 	@WebMethod
 	public List<String> getDepartCities() {
 		dbManager.open();
-
 		List<String> departLocations = dbManager.getDepartCities();
-
 		dbManager.close();
 
 		return departLocations;
 
+	}
+	
+	public ExtendedIterator<Object> getDepartingCitiesIterator() {
+		List<String> departingCities = this.getDepartCities();
+		return new DepartingCitiesIterator(departingCities);
 	}
 
 	/**
