@@ -1,4 +1,8 @@
-package businessLogic;
+package main;
+
+import businessLogic.BLFacade;
+import businessLogic.BLFactory;
+import businessLogic.ExtendedIterator;
 
 public class BLMain {
 	public static void main(String[] args) {
